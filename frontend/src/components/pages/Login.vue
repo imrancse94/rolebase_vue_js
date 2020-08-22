@@ -62,13 +62,12 @@
 
 
 <script>
-import User from '../../models/user';
+
 export default {
   name: "Login",
   components: {},
   data() {
     return {
-      user: new User('', ''),
       email: "",
       password: "",
       remember: false,
@@ -90,9 +89,9 @@ export default {
       let email = this.email;
       let password = this.password;
 
-      this.$store
-        .dispatch("auth/login", { email, password })
+      this.$store.dispatch("auth/login", { email, password })
         .then((response) => {
+          
           this.$eventBus.$emit("loadingStatus", false);
           
           if (response.success) {

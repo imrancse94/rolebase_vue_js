@@ -19,16 +19,6 @@ export default {
     Header,
     Sidebar,
     Footer
-  },
-
-  created(){
-    const token = localStorage.getItem('token')
-    if (token) {
-      this.$store.dispatch("auth/setAuth")
-      .catch(error =>{
-        this.$router.push("/login");
-      })
-    }
   }
 }
 </script>

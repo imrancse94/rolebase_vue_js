@@ -74,16 +74,11 @@
 
 <script>
 
-import { mapState, mapActions } from "vuex";
-
 export default {
   name: 'Sidebar',
-  computed: {
-    ...mapState("auth",["permissions"])
-  },
+  
   mounted() {
-    this.setAuth();
-    console.log('log',this.$store.state.auth);
+    console.log('my data',this.auth);
   },
   data(){
     return {
@@ -92,7 +87,7 @@ export default {
   },
 
    methods: {
-    ...mapActions("auth",["setAuth"])
+   
   }
   
 }

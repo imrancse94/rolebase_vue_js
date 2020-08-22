@@ -53,7 +53,7 @@ const router = new VueRouter({
     mode:'history' 
 });
 
-
+// check valid route
 router.beforeEach((to, from, next) => {
     if(to.name == 'login') {
         if(store.state.auth.status.loggedIn) { 
