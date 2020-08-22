@@ -9,6 +9,14 @@ use App\Http\Requests\LoginRequest;
 
 class AuthController extends Controller
 {
+
+
+    public function __construct()
+    {
+        
+        $this->middleware('auth', ['except' => ['login']]);
+    }
+
     /**
      * Store a new user.
      *
@@ -55,8 +63,22 @@ class AuthController extends Controller
             return $this->sendError($message, $data,$code);
         }
         $data = $this->respondWithToken($token);
+        $data['user'] = Auth::user();
+        $permissions = $this->getPermissionList(Auth::id());
+        $data = array_merge($data,$permissions);
+        
         $message = __('Successfully logged in');
         $code = config('constant.LOGIN_SUCCESS');
+        return $this->sendResponse($data, $message,$code);
+    }
+
+    public function getAuthInfo(){
+        $data['user'] = Auth::user();
+        $permissions = $this->getPermissionList(Auth::id());
+        $data = array_merge($data,$permissions);
+        
+        $message = __('Successfully Get Auth Data');
+        $code = config('constant.AUTH_DATA_GET_SUCCESS');
         return $this->sendResponse($data, $message,$code);
     }
 

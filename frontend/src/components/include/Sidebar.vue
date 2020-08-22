@@ -26,13 +26,17 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
+              <router-link 
+            class="nav-link active"
+            :to="{'path':'#'}"
+            >
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Starter Pages
                 <i class="right fas fa-angle-left"></i>
               </p>
-            </a>
+            </router-link>
+           
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="#" class="nav-link active">
@@ -49,13 +53,16 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <router-link 
+            class="nav-link"
+            :to="{'path':'/hello'}"
+            >
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Simple Link
                 <span class="right badge badge-danger">New</span>
               </p>
-            </a>
+            </router-link>
           </li>
         </ul>
       </nav>
@@ -66,13 +73,28 @@
 </template>
 
 <script>
+
+import { mapState, mapActions } from "vuex";
+
 export default {
-  name: 'Footer',
-   methods: {
-    logme: function(event) { // a regular event object is passed by $event in template
-      console.log(event.target.parentElement) // parent element
+  name: 'Sidebar',
+  computed: {
+    ...mapState("auth",["permissions"])
+  },
+  mounted() {
+    this.setAuth();
+    console.log('log',this.$store.state.auth);
+  },
+  data(){
+    return {
+      auth:this.$store.state.auth
     }
+  },
+
+   methods: {
+    ...mapActions("auth",["setAuth"])
   }
+  
 }
 </script>
 

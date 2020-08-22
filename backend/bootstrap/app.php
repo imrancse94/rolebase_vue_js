@@ -92,7 +92,7 @@ $app->routeMiddleware([
 |
 */
 
-// $app->register(App\Providers\AppServiceProvider::class);
+ $app->register(App\Providers\AppServiceProvider::class);
 // Uncomment this line
  $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);

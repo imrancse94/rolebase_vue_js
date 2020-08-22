@@ -4,17 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use  App\Models\User;
+use App\Repositories\User\UserRepositoryInterface;
 
 class UserController extends Controller
 {
+    protected $userRepository;
      /**
      * Instantiate a new UserController instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(UserRepositoryInterface $userRepository)
     {
-        $this->middleware('auth');
+        
+        $this->userRepository = $userRepository;
     }
 
     /**
@@ -23,7 +26,8 @@ class UserController extends Controller
      * @return Response
      */
     public function profile()
-    {
+    {   
+        
         return response()->json(['user' => Auth::user()], 200);
     }
 

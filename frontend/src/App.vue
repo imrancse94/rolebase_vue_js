@@ -7,9 +7,7 @@
   </div>
 </template>
 
-<style>
-      @import '/assets/css/custom.css';
-</style>
+
 
 <script>
 
@@ -25,7 +23,10 @@ export default {
   created(){
     this.$eventBus.$on('loadingStatus',payload =>{
         this.loading = payload;
-    }) 
+    });
+    
   }
+  
+  
 }
 </script>

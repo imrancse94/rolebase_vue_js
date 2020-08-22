@@ -18,6 +18,12 @@ const routes = [
             }
         },
         {
+            path:'/hello',
+            name:'hello',
+            component:HelloWorld
+            
+        },
+        {
             path:'/',
             name:'HelloWorld',
             component:HelloWorld,
@@ -50,13 +56,13 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
     if(to.name == 'login') {
-        if(store.getters.isLoggedIn) { 
+        if(store.state.auth.status.loggedIn) { 
             next('/admin');
         } else {
             next();
         }
     } else{
-        if(store.getters.isLoggedIn) { 
+        if(store.state.auth.status.loggedIn) { 
             next();
         } else {
             next('/login');

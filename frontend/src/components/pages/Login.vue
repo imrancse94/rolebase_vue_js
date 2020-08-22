@@ -11,13 +11,15 @@
           >
           {{errors.message}}
           </div>
-          <form class="login-form">
+          <form class="login-form" @submit.prevent="login">
             <div class="form-group">
               <label for="exampleInputEmail1" class="text-uppercase">Username</label>
               <input
+                @input="updateLocalUser($event);"
                 v-model="email"
                 type="text"
                 class="form-control"
+                value="ssadmin@admin.com"
                 :class="has_error && errors.data.email ? 'is-invalid':''"
                 placeholder
               />
@@ -29,7 +31,9 @@
             <div class="form-group">
               <label for="exampleInputPassword1" class="text-uppercase">Password</label>
               <input
+                @input="updateLocalUser($event);"
                 v-model="password"
+                value="123456"
                 :class="has_error && errors.data.password ? 'is-invalid':''"
                 type="password"
                 class="form-control"
@@ -46,7 +50,7 @@
                 <input type="checkbox" class="form-check-input" />
                 <small>Remember Me</small>
               </label>
-              <button type="button" @click="login()" class="btn btn-login pull-right">Submit</button>
+              <button type="submit" class="btn btn-login pull-right">Submit</button>
             </div>
           </form>
         </div>
@@ -54,17 +58,17 @@
     </div>
   </section>
 </template>
-<style>
-      @import '/assets/css/login.css';
-</style>
+
 
 
 <script>
+import User from '../../models/user';
 export default {
   name: "Login",
   components: {},
   data() {
     return {
+      user: new User('', ''),
       email: "",
       password: "",
       remember: false,
@@ -77,17 +81,22 @@ export default {
   },
   
   methods: {
+    updateLocalUser(e) {
+      this.$set(this.user, e.target.id, e.target.value);
+    },
+
     login() {
       this.$eventBus.$emit("loadingStatus", true);
       let email = this.email;
       let password = this.password;
+
       this.$store
-        .dispatch("login", { email, password })
+        .dispatch("auth/login", { email, password })
         .then((response) => {
-          console.log(response);
           this.$eventBus.$emit("loadingStatus", false);
+          
           if (response.success) {
-            this.$router.push("/dashboard");
+            this.$router.push("/admin");
           } else {
             this.has_error = true;
             this.errors.data = response.data;
