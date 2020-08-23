@@ -120,6 +120,7 @@ trait PermissionUpdateTreait
                                     }
 
                                     $sideBarSubmodule['url'] = $currentSideBarpages;
+                                    $submoduleAssoc['url'] = $submodule->default_method;
                                     $submoduleAssoc['pages'] = $currentpages;
                                     $pagesAssoc[] = $submoduleAssoc;
                                     $sideBarPagesAssoc[] = $sideBarSubmodule;

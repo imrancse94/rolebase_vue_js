@@ -18,6 +18,8 @@
     "vee-validate": "^3.3.9",
     "vform": "^1.0.1",
     "vue": "^2.6.11",
+    "vue-bootstrap-sidebar": "^1.0.8",
+    "vue-click-outside": "^1.1.0",
     "vue-router": "^3.4.2",
     "vue2-admin-lte": "^0.4.3",
     "vuex": "^3.5.1",
@@ -32,7 +34,10 @@
     "css-loader": "^4.2.1",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
-    "vue-template-compiler": "^2.6.11"
+    "sass": "^1.26.10",
+    "sass-loader": "^9.0.3",
+    "vue-template-compiler": "^2.6.11",
+    "webpack": "^4.44.1"
   },
   "eslintConfig": {
     "root": true,

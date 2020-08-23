@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper" @click="toggle">
     <Header/>
     <Sidebar />
       <router-view />
@@ -12,6 +12,7 @@
 import Header from '../include/Header';
 import Sidebar from '../include/Sidebar';
 import Footer from '../include/Footer';
+import ClickOutside from 'vue-click-outside';
 
 export default {
   name: 'Admin',
@@ -19,6 +20,39 @@ export default {
     Header,
     Sidebar,
     Footer
+  },
+  data () {
+    return {
+      opened: false
+    }
+  },
+ 
+  methods: {
+    toggle() {
+      const topbar = event.target.classList;
+      const body = document.body;
+      if(!topbar.contains('top-bars')){
+          if(body.classList.contains('sidebar-collapse')){
+            body.classList.remove('sidebar-collapse');
+          } 
+
+        if(body.classList.contains('sidebar-open')){
+          body.classList.remove('sidebar-open');
+          body.classList.remove('sidebar-collapse');
+        }
+      }
+      
+    }
+  },
+  mounted(){
+    this.popupItem = this.$el
+    this.$eventBus.$emit("loadingStatus", false);
+  },
+  beforeMount(){
+    this.$eventBus.$emit("loadingStatus", true);
+ },
+ directives: {
+    ClickOutside
   }
 }
 </script>

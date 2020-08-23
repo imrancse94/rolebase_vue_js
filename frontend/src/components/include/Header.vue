@@ -2,8 +2,14 @@
   <nav class="main-header navbar navbar-expand navbar-white navbar-light navbar-static-top">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button">
-          <i class="fas fa-bars"></i>
+        <a
+          class="nav-link"
+          @click.prevent="sidebarCollapse()"
+          data-widget="pushmenu"
+          href="#"
+          role="button"
+        >
+          <i class="fas fa-bars top-bars"></i>
         </a>
       </li>
     </ul>
@@ -41,19 +47,34 @@
 <script>
 export default {
   name: "Footer",
-  data(){
+  data() {
     return {
-      user:this.$store.state.auth.user
-    }
+      user: this.$store.state.auth.user,
+    };
   },
   methods: {
-    logout(){
+    logout() {
       this.$eventBus.$emit("loadingStatus", true);
-      this.$store.dispatch('auth/logout').then(()=>{
+      this.$store.dispatch("auth/logout").then(() => {
         this.$eventBus.$emit("loadingStatus", false);
         this.$router.push("/login");
-      })
-    }
+      });
+    },
+    sidebarCollapse() {
+      const body = document.body;
+      if (body.classList.contains("sidebar-collapse")) {
+        body.classList.remove("sidebar-collapse");
+      } else {
+        body.classList.add("sidebar-collapse");
+      }
+
+      if (body.classList.contains("sidebar-open")) {
+        body.classList.remove("sidebar-open");
+        body.classList.remove("sidebar-collapse");
+      } else {
+        body.classList.add("sidebar-open");
+      }
+    },
   },
 };
 </script>

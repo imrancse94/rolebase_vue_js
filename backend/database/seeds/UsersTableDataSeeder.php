@@ -58,24 +58,24 @@ class UsersTableDataSeeder extends Seeder {
             'created_at'=>\Carbon\Carbon::now()
         ];
         $modules = "INSERT INTO `modules` (`id`, `name`, `icon`, `sequence`, `created_at`, `updated_at`) VALUES
-                    (1001, 'Company', '<i class=\"fa fa-list-ul\"></i>', 6, '2015-12-09 22:10:46', '2019-03-21 06:52:50'),
-                    (1002, 'Master Data', '<i class=\"fa fa-list-ul\"></i>', 2, '2015-12-09 22:10:46', '2019-03-27 23:03:33'),
-                    (1003, 'Access Control', '<i class=\"fa fa-list-ul\"></i>', 3, '2015-12-09 22:10:47', '2016-08-07 01:24:34'),
-                    (1004, 'Configuration', '<i class=\"fa fa-list-ul\"></i>', 4, '2015-12-09 22:10:47', '2015-12-09 22:10:47');";
+                    (1001, 'Company', 'fa fa-list-ul', 6, '2015-12-09 22:10:46', '2019-03-21 06:52:50'),
+                    (1002, 'Master Data', 'fa fa-list-ul', 2, '2015-12-09 22:10:46', '2019-03-27 23:03:33'),
+                    (1003, 'Access Control', 'fa fa-list-ul', 3, '2015-12-09 22:10:47', '2016-08-07 01:24:34'),
+                    (1004, 'Configuration', 'fa fa-list-ul', 4, '2015-12-09 22:10:47', '2015-12-09 22:10:47');";
 
 
 
         $submoduleSql = "INSERT INTO `submodules` (`id`, `module_id`, `name`, `controller_name`, `icon`, `sequence`, `created_at`, `updated_at`, `default_method`) VALUES
-                        (2001, 1001, 'Company Management', 'CompanyController', '<i class=\"fa  fa-angle-double-right\"></i>', 1, '2015-12-09 22:10:47', '2019-03-27 23:50:07', 'index'),
-                        (2020, 1002, 'Module Management', 'ModuleController', '<i class=\"fa  fa-angle-double-right\"></i>', 1, '2015-12-09 22:10:48', '2015-12-09 22:10:48', 'index'),
-                        (2021, 1002, 'Sub Module Management', 'SubModuleController', '<i class=\"fa  fa-angle-double-right\"></i>', 2, '2015-12-09 22:10:48', '2015-12-09 22:10:48', 'index'),
-                        (2022, 1002, 'Page Management', 'PageController', '<i class=\"fa  fa-angle-double-right\"></i>', 3, '2015-12-09 22:10:48', '2015-12-09 22:10:48', 'index'),
-                        (2050, 1003, 'User Management', 'UserController', '<i class=\"fa  fa-angle-double-right\"></i>', 1, '2015-12-09 22:10:49', '2015-12-09 22:10:49', 'index'),
-                        (2051, 1003, 'Role Management', 'RoleController', '<i class=\"fa  fa-angle-double-right\"></i>', 2, '2015-12-09 22:10:49', '2015-12-24 00:35:45', 'index'),
-                        (2052, 1003, 'User Group Management', 'UsergroupController', '<i class=\"fa  fa-angle-double-right\"></i>', 3, '2015-12-09 22:10:49', '2015-12-09 22:10:49', 'index'),
-                        (2053, 1003, 'Group & Role Association', 'UsergroupRoleController', '<i class=\"fa  fa-angle-double-right\"></i>', 4, '2015-12-09 22:10:49', '2015-12-09 22:10:49', 'index'),
-                        (2054, 1003, 'Role & Page Association', 'RolePageController', '<i class=\"fa  fa-angle-double-right\"></i>', 5, '2015-12-09 22:10:50', '2015-12-09 22:10:50', 'index'),
-                        (2070, 1004, 'Site Settings', 'SettingController', '<i class=\"fa  fa-angle-double-right\"></i>', 1, '2015-12-09 22:10:50', '2015-12-09 22:10:50', 'index');";
+                        (2001, 1001, 'Company Management', 'CompanyController', 'fa fa-angle-double-right', 1, '2015-12-09 22:10:47', '2019-03-27 23:50:07', 'company/index'),
+                        (2020, 1002, 'Module Management', 'ModuleController', 'fa fa-angle-double-right', 1, '2015-12-09 22:10:48', '2015-12-09 22:10:48', 'module/index'),
+                        (2021, 1002, 'Sub Module Management', 'SubModuleController', 'fa fa-angle-double-right', 2, '2015-12-09 22:10:48', '2015-12-09 22:10:48', 'submodule/index'),
+                        (2022, 1002, 'Page Management', 'PageController', 'fa fa-angle-double-right', 3, '2015-12-09 22:10:48', '2015-12-09 22:10:48', 'page/index'),
+                        (2050, 1003, 'User Management', 'UserController', 'fa fa-angle-double-right', 1, '2015-12-09 22:10:49', '2015-12-09 22:10:49', 'user/index'),
+                        (2051, 1003, 'Role Management', 'RoleController', 'fa fa-angle-double-right', 2, '2015-12-09 22:10:49', '2015-12-24 00:35:45', 'role/index'),
+                        (2052, 1003, 'User Group Management', 'UsergroupController', 'fa fa-angle-double-right', 3, '2015-12-09 22:10:49', '2015-12-09 22:10:49', 'usergroup/index'),
+                        (2053, 1003, 'Group & Role Association', 'UsergroupRoleController', 'fa fa-angle-double-right', 4, '2015-12-09 22:10:49', '2015-12-09 22:10:49', 'group-role/index'),
+                        (2054, 1003, 'Role & Page Association', 'RolePageController', 'fa fa-angle-double-right', 5, '2015-12-09 22:10:50', '2015-12-09 22:10:50', 'role-page/index'),
+                        (2070, 1004, 'Site Settings', 'SettingController', 'fa fa-angle-double-right', 1, '2015-12-09 22:10:50', '2015-12-09 22:10:50', 'site-settings/index');";
 
         $companies = "INSERT INTO `companies` (`id`, `name`, `email`, `created_at`, `updated_at`) VALUES
                         (1, 'default', '','2015-11-04 10:52:01', '2015-11-04 10:52:01'),

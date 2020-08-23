@@ -45,6 +45,23 @@ const routes = [
                    
                 }
             ]
+        },
+        {
+            path:'/company',
+            name:'comapany',
+            component:Admin,
+            meta: { 
+                requiresAuth: true
+            },
+            redirect:{path:"/company/index"},
+            children:[
+                {
+                    path:'index',
+                    name:'company.index',
+                    component:Dashboard
+                   
+                }
+            ]
         }
   ];
 

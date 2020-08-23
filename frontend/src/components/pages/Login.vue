@@ -1,58 +1,88 @@
 <template>
-  <section class="login-block">
-    <div class="container">
-      <div class="row">
-        <div class="col login-sec">
-          <h2 class="text-center">Login Now</h2>
-          <div
+  <div class="login-page">
+    <div class="login-box">
+      <div class="login-logo">
+        <a href="../../index2.html">
+          <b>IT</b>Care
+        </a>
+      </div>
+      <!-- /.login-logo -->
+      <div class="card">
+        <div class="card-body login-card-body">
+          <p class="login-box-msg">Start Login Here</p>
+          <p
             v-if="errors.data == 'Unauthorized'"
-            class="alert alert-danger text-center"
-            role="alert"
-          >{{errors.message}}</div>
-          <form class="login-form" @submit.prevent="login">
-            <div class="form-group">
-              <label for="exampleInputEmail1" class="text-uppercase">Username</label>
+            class="alert alert-danger text-center login-error"
+          >{{errors.message}}</p>
+          <form @submit.prevent="login">
+            <div class="input-group mb-3">
               <input
                 v-model="email"
-                type="text"
-                class="form-control"
-                value="ssadmin@admin.com"
                 :class="has_error && errors.data.email ? 'is-invalid':''"
-                placeholder
+                type="email"
+                class="form-control"
+                placeholder="Email"
               />
+
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  
+                </div>
+              </div>
               <div
                 class="invalid-feedback"
                 v-if="has_error && errors.data.email"
               >{{errors.data.email}}</div>
             </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1" class="text-uppercase">Password</label>
+            <div class="input-group mb-3">
               <input
                 v-model="password"
                 value="123456"
                 :class="has_error && errors.data.password ? 'is-invalid':''"
                 type="password"
                 class="form-control"
-                placeholder
+                placeholder="Password"
               />
+
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  
+                </div>
+              </div>
               <div
                 class="invalid-feedback"
                 v-if="has_error && errors.data.password"
               >{{errors.data.password}}</div>
             </div>
-
-            <div class="form-check">
-              <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" />
-                <small>Remember Me</small>
-              </label>
-              <button type="submit" class="btn btn-login pull-right">Submit</button>
+            <div class="row">
+              <div class="col-8">
+                <div class="icheck-primary">
+                  <input type="checkbox" id="remember" />
+                  <label for="remember">Remember Me</label>
+                </div>
+              </div>
+              <!-- /.col -->
+              <div class="col-4">
+                <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+              </div>
+              <!-- /.col -->
             </div>
           </form>
+
+          <div class="social-auth-links text-center mb-3"></div>
+          <!-- /.social-auth-links -->
+
+          <p class="mb-1">
+            <a href="forgot-password.html">I forgot my password</a>
+          </p>
+          <p class="mb-0">
+            <a href="register.html" class="text-center">Register a new membership</a>
+          </p>
         </div>
+        <!-- /.login-card-body -->
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 

@@ -32,8 +32,8 @@
           role="menu"
           data-accordion="false"
         >
-          <li v-for="sidebar in permissions" :key="sidebar.key" class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+          <li v-for="(sidebar,index) in permissions" :key="index" :class="currentIndex == index ? 'menu-open':''" class="nav-item has-treeview">
+            <a href="#" @click.prevent="toggleContent(index)" class="nav-link">
               <i :class="'nav-icon '+sidebar.icon"></i>
               <p>
                 {{sidebar.name}}
@@ -41,9 +41,9 @@
               </p>
             </a>
 
-            <ul class="nav nav-treeview">
+            <ul :ref="'toBeToggled-'+index" class="nav nav-treeview">
               <li v-for="child in sidebar.children" :key="child.key" class="nav-item">
-                <router-link class="nav-link" :to="{'path':'#'}">
+                <router-link class="nav-link" :to="{'path':'/'+child.url}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>{{child.name}}</p>
                 </router-link>
@@ -59,20 +59,34 @@
 </template>
 
 <script>
+//import $ from 'jquery'
 export default {
   name: "Sidebar",
 
   mounted() {
+    this.$eventBus.$emit("loadingStatus", false);
     console.log("my data", this.permissions);
   },
   data() {
     return {
       permissions: this.$store.state.auth.permissions,
-      user:this.$store.state.auth.user
+      user: this.$store.state.auth.user,
+      currentIndex: 0
     };
   },
-
-  methods: {},
+  beforeMount(){
+    this.$eventBus.$emit("loadingStatus", true);
+  },
+  methods: {
+    toggleContent(index) {
+        if(this.currentIndex == index){
+          this.currentIndex = 0;
+        }else{
+          this.currentIndex = index;
+        }
+          
+    }
+  }
 };
 </script>
 
