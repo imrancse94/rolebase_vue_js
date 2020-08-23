@@ -8,14 +8,11 @@
             v-if="errors.data == 'Unauthorized'"
             class="alert alert-danger text-center"
             role="alert"
-          >
-          {{errors.message}}
-          </div>
+          >{{errors.message}}</div>
           <form class="login-form" @submit.prevent="login">
             <div class="form-group">
               <label for="exampleInputEmail1" class="text-uppercase">Username</label>
               <input
-                @input="updateLocalUser($event);"
                 v-model="email"
                 type="text"
                 class="form-control"
@@ -31,7 +28,6 @@
             <div class="form-group">
               <label for="exampleInputPassword1" class="text-uppercase">Password</label>
               <input
-                @input="updateLocalUser($event);"
                 v-model="password"
                 value="123456"
                 :class="has_error && errors.data.password ? 'is-invalid':''"
@@ -62,7 +58,6 @@
 
 
 <script>
-
 export default {
   name: "Login",
   components: {},
@@ -78,22 +73,18 @@ export default {
       },
     };
   },
-  
-  methods: {
-    updateLocalUser(e) {
-      this.$set(this.user, e.target.id, e.target.value);
-    },
 
+  methods: {
     login() {
       this.$eventBus.$emit("loadingStatus", true);
       let email = this.email;
       let password = this.password;
 
-      this.$store.dispatch("auth/login", { email, password })
+      this.$store
+        .dispatch("auth/login", { email, password })
         .then((response) => {
-          
           this.$eventBus.$emit("loadingStatus", false);
-          
+
           if (response.success) {
             this.$router.push("/admin");
           } else {

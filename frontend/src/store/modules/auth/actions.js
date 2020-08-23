@@ -1,11 +1,11 @@
 import auth from "../../../apis/auth";
+import {setToken,removeToken} from './../../../helper/token';
 
 export const login = ({ commit },user) => {
    return auth.login(user).then(({data}) => {
         const response = data.data;
         if (response.token) {
-            localStorage.setItem('token', response.token);
-            localStorage.setItem('user', JSON.stringify(response.user));
+            setToken(response.token)
         }
         commit('SET_LOGIN', response);
         return Promise.resolve(data);
@@ -18,13 +18,14 @@ export const setAuth = ({ commit }) => {
         commit('SET_LOGIN', response);
         return Promise.resolve(data);
     }).catch((error)=>{
-        console.log(error)
         auth.logout();
         commit('SET_LOGOUT');
+        return Promise.resolve(error);
     })
 }
 
 export const logout = ({ commit }) => {
-    auth.logout();
+    removeToken();
     commit('SET_LOGOUT');
+    
 }

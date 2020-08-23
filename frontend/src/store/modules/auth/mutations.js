@@ -5,8 +5,8 @@ export const SET_LOGIN = (state, data) => {
 }
 
 export const SET_LOGOUT = (state) => {
-    console.log('logout',state);
     state.status.loggedIn = false;
     state.user = null;
+    state.permissions = null;
 }
 

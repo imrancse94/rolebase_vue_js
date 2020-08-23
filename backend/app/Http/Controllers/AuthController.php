@@ -6,14 +6,14 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\LoginRequest;
+use Tymon\JWTAuth\JWTAuth;
+use Tymon\JWTAuth\Exceptions\JWTException;
 
 class AuthController extends Controller
 {
 
-
     public function __construct()
     {
-        
         $this->middleware('auth', ['except' => ['login']]);
     }
 
@@ -82,5 +82,42 @@ class AuthController extends Controller
         return $this->sendResponse($data, $message,$code);
     }
 
+
+    public function logout(Request $request){
+        $message = "Logout Error";
+        $code = config('constant.AUTH_LOGOUT');
+        $data = [];
+        $token =  str_replace('Bearer ','',$request->header('Authorization'));
+        JWTAuth::invalidate($token);
+        $message = "Successfully logged out.";
+
+        return $this->sendResponse($data, $message,$code);
+    }
+
+
+    public function logout2(Request $request) {
+
+        $token = $request->header( 'Authorization' );
+        $data = [];
+        $message = "Successfully logged out.";
+        $code = config('constant.AUTH_LOGOUT');
+        try {
+            JWTAuth::parseToken()->invalidate( $token );
+
+            return $this->sendResponse($data, $message,$code);
+
+        } catch ( TokenExpiredException $exception ) {
+
+            return $this->sendResponse($data, $message,$code);
+
+        } catch ( TokenInvalidException $exception ) {
+            
+            return $this->sendResponse($data, $message,$code);
+
+        } catch ( JWTException $exception ) {
+            
+            return $this->sendResponse($data, $message,$code);
+        }
+    }
 
 }

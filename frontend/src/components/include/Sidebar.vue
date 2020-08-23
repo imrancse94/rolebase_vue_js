@@ -3,9 +3,13 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <img
+        src="/dist/img/AdminLTELogo.png"
+        alt="AdminLTE Logo"
+        class="brand-image img-circle elevation-3"
+        style="opacity: .8"
+      />
+      <span class="brand-text font-weight-light">Role Base</span>
     </a>
 
     <!-- Sidebar -->
@@ -13,56 +17,38 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image" />
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">{{user.name}}</a>
         </div>
       </div>
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview menu-open">
-              <router-link 
-            class="nav-link active"
-            :to="{'path':'#'}"
-            >
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+        <ul
+          class="nav nav-pills nav-sidebar flex-column"
+          data-widget="treeview"
+          role="menu"
+          data-accordion="false"
+        >
+          <li v-for="sidebar in permissions" :key="sidebar.key" class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i :class="'nav-icon '+sidebar.icon"></i>
               <p>
-                Starter Pages
+                {{sidebar.name}}
                 <i class="right fas fa-angle-left"></i>
               </p>
-            </router-link>
-           
+            </a>
+
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link active">
+              <li v-for="child in sidebar.children" :key="child.key" class="nav-item">
+                <router-link class="nav-link" :to="{'path':'#'}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Active Page</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inactive Page</p>
-                </a>
+                  <p>{{child.name}}</p>
+                </router-link>
               </li>
             </ul>
-          </li>
-          <li class="nav-item">
-            <router-link 
-            class="nav-link"
-            :to="{'path':'/hello'}"
-            >
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Simple Link
-                <span class="right badge badge-danger">New</span>
-              </p>
-            </router-link>
           </li>
         </ul>
       </nav>
@@ -73,23 +59,20 @@
 </template>
 
 <script>
-
 export default {
-  name: 'Sidebar',
-  
+  name: "Sidebar",
+
   mounted() {
-    console.log('my data',this.auth);
+    console.log("my data", this.permissions);
   },
-  data(){
+  data() {
     return {
-      auth:this.$store.state.auth
-    }
+      permissions: this.$store.state.auth.permissions,
+      user:this.$store.state.auth.user
+    };
   },
 
-   methods: {
-   
-  }
-  
-}
+  methods: {},
+};
 </script>
 

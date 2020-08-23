@@ -1,7 +1,6 @@
 import Api from "./Api";
 import authHeader from './token-header';
-const END_POINT = 'cart';
-
+const header =  {headers: authHeader() };
 export default {
     login(user) {
         return Api.post('login', {
@@ -11,16 +10,10 @@ export default {
     },
 
     setAuth() {
-        return Api.get('auth_data',{ headers: authHeader() })
-      }
-    ,
-
-    logout() {
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
+        return Api.get('auth_data',header)
     },
 
-    deleteAll() {
-        return Api.delete(END_POINT);
+    logout() {
+        return Api.get('logout',header);
     }
 }

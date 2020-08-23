@@ -61,6 +61,7 @@ $app->singleton(
 
 $app->configure('app');
 $app->configure('constant');
+$app->configure('cors');
 
 /*
 |--------------------------------------------------------------------------
@@ -74,7 +75,7 @@ $app->configure('constant');
 */
 
 $app->middleware([
-    App\Http\Middleware\CorsMiddleware::class
+    Fruitcake\Cors\HandleCors::class,
 ]);
 
 $app->routeMiddleware([
@@ -101,6 +102,9 @@ $app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
 
 // for form request
 $app->register(Pearl\RequestValidate\RequestServiceProvider::class);
+
+// for CORS Problem
+$app->register(Fruitcake\Cors\CorsServiceProvider::class);
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes
