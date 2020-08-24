@@ -10,11 +10,16 @@ import './assets/js';
 
 import './events/eventbus';
 
-
+//import Helper from './helper/moment';
 
 Vue.config.productionTip = false
 
+
+
+
+
 const main = ()=>{
+  //Vue.filter('setDateFormat',Helper.setDateFormat)
     new Vue({
       router,
       store,

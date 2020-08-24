@@ -41,10 +41,10 @@
               </p>
             </a>
 
-            <ul :ref="'toBeToggled-'+index" class="nav nav-treeview">
+            <ul class="nav nav-treeview">
               <li v-for="child in sidebar.children" :key="child.key" class="nav-item">
                 <router-link class="nav-link" :to="{'path':'/'+child.url}">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i :class="child.icon+' nav-icon'"></i>
                   <p>{{child.name}}</p>
                 </router-link>
               </li>
@@ -65,7 +65,7 @@ export default {
 
   mounted() {
     this.$eventBus.$emit("loadingStatus", false);
-    console.log("my data", this.permissions);
+    console.log("my data", this.$store.state);
   },
   data() {
     return {

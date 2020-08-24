@@ -4,6 +4,8 @@ import HelloWorld from '../components/HelloWorld';
 import Login from '../components/pages/Login';
 import Dashboard from '../components/pages/Dashboard';
 import Admin from '../components/pages/Admin';
+import Module from '../components/pages/Module';
+
 import store from '../store'
 
 Vue.use(VueRouter);
@@ -62,7 +64,26 @@ const routes = [
                    
                 }
             ]
+        },
+        {
+            path:'/module',
+            name:'module',
+            component:Admin,
+            meta: { 
+                requiresAuth: true
+            },
+            redirect:{path:"/module/index"},
+            children:[
+                {
+                    path:'index',
+                    name:'module.index',
+                    component:Module
+                   
+                }
+            ]
         }
+
+        
   ];
 
 const router = new VueRouter({

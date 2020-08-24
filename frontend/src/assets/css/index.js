@@ -10,5 +10,4 @@ import 'jquery-slimscroll'
 import 'jquery-ui/themes/base/datepicker.css'
 
 import '@/assets/fonts/font.css';
-import '@/assets/css/login.css';
 import '@/assets/css/custom.css';

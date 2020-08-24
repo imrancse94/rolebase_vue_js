@@ -1,6 +1,5 @@
-import Api from "./Api";
-import authHeader from './token-header';
-const header =  {headers: authHeader() };
+import {Api,header} from "./Api";
+
 export default {
     login(user) {
         return Api.post('login', {
@@ -10,10 +9,10 @@ export default {
     },
 
     setAuth() {
-        return Api.get('auth_data',header)
+        return Api.get('auth_data',header())
     },
 
     logout() {
-        return Api.get('logout',header);
+        return Api.get('logout',header());
     }
 }

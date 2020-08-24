@@ -2,7 +2,7 @@
   <div class="login-page">
     <div class="login-box">
       <div class="login-logo">
-        <a href="../../index2.html">
+        <a href="#">
           <b>IT</b>Care
         </a>
       </div>

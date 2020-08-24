@@ -8,11 +8,11 @@
 </template>
 
 <script>
-
+import ClickOutside from 'vue-click-outside';
 import Header from '../include/Header';
 import Sidebar from '../include/Sidebar';
 import Footer from '../include/Footer';
-import ClickOutside from 'vue-click-outside';
+
 
 export default {
   name: 'Admin',

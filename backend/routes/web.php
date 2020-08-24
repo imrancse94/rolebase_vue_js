@@ -38,5 +38,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
         // Matches "/api/register
         $router->get('logout', 'AuthController@logout');
+
+        // Matches "/api/modules
+        $router->get('modules', 'ModuleController@getModules');
     });
 });

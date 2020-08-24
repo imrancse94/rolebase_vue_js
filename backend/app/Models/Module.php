@@ -8,7 +8,7 @@ use DB;
 class Module extends Model
 {
     protected $fillable = [
-        'id', 'name', 'icon', 'sequence'
+        'id', 'name', 'icon', 'sequence','created_at','updated_at'
     ];
     public function getModules(){
         $modules = $this->all();

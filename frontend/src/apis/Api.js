@@ -1,7 +1,20 @@
 import axios from "axios";
+import {getToken} from './../helper/token';
 
-const Api = axios.create({
+export const Api = axios.create({
     baseURL: 'http://localhost/portfolio/backend/public/api/'
 });
 
-export default Api;
+export const header = () => {
+    let token = getToken();
+    let obj = {};
+  
+    if (token) {
+      obj = {headers:{ Authorization: 'Bearer ' + token }};
+    } 
+  
+    return obj;
+  }
+  
+
+
