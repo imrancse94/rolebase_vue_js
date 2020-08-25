@@ -31,12 +31,12 @@ class ModuleEloquentRepository extends EloquentRepository implements ModuleRepos
      *
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function getAllModules()
+    public function getAllModules($limit = 2)
     {
         $result = $this
             ->_model
             ->orderBy('id', 'desc')
-            ->get();
+            ->paginate($limit);
 
         return $result;
     }

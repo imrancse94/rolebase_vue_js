@@ -1,5 +1,11 @@
 import moment from 'moment'
 
-export const setDateFormat = function (date) {
-    return moment(date, 'YYYY-MM-DD').format('DD/MM/YYYY');
-}
+var mixin = {
+    methods: {
+        setDateFormat: function (date) {
+            return moment(date, 'YYYY-MM-DD').format('MM-DD-YYYY hh:mm A');
+        }
+    }
+};
+
+export default mixin;

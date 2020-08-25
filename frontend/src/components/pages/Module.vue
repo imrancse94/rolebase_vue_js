@@ -29,18 +29,17 @@
               </tr>
             </thead>
             <tbody>
-              
-              <tr v-for="(m,index) in module" :key="index">
+              <tr v-for="(m,index) in module.data" :key="index">
                 <td>{{m.id}}</td>
                 <td>{{m.name}}</td>
-                <td>{{m.created_at}}</td>
-                <td>{{m.updated_at}}</td>
+                <td>{{setDateFormat(m.created_at)}}</td>
+                <td>{{setDateFormat(m.updated_at)}}</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <!-- /.card-body -->
-        <div class="card-footer clearfix">
+        
+        <!-- <div class="card-footer clearfix">
           <ul class="pagination pagination-sm m-0 float-right">
             <li class="page-item">
               <a class="page-link" href="#">«</a>
@@ -58,29 +57,33 @@
               <a class="page-link" href="#">»</a>
             </li>
           </ul>
-        </div>
+        </div> -->
       </div>
     </section>
   </div>
 </template>
 
 <script>
-
 import { mapState, mapActions } from "vuex";
+import Helper from './../../helper/moment';
 
 export default {
+  mixins: [Helper],
   name: "Module",
-  computed: {
-    ...mapState("module", ["module"])
+  data(){
+    return {
+      moduleData:[]
+    }
   },
-  mounted() {
-    this.getModules();
-    console.log('pppp',this.$store.state.module)
+  computed: {
+    ...mapState("module", ["module"]),
+  },
+  created() {
+    this.getModules()
   },
   methods: {
     ...mapActions("module", ["getModules"]),
-    
-  }
+  },
 };
 </script>
 
