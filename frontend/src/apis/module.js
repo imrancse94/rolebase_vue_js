@@ -1,7 +1,8 @@
 import {Api,header} from "./Api";
 
 export default {
-    getModules(){
-        return Api.get('modules',header())
+    getModules(params){
+        console.log(params)
+        return Api.get('modules',{headers:header(),params:{params}})
     }
 }

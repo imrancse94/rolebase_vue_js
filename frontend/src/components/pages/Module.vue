@@ -38,7 +38,7 @@
             </tbody>
           </table>
         </div>
-        
+        <!-- <advanced-laravel-vue-paginate :data="module" @paginateTo="getModules"/> -->
         <!-- <div class="card-footer clearfix">
           <ul class="pagination pagination-sm m-0 float-right">
             <li class="page-item">
@@ -57,7 +57,7 @@
               <a class="page-link" href="#">»</a>
             </li>
           </ul>
-        </div> -->
+        </div>-->
       </div>
     </section>
   </div>
@@ -65,21 +65,22 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
-import Helper from './../../helper/moment';
+import Helper from "./../../helper/moment";
 
 export default {
   mixins: [Helper],
   name: "Module",
-  data(){
+  data() {
     return {
-      moduleData:[]
-    }
+      moduleData: [],
+    };
   },
   computed: {
     ...mapState("module", ["module"]),
   },
-  created() {
-    this.getModules()
+  mounted() {
+    console.log('ssss',this.$router.currentRoute.query);
+    this.getModules(this.$router.currentRoute.query.page);
   },
   methods: {
     ...mapActions("module", ["getModules"]),

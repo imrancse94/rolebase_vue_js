@@ -33,6 +33,11 @@ class ModuleEloquentRepository extends EloquentRepository implements ModuleRepos
      */
     public function getAllModules($limit = 2)
     {
+        if(empty($limit)){
+            $limit = 2;
+        }
+
+        
         $result = $this
             ->_model
             ->orderBy('id', 'desc')

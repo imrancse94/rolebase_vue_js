@@ -10,11 +10,24 @@ export const header = () => {
     let obj = {};
   
     if (token) {
-      obj = {headers:{ Authorization: 'Bearer ' + token }};
+      obj = { Authorization: 'Bearer ' + token };
     } 
   
     return obj;
   }
   
+
+export const parameters = (hedaers, params) =>{
+      var obj = {};
+      if(hedaers){
+        obj['headers'] = hedaers;
+      }
+
+      if(params){
+        obj['params'] = params;
+      }
+
+      return obj;
+}
 
 

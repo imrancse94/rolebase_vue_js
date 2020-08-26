@@ -10,6 +10,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.14.0",
     "admin-lte": "^3.0.5",
+    "advanced-laravel-vue-paginate": "^0.1.9",
     "axios": "^0.19.2",
     "core-js": "^3.6.5",
     "font-awesome": "^4.7.0",

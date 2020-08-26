@@ -1,4 +1,4 @@
-import {Api,header} from "./Api";
+import {Api,header,parameters} from "./Api";
 
 export default {
     login(user) {
@@ -9,10 +9,10 @@ export default {
     },
 
     setAuth() {
-        return Api.get('auth_data',header())
+        return Api.get('auth_data',parameters(header(),null))
     },
 
     logout() {
-        return Api.get('logout',header());
+        return Api.get('logout',parameters(header(),null));
     }
 }
