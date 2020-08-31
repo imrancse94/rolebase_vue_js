@@ -88,36 +88,15 @@ class AuthController extends Controller
         $code = config('constant.AUTH_LOGOUT');
         $data = [];
         $token =  str_replace('Bearer ','',$request->header('Authorization'));
-        JWTAuth::invalidate($token);
+        
         $message = "Successfully logged out.";
 
         return $this->sendResponse($data, $message,$code);
     }
 
-
-    public function logout2(Request $request) {
-
-        $token = $request->header( 'Authorization' );
-        $data = [];
-        $message = "Successfully logged out.";
-        $code = config('constant.AUTH_LOGOUT');
-        try {
-            JWTAuth::parseToken()->invalidate( $token );
-
-            return $this->sendResponse($data, $message,$code);
-
-        } catch ( TokenExpiredException $exception ) {
-
-            return $this->sendResponse($data, $message,$code);
-
-        } catch ( TokenInvalidException $exception ) {
-            
-            return $this->sendResponse($data, $message,$code);
-
-        } catch ( JWTException $exception ) {
-            
-            return $this->sendResponse($data, $message,$code);
-        }
+    public function refreshToken(){
+        $data =  $this->manager->refresh($this->jwt->getToken());
     }
+    
 
 }

@@ -14,8 +14,16 @@
     <!-- Main content -->
     <section class="content">
       <div class="card">
+        <!--card-header-->
         <div class="card-header">
-          <h3 class="card-title">Module List</h3>
+          <div class="row">
+            <div class="col-10">
+              <h3 class="card-title">Module List</h3>
+            </div>
+            <div class="col-2 text-center">
+              <button type="button" class="btn btn-sm btn-primary">Add Module</button>
+            </div>
+          </div>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -38,26 +46,8 @@
             </tbody>
           </table>
         </div>
-        <!-- <advanced-laravel-vue-paginate :data="module" @paginateTo="getModules"/> -->
-        <!-- <div class="card-footer clearfix">
-          <ul class="pagination pagination-sm m-0 float-right">
-            <li class="page-item">
-              <a class="page-link" href="#">«</a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="#">1</a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="#">2</a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="#">3</a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="#">»</a>
-            </li>
-          </ul>
-        </div>-->
+        <pagination :data="module" @paginateTo="moduleMethod"/>
+        
       </div>
     </section>
   </div>
@@ -79,11 +69,15 @@ export default {
     ...mapState("module", ["module"]),
   },
   mounted() {
-    console.log('ssss',this.$router.currentRoute.query);
-    this.getModules(this.$router.currentRoute.query.page);
+    this.getModules(this.$router.currentRoute.query);
   },
   methods: {
     ...mapActions("module", ["getModules"]),
+
+    moduleMethod(){
+      var params = this.$router.currentRoute.query
+      this.getModules(params);
+    },
   },
 };
 </script>

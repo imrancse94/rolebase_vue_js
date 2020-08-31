@@ -40,6 +40,6 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->get('logout', 'AuthController@logout');
 
         // Matches "/api/modules
-        $router->get('modules[/{page}]', 'ModuleController@getModules');
+        $router->get('modules', 'ModuleController@getModules');
     });
 });

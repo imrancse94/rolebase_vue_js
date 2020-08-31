@@ -20,7 +20,8 @@ export const setAuth = ({ commit }) => {
     }).catch((error)=>{
         removeToken();
         commit('SET_LOGOUT');
-        return Promise.resolve(error);
+        throw error;
+        //return Promise.resolve(error);
     })
 }
 

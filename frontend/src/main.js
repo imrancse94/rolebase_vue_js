@@ -12,9 +12,9 @@ import './assets/js';
 // events of application
 import './events/eventbus';
 
-//pagination plugin
-import 'advanced-laravel-vue-paginate/dist/advanced-laravel-vue-paginate.css'
-Vue.use(require('advanced-laravel-vue-paginate'));
+//pagination component
+import pagination from './components/pagination';
+Vue.component('pagination',pagination);
 
 // application enviroment
 Vue.config.productionTip = false
@@ -35,7 +35,6 @@ const token = getToken();
 if (token) {
   store.dispatch("auth/setAuth")
     .then(() => {
-      console.log('token check')
       main();
     })
 } else {

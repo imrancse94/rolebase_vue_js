@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Repositories\Module\ModuleRepositoryInterface;
+use Symfony\Component\Console\Input\Input;
 
 class ModuleController extends Controller
 {
@@ -17,11 +18,12 @@ class ModuleController extends Controller
         $this->moduleRepository = $moduleRepository;
     }
 
-    public function getModules($page = 0){
-        
+    public function getModules(){
+        //dd(request()->query());
+        $limit = request('limit');
         $message = __("Module get succesfully");
         $code = config('constant.MODULE_LIST_SUCCESS');
-        $data = $this->moduleRepository->getAllModules($page);
+        $data = $this->moduleRepository->getAllModules($limit);
         return $this->sendResponse($data, $message,$code);
     }
 }

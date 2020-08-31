@@ -40,7 +40,7 @@ class ModuleEloquentRepository extends EloquentRepository implements ModuleRepos
         
         $result = $this
             ->_model
-            ->orderBy('id', 'desc')
+            ->orderBy('id', 'asc')
             ->paginate($limit);
 
         return $result;
