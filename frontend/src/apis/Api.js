@@ -10,7 +10,11 @@ export const header = () => {
     let obj = {};
   
     if (token) {
-      obj = { Authorization: 'Bearer ' + token };
+      obj = { 
+        'Authorization': 'Bearer ' + token,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      };
     } 
   
     return obj;

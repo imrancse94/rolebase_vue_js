@@ -26,7 +26,25 @@ export const setAuth = ({ commit }) => {
 }
 
 export const logout = ({ commit }) => {
-    removeToken();
-    commit('SET_LOGOUT');
-    
+    return auth.logout().then(() => {
+        removeToken();
+        commit('SET_LOGOUT');
+    }).catch((error)=>{
+        throw error;
+        //return Promise.resolve(error);
+    })
+
 }
+
+
+export const refreshtoken = ({ commit }) => {
+    return auth.refreshtoken().then(({data}) => {
+         const response = data.data;
+         if (response.token) {
+             setToken(response.token)
+         }
+         commit('SET_LOGIN', response);
+         return Promise.resolve(data);
+     })
+ }
+ 

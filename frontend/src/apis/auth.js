@@ -1,5 +1,5 @@
 import {Api,header,parameters} from "./Api";
-
+console.log('dddd',parameters(header(),null));
 export default {
     login(user) {
         return Api.post('login', {
@@ -13,6 +13,10 @@ export default {
     },
 
     logout() {
-        return Api.get('logout',parameters(header(),null));
+        return Api.post('logout',parameters(header(),{}));
+    },
+
+    refreshtoken() {
+        return Api.post('refreshtoken',parameters(header(),null));
     }
 }

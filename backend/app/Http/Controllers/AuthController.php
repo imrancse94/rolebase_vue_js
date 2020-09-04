@@ -82,8 +82,20 @@ class AuthController extends Controller
         return $this->sendResponse($data, $message,$code);
     }
 
+    public function guard()
+    {
+        return Auth::guard();
+    }
 
-    public function logout(Request $request){
+    public function logout()
+    {
+        $this->guard()->logout();
+        $message = "Successfully logged out";
+        $code  = 500;
+        return $this->sendResponse([], $message,$code);
+        
+    }
+    /* public function logout(Request $request){
         $message = "Logout Error";
         $code = config('constant.AUTH_LOGOUT');
         $data = [];
@@ -92,11 +104,19 @@ class AuthController extends Controller
         $message = "Successfully logged out.";
 
         return $this->sendResponse($data, $message,$code);
-    }
+    } */
 
     public function refreshToken(){
-        $data =  $this->manager->refresh($this->jwt->getToken());
+        $data = $this->respondWithToken($this->guard()->refresh());
+        $data['user'] = Auth::user();
+        $permissions = $this->getPermissionList(Auth::id());
+        $data = array_merge($data,$permissions);
+        
+        $message = __('Successfully refreshed token');
+        $code = config('constant.REFRESH_TOKEN');
+        return $this->sendResponse($data, $message,$code);
     }
+    
     
 
 }

@@ -37,9 +37,12 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->get('auth_data', 'AuthController@getAuthInfo');
 
         // Matches "/api/register
-        $router->get('logout', 'AuthController@logout');
+        $router->post('logout', 'AuthController@logout');
 
         // Matches "/api/modules
         $router->get('modules', 'ModuleController@getModules');
+
+        // Matches "/api/refresh token
+        $router->post('refreshtoken', 'AuthController@refreshToken');
     });
 });
