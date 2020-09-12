@@ -31,10 +31,12 @@ export const logout = ({ commit }) => {
     }).catch((error)=>{
         throw error;
         //return Promise.resolve(error);
-    })
- */
+    }) */
+
     removeToken();
     commit('SET_LOGOUT');
+
+    
 }
 
 

@@ -30,4 +30,9 @@ class Controller extends BaseController
         
 
     }
+
+    public function guard()
+    {
+        return Auth::guard();
+    }
 }

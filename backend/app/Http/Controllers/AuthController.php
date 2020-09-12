@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\LoginRequest;
-use Tymon\JWTAuth\JWTAuth;
-use Tymon\JWTAuth\Exceptions\JWTException;
+
 
 class AuthController extends Controller
 {
@@ -44,57 +43,53 @@ class AuthController extends Controller
 
             //return successful response
             return response()->json(['user' => $user, 'message' => 'CREATED'], 200);
-
         } catch (\Exception $e) {
             //return error message
             return response()->json(['message' => 'User Registration Failed!'], 409);
         }
-
     }
 
     public function login(LoginRequest $request)
     {
         $credentials = $request->only(['email', 'password']);
-         
+
         if (!$token = Auth::attempt($credentials)) {
             $message = __('Username or password is incorrect.');
             $code = config('constant.LOGIN_UNSUCCESSFULL');
             $data = 'Unauthorized';
-            return $this->sendError($message, $data,$code);
+            return $this->sendError($message, $data, $code);
         }
         $data = $this->respondWithToken($token);
         $data['user'] = Auth::user();
         $permissions = $this->getPermissionList(Auth::id());
-        $data = array_merge($data,$permissions);
-        
+        $data = array_merge($data, $permissions);
+
         $message = __('Successfully logged in');
         $code = config('constant.LOGIN_SUCCESS');
-        return $this->sendResponse($data, $message,$code);
+        return $this->sendResponse($data, $message, $code);
     }
 
-    public function getAuthInfo(){
+    public function getAuthInfo()
+    {
         $data['user'] = Auth::user();
         $permissions = $this->getPermissionList(Auth::id());
-        $data = array_merge($data,$permissions);
-        
+        $data = array_merge($data, $permissions);
+
         $message = __('Successfully Get Auth Data');
         $code = config('constant.AUTH_DATA_GET_SUCCESS');
-        return $this->sendResponse($data, $message,$code);
+        return $this->sendResponse($data, $message, $code);
     }
 
-    public function guard()
-    {
-        return Auth::guard();
-    }
+
 
     public function logout()
     {
         $this->guard()->logout();
         $message = "Successfully logged out";
         $code  = 500;
-        return $this->sendResponse([], $message,$code);
-        
+        return $this->sendResponse([], $message, $code);
     }
+
     /* public function logout(Request $request){
         $message = "Logout Error";
         $code = config('constant.AUTH_LOGOUT');
@@ -106,17 +101,15 @@ class AuthController extends Controller
         return $this->sendResponse($data, $message,$code);
     } */
 
-    public function refreshToken(){
+    public function refreshToken()
+    {
         $data = $this->respondWithToken($this->guard()->refresh());
         $data['user'] = Auth::user();
         $permissions = $this->getPermissionList(Auth::id());
-        $data = array_merge($data,$permissions);
-        
+        $data = array_merge($data, $permissions);
+
         $message = __('Successfully refreshed token');
         $code = config('constant.REFRESH_TOKEN');
-        return $this->sendResponse($data, $message,$code);
+        return $this->sendResponse($data, $message, $code);
     }
-    
-    
-
 }

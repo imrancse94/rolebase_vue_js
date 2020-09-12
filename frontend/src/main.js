@@ -1,5 +1,6 @@
 
 import Vue from 'vue' // vue import from library
+import IdleVue from 'idle-vue' // check user is active or not
 import App from './components/App.vue' // master layout
 import router from './router'; // all route of application
 import store from './store'; // vuex store
@@ -8,6 +9,14 @@ import { getToken } from './helper/token'; // set token, get token here
 // all css & js here
 import './assets/css';
 import './assets/js';
+
+
+Vue.use(IdleVue, { 
+  ventEmitter: new Vue(), 
+  store ,
+  idleTime: 30000, // 30 seconds
+  startAtIdle: false
+})
 
 // events of application
 import './events/eventbus';

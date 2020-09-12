@@ -1,5 +1,7 @@
 import {Api,header,parameters} from "./Api";
+
 console.log('dddd',parameters(header(),null));
+
 export default {
     login(user) {
         return Api.post('login', {
