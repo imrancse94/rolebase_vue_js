@@ -27,16 +27,16 @@ export const setAuth = ({ commit }) => {
 
 export const logout = ({ commit }) => {
     /* return auth.logout().then(() => {
+
         
-    }).catch((error)=>{
-        throw error;
-        //return Promise.resolve(error);
+
+    }).catch(()=>{
+        removeToken();
+        commit('SET_LOGOUT');
     }) */
 
     removeToken();
-    commit('SET_LOGOUT');
-
-    
+    commit('SET_LOGOUT'); 
 }
 
 

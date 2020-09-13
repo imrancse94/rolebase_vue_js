@@ -1,11 +1,13 @@
 <?php
 namespace App\Http\Traits;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 trait ApiResponseTrait
 {
 
     public function sendResponse($result, $message,$code)
     {
+        
     	$response = [
             'statuscode'=>$code,
             'success' => true,

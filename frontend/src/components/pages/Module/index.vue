@@ -17,11 +17,11 @@
         <!--card-header-->
         <div class="card-header">
           <div class="row">
-            <div class="col-10">
+            <div class="col">
               <h3 class="card-title">Module List</h3>
             </div>
-            <div class="col-2 text-center">
-              <button type="button" class="btn btn-sm btn-primary">Add Module</button>
+            <div class="col text-right">
+              <router-link :to="{'path':'/module/add'}" class="btn btn-sm btn-primary">Add Module</router-link>
             </div>
           </div>
         </div>
@@ -55,11 +55,11 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
-import Helper from "./../../helper/moment";
+import Helper from "./../../../helper/moment";
 
 export default {
   mixins: [Helper],
-  name: "Module",
+  name: "ModuleList",
   data() {
     return {
       moduleData: [],

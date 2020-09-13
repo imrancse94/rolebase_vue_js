@@ -1,15 +1,20 @@
 import axios from "axios";
-import {getToken} from './../helper/token';
+import {setToken,getToken} from './../helper/token';
 import router from './../router'
 import store from './../store';
+import * as config from './../config';
 
 export const Api = axios.create({
-    baseURL: 'http://localhost/portfolio/backend/public/api/'
+    baseURL: config.API_BASE_URL
 });
 
 Api.interceptors.response.use(
   response =>{ 
     //console.log('intercept response',store.state.idleVue.isIdle)
+    if(response.data.data.token){   
+      setToken(response.data.data.token);
+    }
+
     return response;
   },
   error => {
@@ -19,6 +24,10 @@ Api.interceptors.response.use(
       if(error.response.status == 401){
         store.dispatch('auth/logout');
         router.push('/login');
+        
+        //window.location = '/login';
+      }else{
+        return Promise.reject(error);
       }
 
       /* 
@@ -34,8 +43,8 @@ Api.interceptors.response.use(
       }).catch(error => {
           
       }); */
-
-      return Promise.reject(error);
+     // console.log('sssssssss',error.response.status);
+      
   }
 );
 

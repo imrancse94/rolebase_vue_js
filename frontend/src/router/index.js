@@ -4,7 +4,8 @@ import HelloWorld from '../components/HelloWorld';
 import Login from '../components/pages/Login';
 import Dashboard from '../components/pages/Dashboard';
 import Admin from '../components/pages/Admin';
-import Module from '../components/pages/Module';
+import ModuleList from '../components/pages/Module/index.vue';
+import ModuleAdd from '../components/pages/Module/add.vue';
 
 import store from '../store'
 
@@ -77,7 +78,13 @@ const routes = [
                 {
                     path:'index',
                     name:'module.index',
-                    component:Module
+                    component:ModuleList
+                   
+                },
+                {
+                    path:'add',
+                    name:'module.add',
+                    component:ModuleAdd
                    
                 }
             ]

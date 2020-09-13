@@ -84,7 +84,8 @@ class AuthController extends Controller
 
     public function logout()
     {
-        $this->guard()->logout();
+        //$this->guard()->logout();
+        auth()->invalidate(true);
         $message = "Successfully logged out";
         $code  = 500;
         return $this->sendResponse([], $message, $code);
@@ -112,4 +113,7 @@ class AuthController extends Controller
         $code = config('constant.REFRESH_TOKEN');
         return $this->sendResponse($data, $message, $code);
     }
+
+
+    
 }

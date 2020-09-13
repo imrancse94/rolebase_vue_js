@@ -15,7 +15,7 @@ export default {
     },
 
     logout() {
-        return Api.post('logout',parameters(header(),{}));
+        return Api.post('mylogout',parameters(header(),{}));
     },
 
     refreshtoken() {
