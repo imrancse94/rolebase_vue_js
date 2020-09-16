@@ -11,7 +11,7 @@ Step 4: create a database into your localhost
 
 Step 5:  php artisan db:seed
 
-Project setup complete, now change your api pah from frontend config.js
+Project setup complete, now change your api path from frontend config.js
 
 For Login 
 ==================
