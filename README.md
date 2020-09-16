@@ -8,5 +8,7 @@ Step 4: create a database into your localhost
 
 Step 5:  php artisan db:seed
 
-Project setup complete, now change your api path from frontend Apis/Api.js
- 
+Project setup complete, now change your api pah from frontend Apis/Api.js
+
+Email: ssadmin@admin.com
+Password: 123456 
