@@ -1,3 +1,6 @@
+Project Setup Instructions
+============================
+
 Step 1: clone the project
 
 Step 2: cd backend && composer install
