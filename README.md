@@ -10,5 +10,7 @@ Step 5:  php artisan db:seed
 
 Project setup complete, now change your api pah from frontend Apis/Api.js
 
+For Login 
+==================
 Email: ssadmin@admin.com
 Password: 123456 
