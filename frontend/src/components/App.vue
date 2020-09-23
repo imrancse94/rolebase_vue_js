@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <div id="loader" v-if="loading">
-      <div class="inner-loader center"></div>
-    </div> 
+    <div id="overlay" v-if="this.$store.state.auth.loader"> 
+        <i class="fa fa-spinner fa-spin spin-big"></i>
+    </div>
     <router-view></router-view>
   </div>
 </template>
@@ -16,11 +16,12 @@ export default {
   name: 'App',
   data(){
     return{
-      loading:false
+      loading:this.$store.state.auth.loader
     }
   },
   components: {},
   created(){
+    console.log('')
     this.$eventBus.$on('loadingStatus',payload =>{
         this.loading = payload;
     });

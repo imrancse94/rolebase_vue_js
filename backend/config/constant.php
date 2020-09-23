@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'VALIDATION_ERROR'=> -1000,
     'SSADMIN_ID'=>1,
     'LOGIN_SUCCESS'=>100,
     'LOGIN_UNSUCCESSFULL'=>101,

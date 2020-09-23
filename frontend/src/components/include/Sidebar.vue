@@ -65,7 +65,7 @@ export default {
 
   mounted() {
     this.$eventBus.$emit("loadingStatus", false);
-    console.log("my data", this.$store.state);
+    
   },
   data() {
     return {

@@ -7,12 +7,15 @@ import store from './store'; // vuex store
 import { getToken,removeToken } from './helper/token'; // set token, get token here
 import jwt from 'jsonwebtoken';
 
+import * as GLOBAL_CONSTANT from './constant';
+
 import * as config from './config';
 
 // all css & js here
 import './assets/css';
 import './assets/js';
 
+//Vue.use(GLOBAL_CONSTANT);
 
 Vue.use(IdleVue, { 
   ventEmitter: new Vue(), 
@@ -21,12 +24,14 @@ Vue.use(IdleVue, {
   startAtIdle: false
 })
 
+
 // events of application
 import './events/eventbus';
 
 //pagination component
 import pagination from './components/pagination';
 import ErrorValidation from './components/include/ErrorValidation';
+
 Vue.component('pagination',pagination);
 Vue.component('ErrorValidation',ErrorValidation);
 
@@ -36,8 +41,13 @@ Vue.config.productionTip = false
 
 // vue app initialization
 const main = () => {
-
+  var mixin = {
+    data: function () {
+      return {GLOBAL_CONSTANT}
+    }
+  }
   new Vue({
+    mixins: [mixin],
     router,
     store,
     render: h => h(App),

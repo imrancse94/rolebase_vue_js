@@ -1,7 +1,13 @@
-import {Api,header,parameters} from "./Api";
+import {Api,parameters} from "./Api";
+
 
 export default {
     getModules(params){
-        return Api.get('modules',parameters(header(),params))
+        return Api.get('modules',parameters(params))
+    },
+    moduleAdd(params){
+        return Api.post('moduleAdd',parameters(params))
     }
 }
+
+

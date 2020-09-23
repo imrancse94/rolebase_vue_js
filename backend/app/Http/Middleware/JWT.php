@@ -27,9 +27,9 @@ class JWT
             
             if($e instanceof TokenExpiredException){
 
-                $new_token = JWTAuth::parseToken()->refresh();
-                //return response()->json(['error'=>'TOKEN_EXPIRED','status'=>true,'token'=>$new_token],200);
-                return $next($request);
+                $newToken = JWTAuth::parseToken()->refresh();
+
+                return response()->json(['status'=>'TOKEN_EXPIRED','token'=>$newToken],200);
                 
             }else if($e instanceof TokenInvalidException){
 

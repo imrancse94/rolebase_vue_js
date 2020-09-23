@@ -8,3 +8,13 @@ export const getModules = ({ commit },params) => {
     })
 }
 
+
+export const moduleAdd = ({ commit },params) => {
+    
+    return module.moduleAdd(params).then(({data}) => {
+         const response = data;
+         commit('ADD_MODULE', response);
+         return Promise.resolve(response);
+     })
+ }
+

@@ -1,6 +1,4 @@
-import {Api,header,parameters} from "./Api";
-
-console.log('dddd',parameters(header(),null));
+import {Api,parameters} from "./Api";
 
 export default {
     login(user) {
@@ -11,14 +9,14 @@ export default {
     },
 
     setAuth() {
-        return Api.get('auth_data',parameters(header(),null))
+        return Api.get('auth_data',parameters(null))
     },
 
     logout() {
-        return Api.post('mylogout',parameters(header(),{}));
+        return Api.post('logout');
     },
 
     refreshtoken() {
-        return Api.post('refreshtoken',parameters(header(),null));
+        return Api.post('refreshtoken',parameters(null));
     }
 }

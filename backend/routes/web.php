@@ -19,7 +19,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     // Matches "/api/login
     $router->post('login', 'AuthController@login');
     
-    $router->group(['middleware'=>['auth']], function () use ($router) {
+    $router->group(['middleware'=>['jwt']], function () use ($router) {
 
         // Matches "/api/register
         $router->post('register', 'AuthController@register');
@@ -37,10 +37,11 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->get('auth_data', 'AuthController@getAuthInfo');
 
         // Matches "/api/register
-        $router->post('mylogout', 'AuthController@logout');
+        $router->post('logout', 'AuthController@logout');
 
         // Matches "/api/modules
         $router->get('modules', 'ModuleController@getModules');
+        $router->post('moduleAdd', 'ModuleController@ModuleAdd');
 
         // Matches "/api/refresh token
         $router->post('refreshtoken', 'AuthController@refreshToken');

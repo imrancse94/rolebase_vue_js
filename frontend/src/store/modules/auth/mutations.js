@@ -10,3 +10,8 @@ export const SET_LOGOUT = (state) => {
     state.permissions = null;
 }
 
+export const SET_LOADER = (state,payload) => {
+    state.loader = payload;
+    
+}
+

@@ -27,55 +27,43 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-          <div class="row">
-            <div class="col-6">
-              <form role="form">
+           <form role="form" @submit.prevent="addModule">
+            <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Module ID</label>
+                    <input type="text" v-model="module.id" class="form-control" placeholder="Module ID" />
+                    <ErrorValidation msg="sssssss" />
+                  </div>
 
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Email address</label>
-                  <input
-                    type="email"
-                    class="form-control"
-                    id="exampleInputEmail1"
-                    placeholder="Enter email"
-                  />
-                  <ErrorValidation msg="sssssss"/>
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
-                  <input
-                    type="password"
-                    class="form-control"
-                    id="exampleInputPassword1"
-                    placeholder="Password"
-                  />
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputFile">File input</label>
-                  <div class="input-group">
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="exampleInputFile" />
-                      <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                    </div>
-                    <div class="input-group-append">
-                      <span class="input-group-text" id>Upload</span>
-                    </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Module Name</label>
+                    <input type="text" v-model="module.name" class="form-control" placeholder="Module Name" />
+                    <ErrorValidation msg="sssssss" />
+                  </div>
+                  <div class="form-group">
+                    <router-link
+                      :to="{'path':'/module/index'}"
+                      class="btn btn-sm btn-primary mr-2"
+                    >Back</router-link>
+                    <button type="submit" class="btn btn-sm btn-success">Save</button>
                   </div>
                 </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Module Icon</label>
+                    <input type="text" v-model="module.icon" class="form-control" placeholder="Module Icon" />
+                    <ErrorValidation msg="sssssss" />
+                  </div>
 
-                <div class="form-group">
-                  <router-link
-                    :to="{'path':'/module/index'}"
-                    class="btn btn-sm btn-primary mr-2"
-                  >Back</router-link>
-                  <button type="submit" class="btn btn-sm btn-success">Save</button>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Sequence</label>
+                    <input type="text" v-model="module.sequence" class="form-control" placeholder="Sequence" />
+                    <ErrorValidation msg="sssssss" />
+                  </div>
                 </div>
-
-              </form>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </section>
@@ -83,6 +71,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import Helper from "./../../../helper/moment";
 
 export default {
@@ -90,10 +79,36 @@ export default {
   name: "ModuleAdd",
   data() {
     return {
-      moduleData: [],
+      module: {
+        id:'',
+        name:'',
+        icon:'',
+        sequence:'',
+      },
+      errors:{}
     };
   },
-  methods: {},
+  computed: {
+    
+  },
+  methods: {
+
+    ...mapActions("module", ["moduleAdd"]),
+    
+    addModule(){
+      this.moduleAdd(this.module).then(response =>{
+        
+        if(response.success){
+          console.log('module Add',response);
+        }else{
+          console.log('module validation1',this.$data);
+          if(response.statuscode == this.$GLOBAL_CONSTANT[response.statuscode]){
+              console.log('module validation2',response);
+          }
+        }
+      }).catch(() =>{});
+    }
+  },
 };
 </script>
 

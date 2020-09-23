@@ -9,5 +9,8 @@ import 'bootstrap'
 import 'jquery-slimscroll'
 import 'jquery-ui/themes/base/datepicker.css'
 
+import '@/assets/css/loading.css';
+
+
 import '@/assets/fonts/font.css';
 import '@/assets/css/custom.css';

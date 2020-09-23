@@ -93,8 +93,8 @@ export default {
   components: {},
   data() {
     return {
-      email: "",
-      password: "",
+      email: "ssadmin@admin.com",
+      password: "123456",
       remember: false,
       has_error: false,
       errors: {
@@ -106,15 +106,14 @@ export default {
 
   methods: {
     login() {
-      this.$eventBus.$emit("loadingStatus", true);
+      
       let email = this.email;
       let password = this.password;
 
       this.$store
         .dispatch("auth/login", { email, password })
         .then((response) => {
-          this.$eventBus.$emit("loadingStatus", false);
-
+          
           if (response.success) {
             this.$router.push("/admin");
           } else {
@@ -122,8 +121,9 @@ export default {
             this.errors.data = response.data;
             this.errors.message = response.message;
           }
+
         })
-        .catch(() => this.$eventBus.$emit("loadingStatus", false));
+        .catch(() =>{});
     },
   },
 };
