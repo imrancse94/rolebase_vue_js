@@ -13,6 +13,7 @@
     "advanced-laravel-vue-paginate": "^0.1.9",
     "axios": "^0.19.2",
     "core-js": "^3.6.5",
+    "cxlt-vue2-toastr": "^1.1.1",
     "font-awesome": "^4.7.0",
     "idle-vue": "^2.0.5",
     "ionicons": "^5.1.2",

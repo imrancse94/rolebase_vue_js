@@ -32,14 +32,14 @@
                 <div class="col-6">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Module ID</label>
-                    <input type="text" v-model="module.id" class="form-control" placeholder="Module ID" />
-                    <ErrorValidation msg="sssssss" />
+                    <input type="text" :class="errors.id ? 'is-invalid':''" v-model="module.id" class="form-control" placeholder="Module ID" />
+                    <ErrorValidation :msg="errors.id" />
                   </div>
 
                   <div class="form-group">
                     <label for="exampleInputEmail1">Module Name</label>
-                    <input type="text" v-model="module.name" class="form-control" placeholder="Module Name" />
-                    <ErrorValidation msg="sssssss" />
+                    <input type="text" :class="errors.name ? 'is-invalid':''" v-model="module.name" class="form-control" placeholder="Module Name" />
+                    <ErrorValidation :msg="errors.name" />
                   </div>
                   <div class="form-group">
                     <router-link
@@ -52,14 +52,14 @@
                 <div class="col-6">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Module Icon</label>
-                    <input type="text" v-model="module.icon" class="form-control" placeholder="Module Icon" />
-                    <ErrorValidation msg="sssssss" />
+                    <input type="text" :class="errors.icon ? 'is-invalid':''" v-model="module.icon" class="form-control" placeholder="Module Icon" />
+                    <ErrorValidation :msg="errors.icon" />
                   </div>
 
                   <div class="form-group">
                     <label for="exampleInputEmail1">Sequence</label>
-                    <input type="text" v-model="module.sequence" class="form-control" placeholder="Sequence" />
-                    <ErrorValidation msg="sssssss" />
+                    <input type="text" :class="errors.sequence ? 'is-invalid':''" v-model="module.sequence" class="form-control" placeholder="Sequence" />
+                    <ErrorValidation :msg="errors.sequence" />
                   </div>
                 </div>
             </div>
@@ -99,14 +99,18 @@ export default {
     addModule(){
       this.moduleAdd(this.module).then(response =>{
         
-        if(response.success){
-          console.log('module Add',response);
-        }else{
-          console.log('module validation1',this.$data);
-          if(response.statuscode == GLOBAL_CONSTANT['MODULE_INSERT_SUCCESS']){
-              console.log('module validation2',response);
+        if(response.success && response.statuscode == GLOBAL_CONSTANT['MODULE_INSERT_SUCCESS']){
+             this.errors = {}; 
+             this.$toast.success({
+                        title:'Saved',
+                        message:'Module Saved successfully.'
+                      });
+             this.$router.push('/module/index');
+          }else{
+            
+            this.errors = response.data;
+
           }
-        }
       }).catch(() =>{});
     }
   },

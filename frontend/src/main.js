@@ -6,6 +6,9 @@ import router from './router'; // all route of application
 import store from './store'; // vuex store
 import { getToken,removeToken } from './helper/token'; // set token, get token here
 import jwt from 'jsonwebtoken';
+import CxltToastr from 'cxlt-vue2-toastr'
+
+
 
 import * as GLOBAL_CONSTANT from './constant';
 
@@ -15,6 +18,7 @@ import * as config from './config';
 import './assets/css';
 import './assets/js';
 
+import 'cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css';
 //Vue.use(GLOBAL_CONSTANT);
 
 Vue.use(IdleVue, { 
@@ -31,6 +35,17 @@ import './events/eventbus';
 //pagination component
 import pagination from './components/pagination';
 import ErrorValidation from './components/include/ErrorValidation';
+
+
+var toastrConfigs = {
+    position: 'top right',
+    showDuration: 1000,
+    hideDuration:1000,
+    timeOut:5000,
+    showMethod:'fadeIn',
+    hideMethod:'fadeOut'
+}
+Vue.use(CxltToastr, toastrConfigs)
 
 Vue.component('pagination',pagination);
 Vue.component('ErrorValidation',ErrorValidation);
