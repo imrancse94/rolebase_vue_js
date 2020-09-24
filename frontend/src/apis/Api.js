@@ -20,6 +20,7 @@ Api.interceptors.request.use(function (config) {
 
   if(token){
     config.headers.Authorization =  'bearer '+token;
+    config.headers['Content-Type'] =  'application/json';
     console.log('resquest',config);
   }
 

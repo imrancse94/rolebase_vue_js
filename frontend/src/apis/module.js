@@ -6,7 +6,7 @@ export default {
         return Api.get('modules',parameters(params))
     },
     moduleAdd(params){
-        return Api.post('moduleAdd',parameters(params))
+        return Api.post('moduleAdd',params)
     }
 }
 

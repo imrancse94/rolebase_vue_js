@@ -24,7 +24,7 @@ class ModuleAddRequest extends BaseRequest
     public function rules(): array
     {
         return [
-            'id' => 'required|integer',
+            'id' => 'required|integer|unique:modules,id',
             'name' => 'required|string',
             'icon' => 'required|string',
             'sequence' => 'required|integer',

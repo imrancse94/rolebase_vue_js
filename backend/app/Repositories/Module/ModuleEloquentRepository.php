@@ -46,6 +46,18 @@ class ModuleEloquentRepository extends EloquentRepository implements ModuleRepos
         return $result;
     }
 
+
+    public function insertModule($inputData){
+
+        $result = false;
+
+        if($this->_model->create($inputData)){
+
+            $result = true;
+        }
+
+        return $result;
+    }
     /**
      * Get most popular modules.
      *

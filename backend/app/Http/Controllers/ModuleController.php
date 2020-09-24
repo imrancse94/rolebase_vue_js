@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Repositories\Module\ModuleRepositoryInterface;
-use Illuminate\Http\Client\Request;
+use Illuminate\Http\Request;
 use Symfony\Component\Console\Input\Input;
 
 use App\Http\Requests\ModuleAddRequest;
@@ -33,6 +33,20 @@ class ModuleController extends Controller
 
     public function ModuleAdd(ModuleAddRequest $request){
         
+        $inputData = $request->all();
 
+        $result = $this->moduleRepository->insertModule($inputData);
+
+        $code = config('constant.MODULE_INSERT_FAILED');
+        $message = __("Insert Failed");
+        $data = [];
+        if($result){
+
+            $message = __("Inserted succesfully");
+            $code = config('constant.MODULE_INSERT_SUCCESS');
+
+        }
+
+        return $this->sendResponse($data, $message,$code);
     }
 }

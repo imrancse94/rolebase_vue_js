@@ -73,6 +73,7 @@
 <script>
 import { mapActions } from "vuex";
 import Helper from "./../../../helper/moment";
+import GLOBAL_CONSTANT from "./../../../constant";
 
 export default {
   mixins: [Helper],
@@ -102,7 +103,7 @@ export default {
           console.log('module Add',response);
         }else{
           console.log('module validation1',this.$data);
-          if(response.statuscode == this.$GLOBAL_CONSTANT[response.statuscode]){
+          if(response.statuscode == GLOBAL_CONSTANT['MODULE_INSERT_SUCCESS']){
               console.log('module validation2',response);
           }
         }
