@@ -7,6 +7,9 @@ export default {
     },
     moduleAdd(params){
         return Api.post('moduleAdd',params)
+    },
+    moduleEdit(params){
+        return Api.get('module/edit/'+params)
     }
 }
 

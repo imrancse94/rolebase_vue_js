@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Support\Facades\Request;
 
 
 class ModuleAddRequest extends BaseRequest
@@ -23,12 +24,19 @@ class ModuleAddRequest extends BaseRequest
      */
     public function rules(): array
     {
-        return [
-            'id' => 'required|integer|unique:modules,id',
+
+
+        $rules = [
             'name' => 'required|string',
             'icon' => 'required|string',
             'sequence' => 'required|integer',
         ];
+
+        if(Request::isMethod('post')){
+            $rules['id'] = 'required|integer|unique:modules,id';
+        }
+
+        return $rules;
     }
 
     /**

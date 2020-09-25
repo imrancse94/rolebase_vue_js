@@ -6,6 +6,7 @@ import Dashboard from '../components/pages/Dashboard';
 import Admin from '../components/pages/Admin';
 import ModuleList from '../components/pages/Module/index.vue';
 import ModuleAdd from '../components/pages/Module/add.vue';
+import ModuleEdit from '../components/pages/Module/edit.vue';
 
 import store from '../store'
 
@@ -85,6 +86,12 @@ const routes = [
                     path:'add',
                     name:'module.add',
                     component:ModuleAdd
+                   
+                },
+                {
+                    path:'edit/:id',
+                    name:'module.edit',
+                    component:ModuleEdit
                    
                 }
             ]

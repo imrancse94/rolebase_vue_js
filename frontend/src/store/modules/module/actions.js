@@ -18,3 +18,13 @@ export const moduleAdd = ({ commit },params) => {
      })
  }
 
+
+
+export const moduleEdit = ({ commit },params) => {
+    
+    return module.moduleEdit(params).then(({data}) => {
+         const response = data;
+         commit('EDIT_MODULE', response);
+         return Promise.resolve(response);
+     })
+ }

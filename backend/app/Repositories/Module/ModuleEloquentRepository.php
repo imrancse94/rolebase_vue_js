@@ -64,15 +64,12 @@ class ModuleEloquentRepository extends EloquentRepository implements ModuleRepos
      * @param string $subject
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function getMostPopularmodulesBySubject(string $subject)
+    public function getModuleById($id)
     {
         $result = $this
             ->_model
-            ->whereHas('subjects', function ($query) use ($subject) {
-                $query->where('slug', $subject);
-            })
-            ->orderBy('view_counter', 'desc')
-            ->get();
+            ->where('id', $id)
+            ->first();
 
         return $result;
     }
@@ -92,6 +89,15 @@ class ModuleEloquentRepository extends EloquentRepository implements ModuleRepos
         return $result;
     }
 
+
+    public function updateById($id,$inputData){
+        $result = $this
+            ->_model
+            ->where(['id'=>$id])
+            ->update($inputData);
+
+        return $result;
+    }
     /**
      * Get recent created modules.
      * @param string $subject
