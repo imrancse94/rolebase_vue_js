@@ -2,12 +2,34 @@
   <div class="wrapper" @click="toggle">
     <Header />
     <Sidebar />
-    <transition name="fade">
-      <router-view />
+    <transition name="fade" mode="out-in">
+      <router-view></router-view>
     </transition>
     <Footer />
   </div>
 </template>
+
+<style scoped>
+  .router-link-active {
+  color: red;
+}
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  transition: opacity 2s ease;
+}
+
+.fade-leave {}
+
+.fade-leave-active {
+  transition: opacity 2s ease;
+  opacity: 0;
+}
+
+</style>
 
 <script>
 import ClickOutside from "vue-click-outside";
@@ -25,6 +47,7 @@ export default {
   data() {
     return {
       opened: false,
+      
     };
   },
 
@@ -42,7 +65,7 @@ export default {
           body.classList.remove("sidebar-collapse");
         }
       }
-    },
+    }
   },
   mounted() {
     this.popupItem = this.$el;
@@ -51,10 +74,18 @@ export default {
   beforeMount() {
     this.$eventBus.$emit("loadingStatus", true);
   },
+
   directives: {
     ClickOutside,
   },
-};
+  watch: {
+  '$route'(to, from){
+    const to_depth = to.path.split('/').length
+    const from_depth = from.path.split('/').length
+    this.animationName = to_depth < from_depth ? 'slide-right' : 'slide-left'
+    }
+  }
+}
 </script>
 
 <style>

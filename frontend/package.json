@@ -28,6 +28,7 @@
     "vue-bootstrap-sidebar": "^1.0.8",
     "vue-click-outside": "^1.1.0",
     "vue-router": "^3.4.2",
+    "vue-sweetalert2": "^3.0.8",
     "vue-ui-preloader": "^1.1.0",
     "vue2-admin-lte": "^0.4.3",
     "vuex": "^3.5.1",

@@ -21,7 +21,7 @@
               <h3 class="card-title">Module Edit</h3>
             </div>
             <div class="col text-right">
-              <router-link :to="{'path':'/module/index'}" class="btn btn-sm btn-primary">Module List</router-link>
+              <router-link :to="{'path':'/masterdata/module'}" class="btn btn-sm btn-primary">Module List</router-link>
             </div>
           </div>
         </div>
@@ -32,18 +32,18 @@
                 <div class="col-6">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Module ID</label>
-                    <input type="text" :class="errors.id ? 'is-invalid':''" v-model="module.id" class="form-control" placeholder="Module ID" />
+                    <input :disabled="true" type="text" :class="errors.id ? 'is-invalid':''" v-model="moduleGetData.id" class="form-control" placeholder="Module ID" />
                     <ErrorValidation :msg="errors.id" />
                   </div>
 
                   <div class="form-group">
                     <label for="exampleInputEmail1">Module Name</label>
-                    <input type="text" :class="errors.name ? 'is-invalid':''" v-model="module.name" class="form-control" placeholder="Module Name" />
+                    <input type="text" :class="errors.name ? 'is-invalid':''" v-model="moduleGetData.name" class="form-control" placeholder="Module Name" />
                     <ErrorValidation :msg="errors.name" />
                   </div>
                   <div class="form-group">
                     <router-link
-                      :to="{'path':'/module/index'}"
+                      :to="{'path':'/masterdata/module'}"
                       class="btn btn-sm btn-primary mr-2"
                     >Back</router-link>
                     <button type="submit" class="btn btn-sm btn-success">Save</button>
@@ -52,13 +52,13 @@
                 <div class="col-6">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Module Icon</label>
-                    <input type="text" :class="errors.icon ? 'is-invalid':''" v-model="module.icon" class="form-control" placeholder="Module Icon" />
+                    <input type="text" :class="errors.icon ? 'is-invalid':''" v-model="moduleGetData.icon" class="form-control" placeholder="Module Icon" />
                     <ErrorValidation :msg="errors.icon" />
                   </div>
 
                   <div class="form-group">
                     <label for="exampleInputEmail1">Sequence</label>
-                    <input type="text" :class="errors.sequence ? 'is-invalid':''" v-model="module.sequence" class="form-control" placeholder="Sequence" />
+                    <input type="text" :class="errors.sequence ? 'is-invalid':''" v-model="moduleGetData.sequence" class="form-control" placeholder="Sequence" />
                     <ErrorValidation :msg="errors.sequence" />
                   </div>
                 </div>
@@ -71,44 +71,40 @@
 </template>
 
 <script>
-import { mapActions} from "vuex";
+import { mapState, mapActions } from "vuex";
 import Helper from "./../../../helper/moment";
 import GLOBAL_CONSTANT from "./../../../constant";
 
 export default {
   mixins: [Helper],
-  name: "ModuleAdd",
+  name: "ModuleEdit",
   data() {
     return {
-      module: {
-        id:'',
-        name:'',
-        icon:'',
-        sequence:'',
-      },
       errors:{}
     };
   },
   computed: {
-    
+     ...mapState("module", ["moduleGetData"]),
   },
   mounted() {
-    //this.moduleEdit(1001);
+    var module_id = this.$router.currentRoute.params.id;
+    this.getModuleById(module_id);
   },
   methods: {
 
-    ...mapActions("module", ["moduleAdd"]),
+    ...mapActions("module", ["getModuleById","moduleEdit"]),
     
     editModule(){
-      this.moduleAdd(this.module).then(response =>{
+      
+      this.moduleEdit(this.moduleGetData).then(response =>{
         
-        if(response.success && response.statuscode == GLOBAL_CONSTANT['MODULE_INSERT_SUCCESS']){
+        if(response.success && response.statuscode == GLOBAL_CONSTANT['MODULE_UPDATED_SUCCESS']){
              this.errors = {}; 
              this.$toast.success({
                         title:'Saved',
-                        message:'Module Saved successfully.'
+                        message:'Module Changes Saved successfully.'
                       });
-             this.$router.push('/module/index');
+
           }else{
             
             this.errors = response.data;

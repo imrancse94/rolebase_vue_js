@@ -22,8 +22,15 @@ class ModuleController extends Controller
     }
 
     public function getModules(){
-        //dd(request()->query());
-        $limit = request('limit');
+        
+        $limit = config('constant.PAGINATION_LIMIT');
+
+        if(request('limit')){
+            $limit = request('limit');
+        }
+        
+
+
         $message = __("Module get succesfully");
         $code = config('constant.MODULE_LIST_SUCCESS');
         $data = $this->moduleRepository->getAllModules($limit);
@@ -53,7 +60,9 @@ class ModuleController extends Controller
 
     public function getModuleById($id){
 
-        $data = $this->moduleRepository->getModuleById($id);
+        $cols = ['id', 'name', 'icon', 'sequence'];
+
+        $data = $this->moduleRepository->getModuleById($id, $cols);
         
         $code = config('constant.MODULE_GET_BY_ID_FAILED');
         $message = __("Not Found");
@@ -84,4 +93,20 @@ class ModuleController extends Controller
 
         return $this->sendResponse($data, $message,$code);
     }
+
+
+    public function deleteModuleById($id){
+
+        $code = config('constant.MODULE_DELETED_FAILED');
+        $result = $this->moduleRepository->deleteModuleById($id);
+        $data = [];
+
+        if(!empty($result)){
+            $message = __("Module Deleted succesfully");
+            $code = config('constant.MODULE_DELETED_SUCCESS');
+        }
+
+        return $this->sendResponse($data, $message,$code);
+    }
+
 }

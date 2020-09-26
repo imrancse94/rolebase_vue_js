@@ -52,7 +52,7 @@ const routes = [
         },
         {
             path:'/company',
-            name:'comapany',
+            name:'company',
             component:Admin,
             meta: { 
                 requiresAuth: true
@@ -68,28 +68,28 @@ const routes = [
             ]
         },
         {
-            path:'/module',
-            name:'module',
+            path:'/masterdata',
+            name:'masterdata',
             component:Admin,
             meta: { 
                 requiresAuth: true
             },
-            redirect:{path:"/module/index"},
+            redirect:{path:"/masterdata/module"},
             children:[
                 {
-                    path:'index',
-                    name:'module.index',
+                    path:'module',
+                    name:'module',
                     component:ModuleList
                    
                 },
                 {
-                    path:'add',
+                    path:'module/add',
                     name:'module.add',
                     component:ModuleAdd
                    
                 },
                 {
-                    path:'edit/:id',
+                    path:'module/edit/:id',
                     name:'module.edit',
                     component:ModuleEdit
                    
@@ -102,7 +102,9 @@ const routes = [
 
 const router = new VueRouter({
     routes,
-    mode:'history'
+    mode:'history',
+    linkActiveClass: "active",
+    linkExactActiveClass: "active"
 });
 
 // check valid route
@@ -115,6 +117,7 @@ router.beforeEach((to, from, next) => {
         }
     } else{
         if(store.state.auth.status.loggedIn) { 
+
             next();
         } else {
             next('/login');

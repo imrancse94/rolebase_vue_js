@@ -44,6 +44,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->post('moduleAdd', 'ModuleController@ModuleAdd');
         $router->get('module/edit/{id}', 'ModuleController@getModuleById');
         $router->put('module/edit/{id}', 'ModuleController@moduleUpdate');
+        $router->delete('module/delete/{id}', 'ModuleController@deleteModuleById');
 
         // Matches "/api/refresh token
         $router->post('refreshtoken', 'AuthController@refreshToken');

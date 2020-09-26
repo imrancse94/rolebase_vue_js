@@ -66,23 +66,23 @@ class UsersTableDataSeeder extends Seeder {
 
 
         $submoduleSql = "INSERT INTO `submodules` (`id`, `module_id`, `name`, `controller_name`, `icon`, `sequence`, `created_at`, `updated_at`, `default_method`) VALUES
-                        (2001, 1001, 'Company Management', 'CompanyController', 'fa fa-angle-double-right', 1, '2015-12-09 22:10:47', '2019-03-27 23:50:07', 'company/index'),
-                        (2020, 1002, 'Module Management', 'ModuleController', 'fa fa-angle-double-right', 1, '2015-12-09 22:10:48', '2015-12-09 22:10:48', 'module/index'),
-                        (2021, 1002, 'Sub Module Management', 'SubModuleController', 'fa fa-angle-double-right', 2, '2015-12-09 22:10:48', '2015-12-09 22:10:48', 'submodule/index'),
-                        (2022, 1002, 'Page Management', 'PageController', 'fa fa-angle-double-right', 3, '2015-12-09 22:10:48', '2015-12-09 22:10:48', 'page/index'),
-                        (2050, 1003, 'User Management', 'UserController', 'fa fa-angle-double-right', 1, '2015-12-09 22:10:49', '2015-12-09 22:10:49', 'user/index'),
-                        (2051, 1003, 'Role Management', 'RoleController', 'fa fa-angle-double-right', 2, '2015-12-09 22:10:49', '2015-12-24 00:35:45', 'role/index'),
-                        (2052, 1003, 'User Group Management', 'UsergroupController', 'fa fa-angle-double-right', 3, '2015-12-09 22:10:49', '2015-12-09 22:10:49', 'usergroup/index'),
-                        (2053, 1003, 'Group & Role Association', 'UsergroupRoleController', 'fa fa-angle-double-right', 4, '2015-12-09 22:10:49', '2015-12-09 22:10:49', 'group-role/index'),
-                        (2054, 1003, 'Role & Page Association', 'RolePageController', 'fa fa-angle-double-right', 5, '2015-12-09 22:10:50', '2015-12-09 22:10:50', 'role-page/index'),
-                        (2070, 1004, 'Site Settings', 'SettingController', 'fa fa-angle-double-right', 1, '2015-12-09 22:10:50', '2015-12-09 22:10:50', 'site-settings/index');";
+                        (2001, 1001, 'Company Management', 'CompanyController', 'fa fa-angle-double-right', 1, '2015-12-09 22:10:47', '2019-03-27 23:50:07', 'index'),
+                        (2020, 1002, 'Module Management', 'ModuleController', 'fa fa-angle-double-right', 1, '2015-12-09 22:10:48', '2015-12-09 22:10:48', 'module'),
+                        (2021, 1002, 'Sub Module Management', 'SubModuleController', 'fa fa-angle-double-right', 2, '2015-12-09 22:10:48', '2015-12-09 22:10:48', 'submodule'),
+                        (2022, 1002, 'Page Management', 'PageController', 'fa fa-angle-double-right', 3, '2015-12-09 22:10:48', '2015-12-09 22:10:48', 'page'),
+                        (2050, 1003, 'User Management', 'UserController', 'fa fa-angle-double-right', 1, '2015-12-09 22:10:49', '2015-12-09 22:10:49', 'user'),
+                        (2051, 1003, 'Role Management', 'RoleController', 'fa fa-angle-double-right', 2, '2015-12-09 22:10:49', '2015-12-24 00:35:45', 'role'),
+                        (2052, 1003, 'User Group Management', 'UsergroupController', 'fa fa-angle-double-right', 3, '2015-12-09 22:10:49', '2015-12-09 22:10:49', 'usergroup'),
+                        (2053, 1003, 'Group & Role Association', 'UsergroupRoleController', 'fa fa-angle-double-right', 4, '2015-12-09 22:10:49', '2015-12-09 22:10:49', 'group-role'),
+                        (2054, 1003, 'Role & Page Association', 'RolePageController', 'fa fa-angle-double-right', 5, '2015-12-09 22:10:50', '2015-12-09 22:10:50', 'role-page'),
+                        (2070, 1004, 'Site Settings', 'SettingController', 'fa fa-angle-double-right', 1, '2015-12-09 22:10:50', '2015-12-09 22:10:50', 'site-settings');";
 
         $companies = "INSERT INTO `companies` (`id`, `name`, `email`, `created_at`, `updated_at`) VALUES
                         (1, 'default', '','2015-11-04 10:52:01', '2015-11-04 10:52:01'),
                         (2, 'Imran Hossain','imrancse94@gmail.com','2019-03-28 00:47:10', '2019-03-28 00:47:10');";
 
         $pages = "INSERT INTO `pages` (`id`, `module_id`, `submodule_id`, `name`, `route_name`, `is_default_method`, `created_at`, `updated_at`) VALUES
-                    (3001, 1001, 2001, 'Company List', '/company', 1, '2015-12-09 22:10:51', '2019-03-27 06:03:41'),
+                    (3001, 1001, 2001, 'Company List', '/list', 1, '2015-12-09 22:10:51', '2019-03-27 06:03:41'),
                     (3002, 1001, 2001, 'Add New Company', '/company/create', 0, '2015-12-09 22:10:52', '2015-12-09 22:10:52'),
                     (3003, 1001, 2001, 'Modify Company', '/company/edit', 0, '2015-12-09 22:10:52', '2015-12-09 22:10:52'),
                     (3004, 1001, 2001, 'Delete Company', '/company/destroy', 0, '2015-12-09 22:10:52', '2015-12-09 22:10:52'),

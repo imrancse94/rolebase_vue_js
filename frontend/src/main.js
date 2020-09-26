@@ -7,8 +7,9 @@ import store from './store'; // vuex store
 import { getToken,removeToken } from './helper/token'; // set token, get token here
 import jwt from 'jsonwebtoken';
 import CxltToastr from 'cxlt-vue2-toastr'
+import VueSweetalert2 from 'vue-sweetalert2';
 
-
+Vue.use(VueSweetalert2);
 
 import * as GLOBAL_CONSTANT from './constant';
 

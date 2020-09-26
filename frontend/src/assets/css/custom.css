@@ -30,4 +30,8 @@ body{
 .login-error{
     padding:0;
 }
+.action-btns{}
 
+.action-btns a{
+    margin: 5px;
+}

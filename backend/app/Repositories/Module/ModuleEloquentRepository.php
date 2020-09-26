@@ -33,10 +33,6 @@ class ModuleEloquentRepository extends EloquentRepository implements ModuleRepos
      */
     public function getAllModules($limit = 2)
     {
-        if(empty($limit)){
-            $limit = 2;
-        }
-
         
         $result = $this
             ->_model
@@ -64,16 +60,30 @@ class ModuleEloquentRepository extends EloquentRepository implements ModuleRepos
      * @param string $subject
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function getModuleById($id)
+    public function getModuleById($id, $cols = [])
     {
         $result = $this
-            ->_model
-            ->where('id', $id)
+            ->_model;
+       
+       if(!empty($cols)){
+            $result = $result->select($cols);
+       }     
+            
+        $result = $result->where('id', $id)
             ->first();
 
         return $result;
     }
 
+
+    public function deleteModuleById($id){
+        $result = $this
+            ->_model
+            ->where('id',$id)
+            ->delete();
+            
+        return $result;   
+    }
     /**
      * Get recent created modules.
      *

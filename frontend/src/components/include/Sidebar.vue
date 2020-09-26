@@ -32,7 +32,7 @@
           role="menu"
           data-accordion="false"
         >
-          <li v-for="(sidebar,index) in permissions" :key="index" :class="currentIndex == index ? 'menu-open':''" class="nav-item has-treeview">
+          <li v-for="(sidebar,index) in permissions" :key="index" :class="(sidebar.url == current_route_name) || (currentIndex == index)  ? 'nav-item has-treeview menu-open':'nav-item has-treeview'">
             <a href="#" @click.prevent="toggleContent(index)" class="nav-link">
               <i :class="'nav-icon '+sidebar.icon"></i>
               <p>
@@ -43,7 +43,7 @@
 
             <ul class="nav nav-treeview">
               <li v-for="child in sidebar.children" :key="child.key" class="nav-item">
-                <router-link class="nav-link" :to="{'path':'/'+child.url}">
+                <router-link @click.native="routerlinkActive(index)" class="nav-link" :to="{'path':'/'+sidebar.url+'/'+child.url}">
                   <i :class="child.icon+' nav-icon'"></i>
                   <p>{{child.name}}</p>
                 </router-link>
@@ -64,27 +64,33 @@ export default {
   name: "Sidebar",
 
   mounted() {
-    this.$eventBus.$emit("loadingStatus", false);
-    
+    console.log('router',this.$router.currentRoute,this.$store.state.auth.permissions)
   },
+
   data() {
     return {
       permissions: this.$store.state.auth.permissions,
       user: this.$store.state.auth.user,
-      currentIndex: 0
+      currentIndex: 0,
+      current_route_name : this.$router.currentRoute.matched[0].name,
+      current_path:this.$router.currentRoute.path
     };
   },
-  beforeMount(){
-    this.$eventBus.$emit("loadingStatus", true);
-  },
+  
   methods: {
     toggleContent(index) {
+        //this.currentIndex = 0;
         if(this.currentIndex == index){
           this.currentIndex = 0;
         }else{
           this.currentIndex = index;
         }
           
+    },
+    routerlinkActive(index){
+      this.currentIndex = index;
+      this.current_route_name = "";
+      //console.log('dddd',event.path[4].classList.push('menu-open'))
     }
   }
 };

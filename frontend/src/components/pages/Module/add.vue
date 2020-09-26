@@ -21,7 +21,7 @@
               <h3 class="card-title">Module Add</h3>
             </div>
             <div class="col text-right">
-              <router-link :to="{'path':'/module/index'}" class="btn btn-sm btn-primary">Module List</router-link>
+              <router-link :to="{'path':'/masterdata/module'}" class="btn btn-sm btn-primary">Module List</router-link>
             </div>
           </div>
         </div>
@@ -43,7 +43,7 @@
                   </div>
                   <div class="form-group">
                     <router-link
-                      :to="{'path':'/module/index'}"
+                      :to="{'path':'/masterdata/module'}"
                       class="btn btn-sm btn-primary mr-2"
                     >Back</router-link>
                     <button type="submit" class="btn btn-sm btn-success">Save</button>
@@ -105,7 +105,7 @@ export default {
                         title:'Saved',
                         message:'Module Saved successfully.'
                       });
-             this.$router.push('/module/index');
+             this.$router.push('/masterdata/module');
           }else{
             
             this.errors = response.data;
