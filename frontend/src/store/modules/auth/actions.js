@@ -50,4 +50,9 @@ export const refreshtoken = ({ commit }) => {
          return Promise.resolve(data);
      })
  }
+
+ export const inValidRoute = ({commit},payload) =>{
+    commit('SET_INVALID_ROUTE',payload);
+    return Promise.resolve();
+ }
  

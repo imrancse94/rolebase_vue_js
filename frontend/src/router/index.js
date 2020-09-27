@@ -15,6 +15,7 @@ import SubModuleList from '../components/pages/Submodule/index.vue';
 import SubModuleAdd from '../components/pages/Submodule/add.vue';
 import SubModuleEdit from '../components/pages/Submodule/edit.vue';
 
+
 import store from '../store'
 
 Vue.use(VueRouter);
@@ -122,6 +123,7 @@ const routes = [
                 }
             ]
         }
+        
 
         
   ];
@@ -133,6 +135,15 @@ const router = new VueRouter({
     linkExactActiveClass: "active"
 });
 
+
+/*const isExist = (arr, name) => {
+  const { length } = arr;
+  const id = length + 1;
+  const found = arr.some(el => el.username === name);
+  if (!found) arr.push({ id, username: name });
+  return arr;
+}*/
+
 // check valid route
 router.beforeEach((to, from, next) => {
     if(to.name == 'login') {
@@ -143,8 +154,30 @@ router.beforeEach((to, from, next) => {
         }
     } else{
         if(store.state.auth.status.loggedIn) { 
+            
+            var routeList = store.getters['auth/routeList'];
+            var isValidRoute = false;
 
-            next();
+            for(var route in routeList){
+                if(routeList[route] == to.path){
+                    isValidRoute = true;
+                }
+            }
+
+            if(isValidRoute){
+                next();
+            }else{
+
+                if(to.name){
+                    store.dispatch('auth/inValidRoute',1);
+                    next(from.path);
+                }else{
+                    store.dispatch('auth/inValidRoute',2);
+                    next(from.path);
+                }
+            }
+            
+            
         } else {
             next('/login');
         }

@@ -68,8 +68,22 @@ export default {
     }
   },
   mounted() {
-    this.popupItem = this.$el;
-    this.$eventBus.$emit("loadingStatus", false);
+      if(this.$store.getters['auth/invalidRoute']){
+        if(this.$store.getters['auth/invalidRoute'] == 1){
+          this.$toast.error({
+                        title:'Permission !!',
+                        message:"You don't have permission on this page."
+                      });
+        }else if(this.$store.getters['auth/invalidRoute'] == 2){
+          this.$toast.error({
+                        title:'Not Found',
+                        message:"Not Found the page"
+                      });
+        }
+        
+        this.$store.dispatch('auth/inValidRoute',false);
+      }
+    
   },
   beforeMount() {
     this.$eventBus.$emit("loadingStatus", true);

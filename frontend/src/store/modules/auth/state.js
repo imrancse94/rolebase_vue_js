@@ -4,5 +4,7 @@ export default {
         loggedIn: false 
       },
       user:null,
-      permissions:null
+      permissions:null,
+      routelist:null,
+      inValidRoute:false
 }

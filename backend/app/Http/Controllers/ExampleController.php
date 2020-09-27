@@ -14,5 +14,12 @@ class ExampleController extends Controller
         //
     }
 
+
+    public function index(){
+        $permissions = $this->getPermissionList(1);
+
+        return response()->json(['data'=>$permissions],200);
+    }
+
     //
 }

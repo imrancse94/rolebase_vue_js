@@ -24,12 +24,12 @@ trait PermissionUpdateTreait
 					INNER JOIN submodules ON pages.submodule_id = submodules.id
 					INNER JOIN modules ON submodules.module_id = modules.id
 					WHERE  users.id = ' . $user_id;
-
+        //$user_id = 2;
         $permissions = DB::select($sql);
         $moduleSubmodulePageAssoc = [];
         $masterArray = [1001, 1002, 1007];
         if (!empty($permissions)) {
-            if(Auth::id() == 1){
+            if($user_id == 1){
                 $modules = Module::with('submodules', 'submodules.pages')->get();
             }else{
                 $modules = Module::with('submodules', 'submodules.pages')->whereNotIn('id',$masterArray)->get();
@@ -45,7 +45,6 @@ trait PermissionUpdateTreait
 
         $result = [];
         $sideBarList = [];
-        $permittedRouteName = $this->getPermittedPageRouteName($permissions);
         $moduleSubmodulePageAssoc = [];
         $permittedPageIdList = [];
         $sideBarPermittedPageIdList = [];
@@ -80,6 +79,8 @@ trait PermissionUpdateTreait
             $sideBarPermittedPageIdList = array_unique($sideBarPermittedPageIdList);
         }
 
+        $module_url_list = [];
+
         if(!empty($modules)){
             foreach ($modules as $m){
                 if(in_array($m->id,$permittedModuleIdList)) {
@@ -87,6 +88,9 @@ trait PermissionUpdateTreait
                     $moduleSubmodulePageAssoc[$m->id]['name'] = $m->name;
                     $moduleSubmodulePageAssoc[$m->id]['icon'] = $m->icon;
                     $moduleSubmodulePageAssoc[$m->id]['url'] = $moduleName;
+                    
+                    $module_url_list[$m->id]= $moduleName;
+
                     $sideBarList[$m->id]['id'] = $m->id;
                     $sideBarList[$m->id]['name'] = $m->name;
                     $sideBarList[$m->id]['icon'] = $m->icon;
@@ -134,7 +138,14 @@ trait PermissionUpdateTreait
             }
         }
 
+        $permittedRouteName = $this->getPermittedPageRouteName($module_url_list,$permissions);
 
+        $permittedRouteName[] = "/admin";
+        $permittedRouteName[] = "/admin/dashboard";
+        
+        if(!empty($permittedRouteName)){
+            $permittedRouteName = array_unique($permittedRouteName);
+        }
 
         $result['allpermissions'] = $moduleSubmodulePageAssoc;
         $result['routeList'] = $permittedRouteName;
@@ -153,11 +164,22 @@ trait PermissionUpdateTreait
         return $permittedRouteName;
     }
 
-    private function getPermittedPageRouteName($permissions)
+    private function getPermittedPageRouteName($moduleSubmodulePageAssoc,$permissions)
     {
+       
         $permittedRouteName = [];
         foreach ($permissions as $key => $permission) {
-            $permittedRouteName[$key] =  strtolower($permission->route_name);
+
+            if(!empty($permission->route_name)){
+                if($permission->module_id != 1001 && isset($moduleSubmodulePageAssoc[$permission->module_id])){
+                    $permittedRouteName[$key] =  "/".$moduleSubmodulePageAssoc[$permission->module_id].strtolower($permission->route_name);
+                }else{
+                    //dd($permission);
+                    $permittedRouteName[$key] =  strtolower($permission->route_name);
+                }
+                
+            }
+            
         }
         return $permittedRouteName;
     }

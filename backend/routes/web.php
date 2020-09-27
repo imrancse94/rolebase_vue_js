@@ -15,7 +15,9 @@
 //     return $router->app->version();
 // });
 
+
 $router->group(['prefix' => 'api'], function () use ($router) {
+    $router->get('example', 'ExampleController@index');
     // Matches "/api/login
     $router->post('login', 'AuthController@login');
     
