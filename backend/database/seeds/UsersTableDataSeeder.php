@@ -82,7 +82,7 @@ class UsersTableDataSeeder extends Seeder {
                         (2, 'Imran Hossain','imrancse94@gmail.com','2019-03-28 00:47:10', '2019-03-28 00:47:10');";
 
         $pages = "INSERT INTO `pages` (`id`, `module_id`, `submodule_id`, `name`, `route_name`, `is_default_method`, `created_at`, `updated_at`) VALUES
-                    (3001, 1001, 2001, 'Company List', '/list', 1, '2015-12-09 22:10:51', '2019-03-27 06:03:41'),
+                    (3001, 1001, 2001, 'Company List', '/company/list', 1, '2015-12-09 22:10:51', '2019-03-27 06:03:41'),
                     (3002, 1001, 2001, 'Add New Company', '/company/add', 0, '2015-12-09 22:10:52', '2015-12-09 22:10:52'),
                     (3003, 1001, 2001, 'Modify Company', '/company/edit', 0, '2015-12-09 22:10:52', '2015-12-09 22:10:52'),
                     (3004, 1001, 2001, 'Delete Company', '/company/delete', 0, '2015-12-09 22:10:52', '2015-12-09 22:10:52'),

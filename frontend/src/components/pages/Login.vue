@@ -95,6 +95,8 @@ export default {
     return {
       email: "ssadmin@admin.com",
       password: "123456",
+      /*email: "",
+      password: "",*/
       remember: false,
       has_error: false,
       errors: {

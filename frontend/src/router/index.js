@@ -65,11 +65,11 @@ const routes = [
             meta: { 
                 requiresAuth: true
             },
-            redirect:{path:"/company/index"},
+            redirect:{path:"/company/list"},
             children:[
                 {
-                    path:'index',
-                    name:'company.index',
+                    path:'list',
+                    name:'company.list',
                     component:Dashboard
                    
                 }
@@ -159,18 +159,22 @@ router.beforeEach((to, from, next) => {
             var isValidRoute = false;
 
             for(var route in routeList){
-                if(routeList[route] == to.path){
+                var request_path = to.path;
+                request_path = request_path.replace("/"+to.params.id,"");
+                if(routeList[route] == request_path){
                     isValidRoute = true;
+                    break;
                 }
             }
 
+            console.log('router',isValidRoute,to,request_path)
             if(isValidRoute){
                 next();
             }else{
 
                 if(to.name){
                     store.dispatch('auth/inValidRoute',1);
-                    next(from.path);
+                   next(from.path);
                 }else{
                     store.dispatch('auth/inValidRoute',2);
                     next(from.path);

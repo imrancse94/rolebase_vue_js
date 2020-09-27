@@ -68,6 +68,7 @@ export default {
     }
   },
   mounted() {
+      
       if(this.$store.getters['auth/invalidRoute']){
         if(this.$store.getters['auth/invalidRoute'] == 1){
           this.$toast.error({
