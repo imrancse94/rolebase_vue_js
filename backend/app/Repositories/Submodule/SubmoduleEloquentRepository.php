@@ -49,6 +49,7 @@ class SubmoduleEloquentRepository extends EloquentRepository implements Submodul
         $result = DB::table('submodules')
                 ->join('modules', 'modules.id', '=', 'submodules.module_id')
                 ->select('modules.name AS module_name','submodules.*')
+                ->orderBy('submodules.id', 'asc')
                 ->paginate($limit);
             
 

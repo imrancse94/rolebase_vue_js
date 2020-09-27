@@ -98,7 +98,7 @@ class SubmoduleController extends Controller
     public function deleteSubModuleById($id){
 
         $code = config('constant.SUBMODULE_DELETED_FAILED');
-        $result = $this->submoduleRepository->deleteModuleById($id);
+        $result = $this->submoduleRepository->deleteSubModuleById($id);
         $data = [];
 
         if(!empty($result)){

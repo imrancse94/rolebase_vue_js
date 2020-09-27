@@ -49,6 +49,12 @@
                   </div>
 
                   <div class="form-group">
+                    <label for="exampleInputEmail1">Default Method</label>
+                    <input type="text" :class="errors.default_method ? 'is-invalid':''" v-model="module.default_method" class="form-control" placeholder="Default Method" />
+                    <ErrorValidation :msg="errors.default_method" />
+                  </div>
+
+                  <div class="form-group">
                     <router-link
                       :to="{'path':'/masterdata/submodule'}"
                       class="btn btn-sm btn-primary mr-2"
@@ -59,7 +65,7 @@
                 <div class="col-6">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Module Name</label>
-                    <select type="text" :class="errors.module_id ? 'is-invalid':''" v-model="module.module_id" class="form-control" placeholder="Module Name" >
+                    <select type="text" :class="errors.module_id ? 'is-invalid':''" v-model="module.module_id" class="custom-select" placeholder="Module Name" >
                       <option value="">Please select</option>
                       <option v-for="(value,index) in modulelist.modulelist" :key="index" :value="index">{{value}}</option>
                     </select>
@@ -103,7 +109,8 @@ export default {
         name:'',
         icon:'',
         sequence:'',
-        controller_name:''
+        controller_name:'',
+        default_method:''
       },
       modulelist:this.$store.getters['module/getModule'],
       errors:{}

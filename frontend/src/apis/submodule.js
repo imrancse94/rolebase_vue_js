@@ -1,9 +1,9 @@
-import {Api} from "./Api";
+import {Api,parameters} from "./Api";
 
 
 export default {
     getSubModules(params){
-        return Api.get('submodules',params)
+        return Api.get('submodules',parameters(params))
     },
     
     subModuleAdd(params){

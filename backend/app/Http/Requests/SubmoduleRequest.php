@@ -29,6 +29,8 @@ class SubmoduleRequest extends BaseRequest
             'name' => 'required|string',
             'icon' => 'required|string',
             'sequence' => 'required|integer',
+            'controller_name'=>'required',
+            'default_method'=>'required'
         ];
 
         if(Request::isMethod('post')){
