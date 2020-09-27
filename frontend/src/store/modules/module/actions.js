@@ -48,3 +48,13 @@ export const getModuleById = ({ commit },params) => {
          return Promise.resolve(response);
      })
  }
+
+
+ export const moduleList = ({ commit },params) => {
+    
+    return module.moduleList(params).then(({data}) => {
+         const response = data.data;
+         commit('GET_MODULE_LIST', response);
+         return Promise.resolve(response);
+     })
+ }

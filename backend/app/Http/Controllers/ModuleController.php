@@ -30,7 +30,6 @@ class ModuleController extends Controller
         }
         
 
-
         $message = __("Module get succesfully");
         $code = config('constant.MODULE_LIST_SUCCESS');
         $data = $this->moduleRepository->getAllModules($limit);
@@ -38,7 +37,17 @@ class ModuleController extends Controller
     }
 
 
-    public function ModuleAdd(ModuleAddRequest $request){
+    public function getAllModulList(){
+        
+        
+        $message = __("Module get succesfully");
+        $code = config('constant.MODULE_LIST_SUCCESS');
+        $data = $this->moduleRepository->getAllModuleList();
+        return $this->sendResponse($data, $message,$code);
+    }
+
+
+    public function moduleAdd(ModuleAddRequest $request){
         
         $inputData = $request->all();
 
@@ -83,7 +92,7 @@ class ModuleController extends Controller
         $inputData = $request->all();
         $code = config('constant.MODULE_UPDATED_FAILED');
         $result = $this->moduleRepository->updateById($id,$inputData);
-        $message = __("Module Updated Failed");
+        $message = __("Module Updated Failed or Data not found.");
         $data = [];
         
         if(!empty($result)){

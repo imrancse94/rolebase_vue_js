@@ -4,9 +4,16 @@ import HelloWorld from '../components/HelloWorld';
 import Login from '../components/pages/Login';
 import Dashboard from '../components/pages/Dashboard';
 import Admin from '../components/pages/Admin';
+
+// module
 import ModuleList from '../components/pages/Module/index.vue';
 import ModuleAdd from '../components/pages/Module/add.vue';
 import ModuleEdit from '../components/pages/Module/edit.vue';
+
+// submodule
+import SubModuleList from '../components/pages/Submodule/index.vue';
+import SubModuleAdd from '../components/pages/Submodule/add.vue';
+import SubModuleEdit from '../components/pages/Submodule/edit.vue';
 
 import store from '../store'
 
@@ -92,6 +99,25 @@ const routes = [
                     path:'module/edit/:id',
                     name:'module.edit',
                     component:ModuleEdit
+                   
+                },
+
+                {
+                    path:'submodule',
+                    name:'submodule',
+                    component:SubModuleList
+                   
+                },
+                {
+                    path:'submodule/add',
+                    name:'submodule.add',
+                    component:SubModuleAdd
+                   
+                },
+                {
+                    path:'submodule/edit/:id',
+                    name:'submodule.edit',
+                    component:SubModuleEdit
                    
                 }
             ]

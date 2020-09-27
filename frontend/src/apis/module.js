@@ -23,6 +23,10 @@ export default {
     moduleDelete(params){
         return Api.delete('module/delete/'+params)
     }
+    ,
+    moduleList(params){
+        return Api.get('moduleList',params);
+    }
 }
 
 

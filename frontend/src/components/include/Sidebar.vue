@@ -63,10 +63,6 @@
 export default {
   name: "Sidebar",
 
-  mounted() {
-    console.log('router',this.$router.currentRoute,this.$store.state.auth.permissions)
-  },
-
   data() {
     return {
       permissions: this.$store.state.auth.permissions,

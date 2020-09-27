@@ -39,12 +39,23 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         // Matches "/api/register
         $router->post('logout', 'AuthController@logout');
 
+        
         // Matches "/api/modules
+        $router->get('moduleList', 'ModuleController@getAllModulList');
         $router->get('modules', 'ModuleController@getModules');
-        $router->post('moduleAdd', 'ModuleController@ModuleAdd');
+        $router->post('moduleAdd', 'ModuleController@moduleAdd');
         $router->get('module/edit/{id}', 'ModuleController@getModuleById');
         $router->put('module/edit/{id}', 'ModuleController@moduleUpdate');
         $router->delete('module/delete/{id}', 'ModuleController@deleteModuleById');
+
+
+        // Matches "/api/submodules
+        $router->get('submodules', 'SubmoduleController@getSubModulesByUser');
+        $router->post('submoduleAdd', 'SubmoduleController@subModuleAdd');
+        $router->get('submodule/edit/{id}', 'SubmoduleController@getSubModuleById');
+        $router->put('submodule/edit/{id}', 'SubmoduleController@subModuleUpdate');
+        $router->delete('submodule/delete/{id}', 'SubmoduleController@deleteSubModuleById');
+
 
         // Matches "/api/refresh token
         $router->post('refreshtoken', 'AuthController@refreshToken');

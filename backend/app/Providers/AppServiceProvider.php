@@ -26,6 +26,12 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\Module\ModuleEloquentRepository::class
         );
 
+        // Submodule Repository
+        $this->app->singleton(
+            \App\Repositories\Submodule\SubmoduleRepositoryInterface::class,
+            \App\Repositories\Submodule\SubmoduleEloquentRepository::class
+        );
+
         // User Repository
         $this->app->singleton(
             \App\Repositories\User\UserRepositoryInterface::class,

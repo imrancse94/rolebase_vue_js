@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Repositories\Module;
+namespace App\Repositories\Submodule;
 
 use App\Repositories\EloquentRepository;
+use DB;
 
-class ModuleEloquentRepository extends EloquentRepository implements ModuleRepositoryInterface
+class SubmoduleEloquentRepository extends EloquentRepository implements SubmoduleRepositoryInterface
 {
     /**
      * Get model.
@@ -13,7 +14,7 @@ class ModuleEloquentRepository extends EloquentRepository implements ModuleRepos
      */
     public function getModel()
     {
-        return \App\Models\Module::class;
+        return \App\Models\Submodule::class;
     }
 
     /**
@@ -31,7 +32,7 @@ class ModuleEloquentRepository extends EloquentRepository implements ModuleRepos
      *
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function getAllModules($limit = 2)
+    public function getAllSubModules($limit = 2)
     {
         
         $result = $this
@@ -42,21 +43,19 @@ class ModuleEloquentRepository extends EloquentRepository implements ModuleRepos
         return $result;
     }
 
-    public function getAllModuleList()
+    public function getAllSubModulesWithModule($limit = 2)
     {
         
-        $result = $this
-            ->_model
-            ->orderBy('id', 'asc')
-            ->pluck('name','id');
-
-
+        $result = DB::table('submodules')
+                ->join('modules', 'modules.id', '=', 'submodules.module_id')
+                ->select('modules.name AS module_name','submodules.*')
+                ->paginate($limit);
+            
 
         return $result;
     }
 
-
-    public function insertModule($inputData){
+    public function insertSubModule($inputData){
 
         $result = false;
 
@@ -73,23 +72,24 @@ class ModuleEloquentRepository extends EloquentRepository implements ModuleRepos
      * @param string $subject
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function getModuleById($id, $cols = [])
+    public function getSubModuleById($id, $cols = [])
     {
-        $result = $this
-            ->_model;
+        $result = DB::table('submodules')
+                ->join('modules', 'modules.id', '=', 'submodules.module_id')
+                ->select('modules.id AS module_id','submodules.*');
        
        if(!empty($cols)){
             $result = $result->select($cols);
        }     
             
-        $result = $result->where('id', $id)
+        $result = $result->where('submodules.id', $id)
             ->first();
 
         return $result;
     }
 
 
-    public function deleteModuleById($id){
+    public function deleteSubModuleById($id){
         $result = $this
             ->_model
             ->where('id',$id)
