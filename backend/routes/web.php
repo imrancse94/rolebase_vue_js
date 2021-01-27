@@ -17,7 +17,7 @@
 
 
 $router->group(['prefix' => 'api'], function () use ($router) {
-    $router->get('example', 'ExampleController@index');
+    
     // Matches "/api/login
     $router->post('login', 'AuthController@login');
     
@@ -25,15 +25,12 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
         // Matches "/api/register
         $router->post('register', 'AuthController@register');
+
         // Matches "/api/profile
         $router->get('profile', 'UserController@profile');
-        // Matches "/api/users/1 
 
-        //get one user by id
-        $router->get('users/{id}', 'UserController@singleUser');
-
-        // Matches "/api/users
-        $router->get('users', 'UserController@allUsers');
+        // Matches "/api/refresh token
+        $router->post('refreshtoken', 'AuthController@refreshToken');
 
         // Matches "/api/register
         $router->get('auth_data', 'AuthController@getAuthInfo');
@@ -59,8 +56,39 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->delete('submodule/delete/{id}', 'SubmoduleController@deleteSubModuleById');
 
 
-        // Matches "/api/refresh token
-        $router->post('refreshtoken', 'AuthController@refreshToken');
+        // Matches "/api/pages
+        $router->get('pages', 'PageController@getPagesByUser');
+        $router->post('pageAdd', 'PageController@pageAdd');
+        $router->get('page/edit/{id}', 'PageController@getPageById');
+        $router->put('page/edit/{id}', 'PageController@pageUpdate');
+        $router->delete('page/delete/{id}', 'PageController@deletePageById');
+
+
+        // Matches "/api/users
+        $router->get('users', 'UserController@getallUsers');
+        $router->post('userAdd', 'UserController@userAdd');
+        $router->get('user/edit/{id}', 'UserController@getUserById');
+        $router->put('user/edit/{id}', 'UserController@userUpdate');
+        $router->delete('user/delete/{id}', 'UserController@deleteUserById');
+
+        // Matches "/api/roles
+        $router->get('roles', 'RoleController@getallRoles');
+        $router->post('roleAdd', 'RoleController@roleAdd');
+        $router->get('role/edit/{id}', 'RoleController@getRoleById');
+        $router->put('role/edit/{id}', 'RoleController@roleUpdate');
+        $router->delete('role/delete/{id}', 'RoleController@deleteRoleById');
+
+        // Matches "/api/usergroup
+        $router->get('usergroups', 'UsergroupController@getallUsergroups');
+        $router->post('usergroupAdd', 'UsergroupController@usergroupAdd');
+        $router->get('usergroup/edit/{id}', 'UsergroupController@getUsergroupById');
+        $router->put('usergroup/edit/{id}', 'UsergroupController@usergroupUpdate');
+        $router->delete('usergroup/delete/{id}', 'UsergroupController@deleteUsergroupById');
+
+        // Matches "/api/usergroupRole
+        $router->get('usergrouprole', 'UsergroupRoleController@index');
+
+
 
     });
 });

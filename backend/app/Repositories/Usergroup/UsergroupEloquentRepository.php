@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Repositories\User;
+namespace App\Repositories\Usergroup;
 
 use App\Repositories\EloquentRepository;
 
-class UserEloquentRepository extends EloquentRepository implements UserRepositoryInterface
+
+class UsergroupEloquentRepository extends EloquentRepository implements UsergroupRepositoryInterface
 {
     /**
      * Get model.
@@ -13,7 +14,11 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
      */
     public function getModel()
     {
-        return \App\Models\User::class;
+        return \App\Models\Usergroup::class;
+    }
+
+    public function getUserGroupList(){
+        return $this->_model->pluck('name','id');
     }
 
     public function insertData($inputData){
@@ -28,7 +33,7 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
         return $result;
     }
 
-    public function getUserById($id, $cols = [])
+    public function getUsergroupById($id, $cols = [])
     {
         $result = $this->_model;
        
@@ -65,7 +70,7 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
      *
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function geAllusers($limit)
+    public function geAllUsergroups($limit)
     {
         $result = $this
             ->_model
