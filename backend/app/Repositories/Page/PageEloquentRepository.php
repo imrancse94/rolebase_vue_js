@@ -3,7 +3,7 @@
 namespace App\Repositories\Page;
 
 use App\Repositories\EloquentRepository;
-use DB;
+
 
 class PageEloquentRepository extends EloquentRepository implements PageRepositoryInterface
 {

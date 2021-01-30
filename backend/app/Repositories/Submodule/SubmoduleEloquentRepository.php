@@ -3,7 +3,7 @@
 namespace App\Repositories\Submodule;
 
 use App\Repositories\EloquentRepository;
-use DB;
+
 
 class SubmoduleEloquentRepository extends EloquentRepository implements SubmoduleRepositoryInterface
 {
