@@ -3,7 +3,7 @@
 namespace App\Repositories\UsergroupRole;
 
 use App\Repositories\EloquentRepository;
-
+//use Illuminate\Support\Facades\DB;
 
 class UsergroupRoleEloquentRepository extends EloquentRepository implements UsergroupRoleRepositoryInterface
 {
@@ -17,20 +17,28 @@ class UsergroupRoleEloquentRepository extends EloquentRepository implements User
         return \App\Models\UsergroupRole::class;
     }
 
+    public function getUserGroupRoleInfo(){
+
+    }
 
     public function insertData($inputData){
 
         $result = false;
+        DB::beginTransaction();
+        try{
+            if($this->_model->create($inputData)){
 
-        if($this->_model->create($inputData)){
-
-            $result = true;
+                $result = true;
+            }
+            DB::commit();
+        }catch(\Exception $e){
+            DB::rollback();
         }
 
         return $result;
     }
 
-    public function getUsergroupById($id, $cols = [])
+    public function getUsergroupRoleById($id, $cols = [])
     {
         $result = $this->_model;
        

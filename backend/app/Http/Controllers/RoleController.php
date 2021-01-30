@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\Role\RoleEloquentRepository;
-use Illuminate\Support\Facades\Request;
-use Symfony\Component\Console\Input\Input;
-
+use App\Repositories\Role\RoleRepositoryInterface;
 use App\Http\Requests\RoleRequest;
 
 class RoleController extends Controller
@@ -17,7 +14,7 @@ class RoleController extends Controller
      *
      * @return void
      */
-    public function __construct(RoleEloquentRepository $roleRepository)
+    public function __construct(RoleRepositoryInterface $roleRepository)
     {
         $this->roleRepository = $roleRepository;
     }

@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\Usergroup\UsergroupEloquentRepository;
-use Illuminate\Support\Facades\Request;
-use Symfony\Component\Console\Input\Input;
+use App\Repositories\Usergroup\UsergroupRepositoryInterface;
 
 use App\Http\Requests\UsergroupRequest;
 
@@ -17,7 +15,7 @@ class UsergroupController extends Controller
      *
      * @return void
      */
-    public function __construct(UsergroupEloquentRepository $usergroupRepository)
+    public function __construct(UsergroupRepositoryInterface $usergroupRepository)
     {
         $this->usergroupRepository = $usergroupRepository;
     }

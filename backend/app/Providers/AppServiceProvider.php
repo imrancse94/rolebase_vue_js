@@ -38,13 +38,31 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\Page\PageEloquentRepository::class
         );
 
+        // Role Repository
+        $this->app->singleton(
+            \App\Repositories\Role\RoleRepositoryInterface::class,
+            \App\Repositories\Role\RoleEloquentRepository::class
+        );
+        
+
         // User Repository
         $this->app->singleton(
             \App\Repositories\User\UserRepositoryInterface::class,
             \App\Repositories\User\UserEloquentRepository::class
         );
 
+
+        // Usergroup Repository
+        $this->app->singleton(
+            \App\Repositories\Usergroup\UsergroupRepositoryInterface::class,
+            \App\Repositories\Usergroup\UsergroupEloquentRepository::class
+        );
         
+        // UsergroupRole Repository
+        $this->app->singleton(
+            \App\Repositories\UsergroupRole\UsergroupRoleRepositoryInterface::class,
+            \App\Repositories\Usergroup\UsergroupRoleEloquentRepository::class
+        );
     }
     
     public function boot(){

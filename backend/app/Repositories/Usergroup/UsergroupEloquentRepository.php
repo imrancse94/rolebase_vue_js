@@ -24,10 +24,15 @@ class UsergroupEloquentRepository extends EloquentRepository implements Usergrou
     public function insertData($inputData){
 
         $result = false;
+        \DB::beginTransaction();
+        try{
+            if($this->_model->create($inputData)){
 
-        if($this->_model->create($inputData)){
-
-            $result = true;
+                $result = true;
+            }
+            \DB::commit();
+        }catch(\Exception $e){
+            \DB::rollback();
         }
 
         return $result;

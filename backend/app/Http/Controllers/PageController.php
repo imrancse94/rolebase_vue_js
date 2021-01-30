@@ -1,10 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Repositories\Page\PageRepositoryInterface;
-use Illuminate\Support\Facades\Request;
-use Symfony\Component\Console\Input\Input;
 
+use App\Repositories\Page\PageRepositoryInterface;
 use App\Http\Requests\PageRequest;
 
 class PageController extends Controller

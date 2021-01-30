@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
-use  App\Models\User;
+
 use App\Repositories\User\UserRepositoryInterface;
 use App\Http\Requests\UserRequest;
-
-
-
 
 class UserController extends Controller
 {

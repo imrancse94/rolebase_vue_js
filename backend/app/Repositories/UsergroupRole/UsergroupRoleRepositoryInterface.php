@@ -15,7 +15,7 @@ interface UsergroupRoleRepositoryInterface
      * Get all most popular Modules.
      * @return mixed
      */
-    public function getUsergroupById($id, $cols = []);
+    public function getUsergroupRoleById($id, $cols = []);
 
     /**
      * Get all recent created Modules.
@@ -34,4 +34,6 @@ interface UsergroupRoleRepositoryInterface
      * @return mixed
      */
     public function deleteById($id);
+
+    public function getUserGroupRoleInfo();
 }

@@ -34,4 +34,6 @@ interface UsergroupRepositoryInterface
      * @return mixed
      */
     public function deleteById($id);
+
+    public function getUserGroupList();
 }
