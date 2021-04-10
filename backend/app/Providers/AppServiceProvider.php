@@ -61,7 +61,7 @@ class AppServiceProvider extends ServiceProvider
         // UsergroupRole Repository
         $this->app->singleton(
             \App\Repositories\UsergroupRole\UsergroupRoleRepositoryInterface::class,
-            \App\Repositories\Usergroup\UsergroupRoleEloquentRepository::class
+            \App\Repositories\UsergroupRole\UsergroupRoleEloquentRepository::class
         );
     }
     

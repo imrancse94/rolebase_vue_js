@@ -3,30 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\UsergroupRole\UsergroupRoleRepositoryInterface;
-use Illuminate\Support\Facades\Request;
-use Symfony\Component\Console\Input\Input;
-
+use App\Repositories\Usergroup\UsergroupRepositoryInterface;
+use App\Repositories\Role\RoleRepositoryInterface;
 use App\Http\Requests\RoleRequest;
 
 class UsergroupRoleController extends Controller
 {
 
-    private $usergroupRoleRepository;
+    private $usergroupRepository;
     private $roleRepository;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(UsergroupRoleRepositoryInterface $usergroupRoleRepository)
+    public function __construct(UsergroupRoleRepositoryInterface $usergroupRoleRepository
+                                ,RoleRepositoryInterface $roleRepository
+                                )
     {
         $this->usergroupRoleRepository = $usergroupRoleRepository;
+        $this->roleRepository = $roleRepository;
     }
 
     public function index(){
-       $usergroupList =  $this->usergroupRoleRepository->getUserGroupRoleInfo();
-
-       dd($usergroupList);
+       $roleList =  $this->roleRepository->getRoleList();
+       dd($roleList);
     }
 
 

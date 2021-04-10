@@ -19,6 +19,9 @@ class RoleEloquentRepository extends EloquentRepository implements RoleRepositor
         return \App\Models\Role::class;
     }
 
+    public function getRoleList(){
+        return $this->_model->pluck('title','id');
+    }
 
     public function insertData($inputData){
 

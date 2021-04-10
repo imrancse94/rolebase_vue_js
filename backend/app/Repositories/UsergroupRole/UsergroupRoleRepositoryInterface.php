@@ -35,5 +35,5 @@ interface UsergroupRoleRepositoryInterface
      */
     public function deleteById($id);
 
-    public function getUserGroupRoleInfo();
+    
 }

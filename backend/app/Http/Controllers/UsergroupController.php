@@ -20,7 +20,13 @@ class UsergroupController extends Controller
         $this->usergroupRepository = $usergroupRepository;
     }
 
-    
+    public function getUserGroupList(){
+        $message = __("Usergroup list get succesfully");
+        $code = config('constant.USERGROUP_LIST_ASSOC_ID_SUCCESS');
+        $data =  $this->usergroupRepository->getUserGroupList();
+        return $this->sendResponse($data, $message,$code);
+    }
+
     public function getallUsergroups(){
         
         $limit = config('constant.PAGINATION_LIMIT');

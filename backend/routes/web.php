@@ -80,6 +80,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->delete('role/delete/{id}', 'RoleController@deleteRoleById');
 
         // Matches "/api/usergroup
+        $router->get('usergrouplist','UsergroupController@getUserGroupList');
         $router->get('usergroups', 'UsergroupController@getallUsergroups');
         $router->post('usergroupAdd', 'UsergroupController@usergroupAdd');
         $router->get('usergroup/edit/{id}', 'UsergroupController@getUsergroupById');

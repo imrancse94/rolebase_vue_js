@@ -1,0 +1,1294 @@
+{
+	"id": "36578364-615f-e0fc-f8a4-669913b88299",
+	"name": "Rolebase Api",
+	"description": "",
+	"order": [],
+	"folders": [
+		{
+			"name": "Login",
+			"description": "",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"order": [
+				"f5e9d2d0-1a41-eead-0860-0edf45474cac"
+			],
+			"owner": 0,
+			"folders_order": [],
+			"id": "e49f08e7-f8b6-7df5-4bcb-7f2b9a0fb647"
+		},
+		{
+			"name": "Module",
+			"description": "",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"order": [
+				"998b35b8-c264-9805-31dc-4e3680f4413d",
+				"8b320b5f-6207-f830-0c26-82411b49ebfc",
+				"85fccc64-4062-97d2-5331-e6e655704871",
+				"8605319f-2600-65b3-f376-7a87f9ef9620",
+				"e4cc95fb-79ac-8456-9016-8f50cf34a854"
+			],
+			"owner": 0,
+			"folders_order": [],
+			"id": "c6caa8c3-bf7a-18ca-b6ff-2e8c3cacbdfe"
+		},
+		{
+			"name": "Page",
+			"description": "",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"order": [
+				"63051bb3-08ae-0826-f321-b61f1da4ed31",
+				"c354ad4d-94e6-aed9-bb90-229c70574d93",
+				"7dddf547-0362-cd40-8add-3ae01bc92f0e",
+				"37ea95c9-7247-3055-986c-629c6b81dfeb",
+				"0d64199d-ce20-cbf9-8f76-d4b70fcfda5e"
+			],
+			"owner": 0,
+			"folders_order": [],
+			"id": "52295c1a-7ecd-268f-705c-b59a509b3750"
+		},
+		{
+			"name": "Role",
+			"description": "",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"order": [
+				"0f9c22f9-b4d3-d25f-14ac-c4b6d3ec4bf4",
+				"3f94793c-627b-a8f0-9faa-b5007d545e78",
+				"b7940749-b6ea-ec7b-b3b1-141def6c25b9",
+				"d7c3742d-37cd-aa80-9b89-7680b013b94d",
+				"9222bf49-adef-d696-ab2f-4b72f77edcd3"
+			],
+			"owner": 0,
+			"folders_order": [],
+			"id": "3740b95a-6a4e-4fc1-5ad6-936b91c46fab"
+		},
+		{
+			"name": "Submodule",
+			"description": "",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"order": [
+				"7100690f-3440-0fcb-20ae-8ce6d6165563",
+				"bc4a8b0c-933a-4e88-330d-03fe55f767ea",
+				"cbf6de61-3668-f6b4-628f-392331e91d1a",
+				"80514434-c1dc-6ece-cea8-67c3ca7d161c"
+			],
+			"owner": 0,
+			"folders_order": [],
+			"id": "fb51654b-6a90-701a-51c7-c948d92d74ee"
+		},
+		{
+			"name": "User",
+			"description": "",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"order": [
+				"153660df-c61f-319e-2718-bf9995ba22d3",
+				"8b3c89fa-beea-206b-23b6-19cc7405b524",
+				"8aacc81b-fbf7-4479-0cbb-ace9a124ec29",
+				"6e825e04-e07d-98be-5ab0-e82c41955f56",
+				"a33e12a7-d445-b510-2c72-2011f5ed7e4e"
+			],
+			"owner": 0,
+			"folders_order": [],
+			"id": "8f2c7ce1-1a5b-d3eb-a33e-0792fcd502bc"
+		},
+		{
+			"name": "Usergroup",
+			"description": "",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"order": [
+				"4f40e2bf-ac69-7f38-6f13-600d9c83d01c",
+				"989372b8-4ef8-7c99-5e87-5b515dc62ba5",
+				"0550bfc2-c8c4-7a46-6a3e-1bbdd498b671",
+				"e6cd6ddd-d9fa-2a31-2588-d5790e4ef9f3",
+				"d1cca1f7-d231-2ee8-fd64-e58674616ed8",
+				"f2700e9d-16a1-bc74-f437-fb51c6e131e7"
+			],
+			"owner": 0,
+			"folders_order": [],
+			"id": "25ac1f10-a58f-69b6-a134-73ef696b702b"
+		},
+		{
+			"name": "Usergroup Role",
+			"description": "",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"order": [],
+			"owner": 0,
+			"folders_order": [],
+			"id": "59ed4ef4-3d93-c8a6-e4e1-f365dbf26b04"
+		}
+	],
+	"folders_order": [
+		"e49f08e7-f8b6-7df5-4bcb-7f2b9a0fb647",
+		"c6caa8c3-bf7a-18ca-b6ff-2e8c3cacbdfe",
+		"fb51654b-6a90-701a-51c7-c948d92d74ee",
+		"52295c1a-7ecd-268f-705c-b59a509b3750",
+		"3740b95a-6a4e-4fc1-5ad6-936b91c46fab",
+		"8f2c7ce1-1a5b-d3eb-a33e-0792fcd502bc",
+		"25ac1f10-a58f-69b6-a134-73ef696b702b",
+		"59ed4ef4-3d93-c8a6-e4e1-f365dbf26b04"
+	],
+	"timestamp": 1601182085588,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "0550bfc2-c8c4-7a46-6a3e-1bbdd498b671",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjExNzU5NTA0LCJleHAiOjE2MTE3NjMxMDQsIm5iZiI6MTYxMTc1OTUwNCwianRpIjoidEdEa0dWVjExWEp6Y3JCRyIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.nejHGME1JZ3eGB5H9ECnZBun4YG1KeEcDH6EQR-vSg0\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjExNzU5NTA0LCJleHAiOjE2MTE3NjMxMDQsIm5iZiI6MTYxMTc1OTUwNCwianRpIjoidEdEa0dWVjExWEp6Y3JCRyIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.nejHGME1JZ3eGB5H9ECnZBun4YG1KeEcDH6EQR-vSg0",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/portfolio/backend/public/api/usergroup/edit/3",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"data": [],
+			"dataMode": "raw",
+			"name": "User Group By Id",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1611761478602,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "25ac1f10-a58f-69b6-a134-73ef696b702b",
+			"rawModeData": "{\n        \"name\": \"Test User group\",\n        \"company_id\": \"1\"\n    }"
+		},
+		{
+			"id": "0d64199d-ce20-cbf9-8f76-d4b70fcfda5e",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjExNzMzMTYzLCJleHAiOjE2MTE3MzY3NjMsIm5iZiI6MTYxMTczMzE2MywianRpIjoiZElkTHg4ZENFdWNIdE5DdSIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.Rd1a395JLz9BNEuE0wL_pHGfg_hsJljwqvLSbh7c7Vc\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjExNzMzMTYzLCJleHAiOjE2MTE3MzY3NjMsIm5iZiI6MTYxMTczMzE2MywianRpIjoiZElkTHg4ZENFdWNIdE5DdSIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.Rd1a395JLz9BNEuE0wL_pHGfg_hsJljwqvLSbh7c7Vc",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/portfolio/backend/public/api/page/delete/5978",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "DELETE",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Page Delete By Id",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1611735422041,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"isFromCollection": true,
+			"collectionRequestId": "8794f1a8-e02b-3a98-e6ce-9ec9dcc3cbb7",
+			"folder": "52295c1a-7ecd-268f-705c-b59a509b3750",
+			"rawModeData": ""
+		},
+		{
+			"id": "0f9c22f9-b4d3-d25f-14ac-c4b6d3ec4bf4",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjExNzU5NTA0LCJleHAiOjE2MTE3NjMxMDQsIm5iZiI6MTYxMTc1OTUwNCwianRpIjoidEdEa0dWVjExWEp6Y3JCRyIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.nejHGME1JZ3eGB5H9ECnZBun4YG1KeEcDH6EQR-vSg0\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjExNzU5NTA0LCJleHAiOjE2MTE3NjMxMDQsIm5iZiI6MTYxMTc1OTUwNCwianRpIjoidEdEa0dWVjExWEp6Y3JCRyIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.nejHGME1JZ3eGB5H9ECnZBun4YG1KeEcDH6EQR-vSg0",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/portfolio/backend/public/api/role/edit/1",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Role By Id",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1611759623558,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "3740b95a-6a4e-4fc1-5ad6-936b91c46fab",
+			"rawModeData": ""
+		},
+		{
+			"id": "153660df-c61f-319e-2718-bf9995ba22d3",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL3VzZXJcL2VkaXRcLzEiLCJpYXQiOjE2MTE3MzMxNjMsImV4cCI6MTYxMTc0MTUyNSwibmJmIjoxNjExNzM3OTI1LCJqdGkiOiJDZ2kwOEVQZWFPZmJEdTdEIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.Kq2WRuT2yLc5smt_h6pKaejP89ZrFFuxgNGEidJYlSU\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL3VzZXJcL2VkaXRcLzEiLCJpYXQiOjE2MTE3MzMxNjMsImV4cCI6MTYxMTc0MTUyNSwibmJmIjoxNjExNzM3OTI1LCJqdGkiOiJDZ2kwOEVQZWFPZmJEdTdEIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.Kq2WRuT2yLc5smt_h6pKaejP89ZrFFuxgNGEidJYlSU",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/portfolio/backend/public/api/user/edit/1",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"data": [],
+			"dataMode": "raw",
+			"name": "User By Id",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1611737969260,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"isFromCollection": true,
+			"collectionRequestId": "72f960fc-31bc-75b1-dda2-401699997d35",
+			"folder": "8f2c7ce1-1a5b-d3eb-a33e-0792fcd502bc",
+			"rawModeData": ""
+		},
+		{
+			"id": "37ea95c9-7247-3055-986c-629c6b81dfeb",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjExNzMzMTYzLCJleHAiOjE2MTE3MzY3NjMsIm5iZiI6MTYxMTczMzE2MywianRpIjoiZElkTHg4ZENFdWNIdE5DdSIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.Rd1a395JLz9BNEuE0wL_pHGfg_hsJljwqvLSbh7c7Vc\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjExNzMzMTYzLCJleHAiOjE2MTE3MzY3NjMsIm5iZiI6MTYxMTczMzE2MywianRpIjoiZElkTHg4ZENFdWNIdE5DdSIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.Rd1a395JLz9BNEuE0wL_pHGfg_hsJljwqvLSbh7c7Vc",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/portfolio/backend/public/api/page/edit/5978",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "PUT",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Page Edit By Id",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1611735358863,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "52295c1a-7ecd-268f-705c-b59a509b3750",
+			"rawModeData": "{\n        \"id\": \"5978\",\n        \"module_id\": \"1001\",\n        \"submodule_id\": \"2001\",\n        \"name\": \"Test\",\n        \"route_name\": \"test route\",\n        \"is_default_method\":1\n    }"
+		},
+		{
+			"id": "3f94793c-627b-a8f0-9faa-b5007d545e78",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjExNzU5NTA0LCJleHAiOjE2MTE3NjMxMDQsIm5iZiI6MTYxMTc1OTUwNCwianRpIjoidEdEa0dWVjExWEp6Y3JCRyIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.nejHGME1JZ3eGB5H9ECnZBun4YG1KeEcDH6EQR-vSg0\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjExNzU5NTA0LCJleHAiOjE2MTE3NjMxMDQsIm5iZiI6MTYxMTc1OTUwNCwianRpIjoidEdEa0dWVjExWEp6Y3JCRyIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.nejHGME1JZ3eGB5H9ECnZBun4YG1KeEcDH6EQR-vSg0",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/portfolio/backend/public/api/roleAdd",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Role Add",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1611759777903,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "3740b95a-6a4e-4fc1-5ad6-936b91c46fab",
+			"rawModeData": "{\n        \"title\": \"Test Role\",\n        \"company_id\": \"1\"\n    }"
+		},
+		{
+			"id": "4f40e2bf-ac69-7f38-6f13-600d9c83d01c",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjExNzU5NTA0LCJleHAiOjE2MTE3NjMxMDQsIm5iZiI6MTYxMTc1OTUwNCwianRpIjoidEdEa0dWVjExWEp6Y3JCRyIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.nejHGME1JZ3eGB5H9ECnZBun4YG1KeEcDH6EQR-vSg0\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjExNzU5NTA0LCJleHAiOjE2MTE3NjMxMDQsIm5iZiI6MTYxMTc1OTUwNCwianRpIjoidEdEa0dWVjExWEp6Y3JCRyIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.nejHGME1JZ3eGB5H9ECnZBun4YG1KeEcDH6EQR-vSg0",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/portfolio/backend/public/api/usergroups",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"data": [],
+			"dataMode": "raw",
+			"name": "User Group List",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1611761348961,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "25ac1f10-a58f-69b6-a134-73ef696b702b",
+			"rawModeData": "{\n        \"title\": \"Test Role1\",\n        \"company_id\": \"1\"\n    }"
+		},
+		{
+			"id": "63051bb3-08ae-0826-f321-b61f1da4ed31",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjExNzMzMTYzLCJleHAiOjE2MTE3MzY3NjMsIm5iZiI6MTYxMTczMzE2MywianRpIjoiZElkTHg4ZENFdWNIdE5DdSIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.Rd1a395JLz9BNEuE0wL_pHGfg_hsJljwqvLSbh7c7Vc\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjExNzMzMTYzLCJleHAiOjE2MTE3MzY3NjMsIm5iZiI6MTYxMTczMzE2MywianRpIjoiZElkTHg4ZENFdWNIdE5DdSIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.Rd1a395JLz9BNEuE0wL_pHGfg_hsJljwqvLSbh7c7Vc",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/portfolio/backend/public/api/pageAdd",
+			"folder": "52295c1a-7ecd-268f-705c-b59a509b3750",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1611735194532,
+			"name": "Page Add",
+			"description": "",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"responses": [],
+			"isFromCollection": true,
+			"collectionRequestId": "c8732018-af00-4184-79db-8e0b5ed88aa6",
+			"rawModeData": "{\n        \"id\": \"5978\",\n        \"module_id\": \"1001\",\n        \"submodule_id\": \"2001\",\n        \"name\": \"Test\",\n        \"route_name\": \"test route\",\n        \"is_default_method\":1\n    }"
+		},
+		{
+			"id": "6e825e04-e07d-98be-5ab0-e82c41955f56",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL3VzZXJBZGQiLCJpYXQiOjE2MTE3MzMxNjMsImV4cCI6MTYxMTc2MDc3NywibmJmIjoxNjExNzU3MTc3LCJqdGkiOiJBWWl1N1o5ZG9zQ3pES0tvIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.ZXnLgMudbdf6Pr7cFqWwSPsUCw-cTLWwgPtNP1N9TL4\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL3VzZXJBZGQiLCJpYXQiOjE2MTE3MzMxNjMsImV4cCI6MTYxMTc2MDc3NywibmJmIjoxNjExNzU3MTc3LCJqdGkiOiJBWWl1N1o5ZG9zQ3pES0tvIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.ZXnLgMudbdf6Pr7cFqWwSPsUCw-cTLWwgPtNP1N9TL4",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/portfolio/backend/public/api/user/edit/3",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "PUT",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"data": [],
+			"dataMode": "raw",
+			"name": "User Edit By Id",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1611757365363,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "8f2c7ce1-1a5b-d3eb-a33e-0792fcd502bc",
+			"rawModeData": "{\n        \"name\": \"Test1\",\n        \"email\": \"test@email.com1\",\n        \"password\": \"123456\",\n        \"company_id\": \"1\"\n    }"
+		},
+		{
+			"id": "7100690f-3440-0fcb-20ae-8ce6d6165563",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjAxMTgyMzM0LCJleHAiOjE2MDExODU5MzQsIm5iZiI6MTYwMTE4MjMzNCwianRpIjoiQXFzcU9XUGM1U2xPbE01VyIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.aH_UxQk5LrX0FKO7S4oFt2pYjz-3NLgSybMoMYJE6Mc\n//Accept: application/json\n//Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjAxMTgyMzM0LCJleHAiOjE2MDExODU5MzQsIm5iZiI6MTYwMTE4MjMzNCwianRpIjoiQXFzcU9XUGM1U2xPbE01VyIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.aH_UxQk5LrX0FKO7S4oFt2pYjz-3NLgSybMoMYJE6Mc",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": false
+				}
+			],
+			"url": "http://localhost/portfolio/backend/public/api/submodules",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"data": null,
+			"dataMode": "params",
+			"name": "SubModule List",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1601182900128,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "fb51654b-6a90-701a-51c7-c948d92d74ee"
+		},
+		{
+			"id": "7dddf547-0362-cd40-8add-3ae01bc92f0e",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjExNzMzMTYzLCJleHAiOjE2MTE3MzY3NjMsIm5iZiI6MTYxMTczMzE2MywianRpIjoiZElkTHg4ZENFdWNIdE5DdSIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.Rd1a395JLz9BNEuE0wL_pHGfg_hsJljwqvLSbh7c7Vc\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjExNzMzMTYzLCJleHAiOjE2MTE3MzY3NjMsIm5iZiI6MTYxMTczMzE2MywianRpIjoiZElkTHg4ZENFdWNIdE5DdSIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.Rd1a395JLz9BNEuE0wL_pHGfg_hsJljwqvLSbh7c7Vc",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/portfolio/backend/public/api/page/edit/5978",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Page By Id",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1611735268653,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"isFromCollection": true,
+			"collectionRequestId": "868152f4-bfac-7d40-f318-90cc900a6560",
+			"folder": "52295c1a-7ecd-268f-705c-b59a509b3750",
+			"rawModeData": "{\n        \"id\": \"5978\",\n        \"module_id\": \"1001\",\n        \"submodule_id\": \"2001\",\n        \"name\": \"Test\",\n        \"route_name\": \"test route\",\n        \"is_default_method\":1\n    }"
+		},
+		{
+			"id": "80514434-c1dc-6ece-cea8-67c3ca7d161c",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjAxMTgyMzM0LCJleHAiOjE2MDExODU5MzQsIm5iZiI6MTYwMTE4MjMzNCwianRpIjoiQXFzcU9XUGM1U2xPbE01VyIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.aH_UxQk5LrX0FKO7S4oFt2pYjz-3NLgSybMoMYJE6Mc\nAccept: application/json\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjAxMTgyMzM0LCJleHAiOjE2MDExODU5MzQsIm5iZiI6MTYwMTE4MjMzNCwianRpIjoiQXFzcU9XUGM1U2xPbE01VyIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.aH_UxQk5LrX0FKO7S4oFt2pYjz-3NLgSybMoMYJE6Mc",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/portfolio/backend/public/api/submodule/edit/1006",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "PUT",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"data": [],
+			"dataMode": "raw",
+			"name": "SubModule Edit By Id",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1601183420971,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "fb51654b-6a90-701a-51c7-c948d92d74ee",
+			"rawModeData": "{\n\t\"id\":1006,\n\t\"name\":\"Testq\",\n\t\"icon\":\"fa fa-list-ul\",\n\t\"sequence\":\"7\"\n\n}"
+		},
+		{
+			"id": "85fccc64-4062-97d2-5331-e6e655704871",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL21vZHVsZXMiLCJpYXQiOjE2MDA4ODMxODQsImV4cCI6MTYwMTE0NDYzMSwibmJmIjoxNjAxMTQxMDMxLCJqdGkiOiJFUzdWOHhCWngxZ3NValA5Iiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.60geH2WCo6I6TXiDE3CHIUMyaW7ODVLPeo5Boy889qE\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL21vZHVsZXMiLCJpYXQiOjE2MDA4ODMxODQsImV4cCI6MTYwMTE0NDYzMSwibmJmIjoxNjAxMTQxMDMxLCJqdGkiOiJFUzdWOHhCWngxZ3NValA5Iiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.60geH2WCo6I6TXiDE3CHIUMyaW7ODVLPeo5Boy889qE",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/portfolio/backend/public/api/module/edit/1001",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"data": null,
+			"dataMode": "params",
+			"name": "Module By Id",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1601182228210,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "c6caa8c3-bf7a-18ca-b6ff-2e8c3cacbdfe"
+		},
+		{
+			"id": "8605319f-2600-65b3-f376-7a87f9ef9620",
+			"headers": "Authorization: bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL21vZHVsZVwvZWRpdFwvMTAwNiIsImlhdCI6MTYwMTAwNjM4NSwiZXhwIjoxNjAxMTQ1NDYwLCJuYmYiOjE2MDExNDE4NjAsImp0aSI6InZZZ0tyZkRBN1hWV3JYVnUiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.RGInTAbgJZ5gRW4cbhypgZugm2lsGRGFwM1mj94HhLI\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL21vZHVsZVwvZWRpdFwvMTAwNiIsImlhdCI6MTYwMTAwNjM4NSwiZXhwIjoxNjAxMTQ1NDYwLCJuYmYiOjE2MDExNDE4NjAsImp0aSI6InZZZ0tyZkRBN1hWV3JYVnUiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.RGInTAbgJZ5gRW4cbhypgZugm2lsGRGFwM1mj94HhLI",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/portfolio/backend/public/api/module/delete/1006",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "DELETE",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"data": null,
+			"dataMode": "params",
+			"name": "Delete Module By Id",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1601182249955,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "c6caa8c3-bf7a-18ca-b6ff-2e8c3cacbdfe"
+		},
+		{
+			"id": "8aacc81b-fbf7-4479-0cbb-ace9a124ec29",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL3VzZXJBZGQiLCJpYXQiOjE2MTE3MzMxNjMsImV4cCI6MTYxMTc2MDc3NywibmJmIjoxNjExNzU3MTc3LCJqdGkiOiJBWWl1N1o5ZG9zQ3pES0tvIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.ZXnLgMudbdf6Pr7cFqWwSPsUCw-cTLWwgPtNP1N9TL4\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL3VzZXJBZGQiLCJpYXQiOjE2MTE3MzMxNjMsImV4cCI6MTYxMTc2MDc3NywibmJmIjoxNjExNzU3MTc3LCJqdGkiOiJBWWl1N1o5ZG9zQ3pES0tvIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.ZXnLgMudbdf6Pr7cFqWwSPsUCw-cTLWwgPtNP1N9TL4",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/portfolio/backend/public/api/userAdd",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"data": [],
+			"dataMode": "raw",
+			"name": "User Add",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1611757212443,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "8f2c7ce1-1a5b-d3eb-a33e-0792fcd502bc",
+			"rawModeData": "{\n        \"name\": \"Test\",\n        \"email\": \"test@email.com\",\n        \"password\": \"123456\",\n        \"company_id\": \"1\"\n    }"
+		},
+		{
+			"id": "8b320b5f-6207-f830-0c26-82411b49ebfc",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjAxMTgyMzM0LCJleHAiOjE2MDExODU5MzQsIm5iZiI6MTYwMTE4MjMzNCwianRpIjoiQXFzcU9XUGM1U2xPbE01VyIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.aH_UxQk5LrX0FKO7S4oFt2pYjz-3NLgSybMoMYJE6Mc\n//Accept: application/json\n//Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjAxMTgyMzM0LCJleHAiOjE2MDExODU5MzQsIm5iZiI6MTYwMTE4MjMzNCwianRpIjoiQXFzcU9XUGM1U2xPbE01VyIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.aH_UxQk5LrX0FKO7S4oFt2pYjz-3NLgSybMoMYJE6Mc",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": false
+				}
+			],
+			"url": "http://localhost/portfolio/backend/public/api/submodules",
+			"folder": "c6caa8c3-bf7a-18ca-b6ff-2e8c3cacbdfe",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1601182811825,
+			"name": "Module List",
+			"description": "",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"responses": []
+		},
+		{
+			"id": "8b3c89fa-beea-206b-23b6-19cc7405b524",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL3VzZXJcL2VkaXRcLzEiLCJpYXQiOjE2MTE3MzMxNjMsImV4cCI6MTYxMTc1NzE3MCwibmJmIjoxNjExNzUzNTcwLCJqdGkiOiJER0ROdUhGbDl2TDZwOU5BIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.8UuF-8YeePO-4_0FBjDNTAjgR3MkwsYdQtJ6WStKHjQ\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL3VzZXJcL2VkaXRcLzEiLCJpYXQiOjE2MTE3MzMxNjMsImV4cCI6MTYxMTc1NzE3MCwibmJmIjoxNjExNzUzNTcwLCJqdGkiOiJER0ROdUhGbDl2TDZwOU5BIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.8UuF-8YeePO-4_0FBjDNTAjgR3MkwsYdQtJ6WStKHjQ",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/portfolio/backend/public/api/users",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"data": [],
+			"dataMode": "raw",
+			"name": "User List",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1611756975317,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "8f2c7ce1-1a5b-d3eb-a33e-0792fcd502bc",
+			"rawModeData": ""
+		},
+		{
+			"id": "9222bf49-adef-d696-ab2f-4b72f77edcd3",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjExNzU5NTA0LCJleHAiOjE2MTE3NjMxMDQsIm5iZiI6MTYxMTc1OTUwNCwianRpIjoidEdEa0dWVjExWEp6Y3JCRyIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.nejHGME1JZ3eGB5H9ECnZBun4YG1KeEcDH6EQR-vSg0\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjExNzU5NTA0LCJleHAiOjE2MTE3NjMxMDQsIm5iZiI6MTYxMTc1OTUwNCwianRpIjoidEdEa0dWVjExWEp6Y3JCRyIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.nejHGME1JZ3eGB5H9ECnZBun4YG1KeEcDH6EQR-vSg0",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/portfolio/backend/public/api/role/delete/3",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "DELETE",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Role Delete By Id",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1611760046646,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "3740b95a-6a4e-4fc1-5ad6-936b91c46fab",
+			"rawModeData": "{\n        \"title\": \"Test Role1\",\n        \"company_id\": \"1\"\n    }"
+		},
+		{
+			"id": "989372b8-4ef8-7c99-5e87-5b515dc62ba5",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjExNzU5NTA0LCJleHAiOjE2MTE3NjMxMDQsIm5iZiI6MTYxMTc1OTUwNCwianRpIjoidEdEa0dWVjExWEp6Y3JCRyIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.nejHGME1JZ3eGB5H9ECnZBun4YG1KeEcDH6EQR-vSg0\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjExNzU5NTA0LCJleHAiOjE2MTE3NjMxMDQsIm5iZiI6MTYxMTc1OTUwNCwianRpIjoidEdEa0dWVjExWEp6Y3JCRyIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.nejHGME1JZ3eGB5H9ECnZBun4YG1KeEcDH6EQR-vSg0",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/portfolio/backend/public/api/usergroupAdd",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"data": [],
+			"dataMode": "raw",
+			"name": "User Group Add",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1611761442457,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "25ac1f10-a58f-69b6-a134-73ef696b702b",
+			"rawModeData": "{\n        \"name\": \"Test User group\",\n        \"company_id\": \"1\"\n    }"
+		},
+		{
+			"id": "998b35b8-c264-9805-31dc-4e3680f4413d",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL21vZHVsZUFkZCIsImlhdCI6MTYwMDkyMTA1NCwiZXhwIjoxNjAwOTI0ODA3LCJuYmYiOjE2MDA5MjEyMDcsImp0aSI6IkpSZ24zY2lYS2hIWmNCSFYiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.pvaBIw4BY71itFbQVPGOiv1ZiBw0bHWqpFgEEYQ7zgI\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL21vZHVsZUFkZCIsImlhdCI6MTYwMDkyMTA1NCwiZXhwIjoxNjAwOTI0ODA3LCJuYmYiOjE2MDA5MjEyMDcsImp0aSI6IkpSZ24zY2lYS2hIWmNCSFYiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.pvaBIw4BY71itFbQVPGOiv1ZiBw0bHWqpFgEEYQ7zgI",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/portfolio/backend/public/api/submoduleAdd",
+			"folder": "c6caa8c3-bf7a-18ca-b6ff-2e8c3cacbdfe",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1601182313667,
+			"name": "Module Add",
+			"description": "",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"responses": [],
+			"rawModeData": "{\n\"id\":1005,\n\"name\":\"Test Module\",\n\"icon\":\"fa fa-list-ul\",\n\"sequence\":1\n}"
+		},
+		{
+			"id": "a33e12a7-d445-b510-2c72-2011f5ed7e4e",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL3VzZXJBZGQiLCJpYXQiOjE2MTE3MzMxNjMsImV4cCI6MTYxMTc2MDc3NywibmJmIjoxNjExNzU3MTc3LCJqdGkiOiJBWWl1N1o5ZG9zQ3pES0tvIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.ZXnLgMudbdf6Pr7cFqWwSPsUCw-cTLWwgPtNP1N9TL4\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL3VzZXJBZGQiLCJpYXQiOjE2MTE3MzMxNjMsImV4cCI6MTYxMTc2MDc3NywibmJmIjoxNjExNzU3MTc3LCJqdGkiOiJBWWl1N1o5ZG9zQ3pES0tvIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.ZXnLgMudbdf6Pr7cFqWwSPsUCw-cTLWwgPtNP1N9TL4",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/portfolio/backend/public/api/user/delete/3",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "DELETE",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"data": [],
+			"dataMode": "raw",
+			"name": "User Delete By Id",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1611757431910,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "8f2c7ce1-1a5b-d3eb-a33e-0792fcd502bc",
+			"rawModeData": "{\n        \"name\": \"Test1\",\n        \"email\": \"test@email.com1\",\n        \"password\": \"123456\",\n        \"company_id\": \"1\"\n    }"
+		},
+		{
+			"id": "b7940749-b6ea-ec7b-b3b1-141def6c25b9",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjExNzU5NTA0LCJleHAiOjE2MTE3NjMxMDQsIm5iZiI6MTYxMTc1OTUwNCwianRpIjoidEdEa0dWVjExWEp6Y3JCRyIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.nejHGME1JZ3eGB5H9ECnZBun4YG1KeEcDH6EQR-vSg0\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjExNzU5NTA0LCJleHAiOjE2MTE3NjMxMDQsIm5iZiI6MTYxMTc1OTUwNCwianRpIjoidEdEa0dWVjExWEp6Y3JCRyIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.nejHGME1JZ3eGB5H9ECnZBun4YG1KeEcDH6EQR-vSg0",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/portfolio/backend/public/api/roles",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Role List",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1611759857283,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "3740b95a-6a4e-4fc1-5ad6-936b91c46fab",
+			"rawModeData": "{\n        \"title\": \"Test Role\",\n        \"company_id\": \"1\"\n    }"
+		},
+		{
+			"id": "bc4a8b0c-933a-4e88-330d-03fe55f767ea",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost/portfolio/backend/public/api/submodule/edit/1001",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"data": null,
+			"dataMode": "params",
+			"name": "SubModule By Id",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1601182937450,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "fb51654b-6a90-701a-51c7-c948d92d74ee"
+		},
+		{
+			"id": "c354ad4d-94e6-aed9-bb90-229c70574d93",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjExNzMzMTYzLCJleHAiOjE2MTE3MzY3NjMsIm5iZiI6MTYxMTczMzE2MywianRpIjoiZElkTHg4ZENFdWNIdE5DdSIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.Rd1a395JLz9BNEuE0wL_pHGfg_hsJljwqvLSbh7c7Vc\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjExNzMzMTYzLCJleHAiOjE2MTE3MzY3NjMsIm5iZiI6MTYxMTczMzE2MywianRpIjoiZElkTHg4ZENFdWNIdE5DdSIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.Rd1a395JLz9BNEuE0wL_pHGfg_hsJljwqvLSbh7c7Vc",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/portfolio/backend/public/api/pages",
+			"folder": "52295c1a-7ecd-268f-705c-b59a509b3750",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1611734799964,
+			"name": "Page List",
+			"description": "",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"responses": [],
+			"isFromCollection": true,
+			"collectionRequestId": "ad4f189a-f992-7f3d-3be4-41df50023ef1",
+			"rawModeData": "{\n        \"id\": \"5978\",\n        \"module_id\": \"1001\",\n        \"submodule_id\": \"2001\",\n        \"name\": \"Test\",\n        \"route_name\": \"test route\",\n        \"is_default_method\":1\n    }"
+		},
+		{
+			"id": "cbf6de61-3668-f6b4-628f-392331e91d1a",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost/portfolio/backend/public/api/submodule/delete/1006",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "DELETE",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"data": null,
+			"dataMode": "params",
+			"name": "SubModule Delete By Id",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1601182985977,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "fb51654b-6a90-701a-51c7-c948d92d74ee"
+		},
+		{
+			"id": "d1cca1f7-d231-2ee8-fd64-e58674616ed8",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjExNzU5NTA0LCJleHAiOjE2MTE3NjMxMDQsIm5iZiI6MTYxMTc1OTUwNCwianRpIjoidEdEa0dWVjExWEp6Y3JCRyIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.nejHGME1JZ3eGB5H9ECnZBun4YG1KeEcDH6EQR-vSg0\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjExNzU5NTA0LCJleHAiOjE2MTE3NjMxMDQsIm5iZiI6MTYxMTc1OTUwNCwianRpIjoidEdEa0dWVjExWEp6Y3JCRyIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.nejHGME1JZ3eGB5H9ECnZBun4YG1KeEcDH6EQR-vSg0",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/portfolio/backend/public/api/usergroup/delete/3",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "DELETE",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"data": [],
+			"dataMode": "raw",
+			"name": "User Group Delete By Id",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1611761587770,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "25ac1f10-a58f-69b6-a134-73ef696b702b",
+			"rawModeData": "{\n        \"name\": \"Test User group1\",\n        \"company_id\": \"1\"\n    }"
+		},
+		{
+			"id": "d7c3742d-37cd-aa80-9b89-7680b013b94d",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjExNzU5NTA0LCJleHAiOjE2MTE3NjMxMDQsIm5iZiI6MTYxMTc1OTUwNCwianRpIjoidEdEa0dWVjExWEp6Y3JCRyIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.nejHGME1JZ3eGB5H9ECnZBun4YG1KeEcDH6EQR-vSg0\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjExNzU5NTA0LCJleHAiOjE2MTE3NjMxMDQsIm5iZiI6MTYxMTc1OTUwNCwianRpIjoidEdEa0dWVjExWEp6Y3JCRyIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.nejHGME1JZ3eGB5H9ECnZBun4YG1KeEcDH6EQR-vSg0",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/portfolio/backend/public/api/role/edit/3",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "PUT",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Role Edit By Id",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1611759952208,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "3740b95a-6a4e-4fc1-5ad6-936b91c46fab",
+			"rawModeData": "{\n        \"title\": \"Test Role1\",\n        \"company_id\": \"1\"\n    }"
+		},
+		{
+			"id": "e4cc95fb-79ac-8456-9016-8f50cf34a854",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjAxMTgyMzM0LCJleHAiOjE2MDExODU5MzQsIm5iZiI6MTYwMTE4MjMzNCwianRpIjoiQXFzcU9XUGM1U2xPbE01VyIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.aH_UxQk5LrX0FKO7S4oFt2pYjz-3NLgSybMoMYJE6Mc\nAccept: application/json\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjAxMTgyMzM0LCJleHAiOjE2MDExODU5MzQsIm5iZiI6MTYwMTE4MjMzNCwianRpIjoiQXFzcU9XUGM1U2xPbE01VyIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.aH_UxQk5LrX0FKO7S4oFt2pYjz-3NLgSybMoMYJE6Mc",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/portfolio/backend/public/api/module/edit/1006",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "PUT",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Module Edit By Id",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1601183339317,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "c6caa8c3-bf7a-18ca-b6ff-2e8c3cacbdfe",
+			"rawModeData": "{\n\t\"id\":1006,\n\t\"name\":\"Testq\",\n\t\"icon\":\"fa fa-list-ul\",\n\t\"sequence\":\"7\"\n\n}"
+		},
+		{
+			"id": "e6cd6ddd-d9fa-2a31-2588-d5790e4ef9f3",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjExNzU5NTA0LCJleHAiOjE2MTE3NjMxMDQsIm5iZiI6MTYxMTc1OTUwNCwianRpIjoidEdEa0dWVjExWEp6Y3JCRyIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.nejHGME1JZ3eGB5H9ECnZBun4YG1KeEcDH6EQR-vSg0\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjExNzU5NTA0LCJleHAiOjE2MTE3NjMxMDQsIm5iZiI6MTYxMTc1OTUwNCwianRpIjoidEdEa0dWVjExWEp6Y3JCRyIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.nejHGME1JZ3eGB5H9ECnZBun4YG1KeEcDH6EQR-vSg0",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/portfolio/backend/public/api/usergroup/edit/3",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "PUT",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"data": [],
+			"dataMode": "raw",
+			"name": "User Group Edit By Id",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1611761532659,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "25ac1f10-a58f-69b6-a134-73ef696b702b",
+			"rawModeData": "{\n        \"name\": \"Test User group1\",\n        \"company_id\": \"1\"\n    }"
+		},
+		{
+			"id": "f2700e9d-16a1-bc74-f437-fb51c6e131e7",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjEyMDg0MTE5LCJleHAiOjE2MTIwODc3MTksIm5iZiI6MTYxMjA4NDExOSwianRpIjoiVUtNV1RRbmsyRHBmVnp3YyIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.49feK8pGr5Uzj-mMjMRD1_gm4aJfpvCShGQB8LwhoAA\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjEyMDg0MTE5LCJleHAiOjE2MTIwODc3MTksIm5iZiI6MTYxMjA4NDExOSwianRpIjoiVUtNV1RRbmsyRHBmVnp3YyIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.49feK8pGr5Uzj-mMjMRD1_gm4aJfpvCShGQB8LwhoAA",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/portfolio/backend/public/api/usergrouplist",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"data": [],
+			"dataMode": "raw",
+			"name": "User Group LIST ASSOC ID",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1612086849330,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "25ac1f10-a58f-69b6-a134-73ef696b702b",
+			"rawModeData": "{\n        \"name\": \"Test User group4\",\n        \"company_id\": \"1\"\n    }"
+		},
+		{
+			"id": "f5e9d2d0-1a41-eead-0860-0edf45474cac",
+			"headers": "Content-Type: application/json\nAccept: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/portfolio/backend/public/api/login",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"data": [],
+			"dataMode": "raw",
+			"name": "User Login",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1601182192186,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "e49f08e7-f8b6-7df5-4bcb-7f2b9a0fb647",
+			"rawModeData": "{\n\t\"email\":\"ssadmin@admin.com\",\n\t\"password\":\"123456\"\n}"
+		}
+	]
+}
