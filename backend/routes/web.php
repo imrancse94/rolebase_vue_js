@@ -18,10 +18,10 @@
 
 
 $router->group(['prefix' => 'api'], function () use ($router) {
-    
+
     // Matches "/api/login
     $router->post('login', 'AuthController@login');
-    
+
     $router->group(['middleware'=>['jwt']], function () use ($router) {
 
         // Matches "/api/register
@@ -39,7 +39,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         // Matches "/api/register
         $router->post('logout', 'AuthController@logout');
 
-        
+
         // Matches "/api/modules
         $router->get('moduleList', 'ModuleController@getAllModulList');
         $router->get('modules', 'ModuleController@getModules');
@@ -89,6 +89,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
         // Matches "/api/usergroupRole
         $router->get('usergrouprole', 'UsergroupRoleController@index');
+        $router->post('assignusergrouprole','UsergroupRoleController@assignUserGroupRole');
 
 
 

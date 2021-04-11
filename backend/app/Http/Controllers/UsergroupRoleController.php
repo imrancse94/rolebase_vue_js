@@ -3,62 +3,88 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\UsergroupRole\UsergroupRoleRepositoryInterface;
-use App\Repositories\Usergroup\UsergroupRepositoryInterface;
-use App\Repositories\Role\RoleRepositoryInterface;
-use App\Http\Requests\RoleRequest;
+//use App\Http\Requests\UserGroupRoleRequest;
 
 class UsergroupRoleController extends Controller
 {
 
     private $usergroupRepository;
-    private $roleRepository;
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(UsergroupRoleRepositoryInterface $usergroupRoleRepository
-                                ,RoleRepositoryInterface $roleRepository
-                                )
+    public function __construct(UsergroupRoleRepositoryInterface $usergroupRoleRepository)
     {
         $this->usergroupRoleRepository = $usergroupRoleRepository;
-        $this->roleRepository = $roleRepository;
     }
 
-    public function index(){
-       $roleList =  $this->roleRepository->getRoleList();
-       dd($roleList);
+    public function index(\App\Repositories\Role\RoleRepositoryInterface $roleRepository,
+                          \App\Repositories\Usergroup\UsergroupRepositoryInterface $usergroupRepository
+                          ){
+
+        $roleList =  $roleRepository->getRoleList();
+        $usergroupList = $usergroupRepository->getUserGroupList();
+
+        $message = __("UsergroupRole index get succesfully");
+        $code = config('constant.USER_GROUP_ROLE_LIST_SUCCESS');
+        $data['roleList'] = $roleList;
+        $data['usergroupList'] = $usergroupList;
+
+        return $this->sendResponse($data, $message,$code);
     }
 
 
-    public function getallRoles(){
-        
-        $limit = config('constant.PAGINATION_LIMIT');
 
-        if(request('limit')){
-            $limit = request('limit');
+    public function assignUserGroupRole(\App\Http\Requests\UserGroupRoleRequest $request){
+
+        $inputData = $request->all();
+        $usergroup_id = current($inputData['usergroup_ids']);
+        $role_ids = $inputData['role_ids'];
+
+        $insertData = [];
+
+        if(!empty($role_ids)){
+          foreach ($role_ids as $role_id) {
+            $insertData[] = [
+              'usergroup_id'=>$usergroup_id,
+              'role_id'=>$role_id,
+              'company_id'=>1
+            ];
+          }
         }
-        
-        $message = __("Role get succesfully");
-        $code = config('constant.ROLE_LIST_SUCCESS');
-        $data = $this->roleRepository->geAllroles($limit);
+        //dd($insertData);
+        $result = $this->usergroupRoleRepository->insertData($insertData);
+
+        $message = __("UsergroupRole assigned unsuccesfull");
+        $code = config('constant.USERGROUP_ROLE_ASSIGNED_FAILED');
+        $data = [];
+
+        if($result){
+          $message = __("UsergroupRole assigned succesfully");
+          $code = config('constant.USERGROUP_ROLE_ASSIGNED_SUCCESS');
+          $data = [];
+        }
+
+
+
         return $this->sendResponse($data, $message,$code);
     }
 
     public function roleAdd(RoleRequest $request){
-        
+
         $inputData = $request->all();
-        
+
         $result = $this->roleRepository->insertData($inputData);
 
         $code = config('constant.ROLE_INSERT_FAILED');
         $message = __("Insert Failed");
         $data = [];
-        if($result){
 
+        if($result){
             $message = __("Inserted succesfully");
             $code = config('constant.ROLE_INSERT_SUCCESS');
-
         }
 
         return $this->sendResponse($data, $message,$code);
@@ -70,7 +96,7 @@ class UsergroupRoleController extends Controller
         $cols = [];
 
         $data = $this->roleRepository->getRoleById($id, $cols);
-        
+
         $code = config('constant.ROLE_GET_BY_ID_FAILED');
         $message = __("Not Found");
 
@@ -92,7 +118,7 @@ class UsergroupRoleController extends Controller
         $result = $this->roleRepository->updateById($id,$inputData);
         $message = __("Role Updated Failed");
         $data = [];
-        
+
         if(!empty($result)){
             $message = __("Role Updated succesfully");
             $code = config('constant.ROLE_UPDATED_SUCCESS');

@@ -109,7 +109,10 @@
 			"name": "Usergroup Role",
 			"description": "",
 			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
-			"order": [],
+			"order": [
+				"6001b4d7-3ca7-2778-3f39-7b9bdf4a431c",
+				"ead10c05-0f10-6ee4-023c-1d7d299d03d5"
+			],
 			"owner": 0,
 			"folders_order": [],
 			"id": "59ed4ef4-3d93-c8a6-e4e1-f365dbf26b04"
@@ -397,6 +400,44 @@
 			"currentHelper": "normal",
 			"helperAttributes": {},
 			"folder": "25ac1f10-a58f-69b6-a134-73ef696b702b",
+			"rawModeData": "{\n        \"title\": \"Test Role1\",\n        \"company_id\": \"1\"\n    }"
+		},
+		{
+			"id": "6001b4d7-3ca7-2778-3f39-7b9bdf4a431c",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL3VzZXJncm91cHJvbGUiLCJpYXQiOjE2MTgxNTQxODEsImV4cCI6MTYxODE2MjI3OSwibmJmIjoxNjE4MTU4Njc5LCJqdGkiOiJaR1I4a0hWdnY3aXQ5c1R6Iiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.7zJFKk4tRj3zSTURXrgBO2i09E6oE4uPDWWkLQz2-Uc\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL3VzZXJncm91cHJvbGUiLCJpYXQiOjE2MTgxNTQxODEsImV4cCI6MTYxODE2MjI3OSwibmJmIjoxNjE4MTU4Njc5LCJqdGkiOiJaR1I4a0hWdnY3aXQ5c1R6Iiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.7zJFKk4tRj3zSTURXrgBO2i09E6oE4uPDWWkLQz2-Uc",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/portfolio/backend/public/api/usergrouprole",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"data": [],
+			"dataMode": "raw",
+			"name": "User Group Role Index",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1618159070992,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "59ed4ef4-3d93-c8a6-e4e1-f365dbf26b04",
 			"rawModeData": "{\n        \"title\": \"Test Role1\",\n        \"company_id\": \"1\"\n    }"
 		},
 		{
@@ -1213,6 +1254,44 @@
 			"helperAttributes": {},
 			"folder": "25ac1f10-a58f-69b6-a134-73ef696b702b",
 			"rawModeData": "{\n        \"name\": \"Test User group1\",\n        \"company_id\": \"1\"\n    }"
+		},
+		{
+			"id": "ead10c05-0f10-6ee4-023c-1d7d299d03d5",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2Fzc2lnbnVzZXJncm91cHJvbGUiLCJpYXQiOjE2MTgxNTQxODEsImV4cCI6MTYxODE2NjM3OSwibmJmIjoxNjE4MTYyNzc5LCJqdGkiOiJCQ2wyTkx4OXZ5OUF4bDNXIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.0XsYJns6x9Km3o0LNrpbwvQXvoSkkM6hwtH5zPLp-_Y\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3BvcnRmb2xpb1wvYmFja2VuZFwvcHVibGljXC9hcGlcL2Fzc2lnbnVzZXJncm91cHJvbGUiLCJpYXQiOjE2MTgxNTQxODEsImV4cCI6MTYxODE2NjM3OSwibmJmIjoxNjE4MTYyNzc5LCJqdGkiOiJCQ2wyTkx4OXZ5OUF4bDNXIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.0XsYJns6x9Km3o0LNrpbwvQXvoSkkM6hwtH5zPLp-_Y",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/portfolio/backend/public/api/assignusergrouprole",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "36578364-615f-e0fc-f8a4-669913b88299",
+			"data": [],
+			"dataMode": "raw",
+			"name": "User Group Role Assigned",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1618164020158,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "59ed4ef4-3d93-c8a6-e4e1-f365dbf26b04",
+			"rawModeData": "{\n        \"usergroup_ids\": [1],\n        \"role_ids\": [1,2]\n    }"
 		},
 		{
 			"id": "f2700e9d-16a1-bc74-f437-fb51c6e131e7",

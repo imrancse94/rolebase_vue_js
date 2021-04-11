@@ -17,20 +17,22 @@ class UsergroupRoleEloquentRepository extends EloquentRepository implements User
         return \App\Models\UsergroupRole::class;
     }
 
-    
+
 
     public function insertData($inputData){
 
         $result = false;
         \DB::beginTransaction();
+
         try{
-            if($this->_model->create($inputData)){
+            if($this->_model->insert($inputData)){
 
                 $result = true;
             }
             \DB::commit();
         }catch(\Exception $e){
             \DB::rollback();
+            dd($e);
         }
 
         return $result;
@@ -39,11 +41,11 @@ class UsergroupRoleEloquentRepository extends EloquentRepository implements User
     public function getUsergroupRoleById($id, $cols = [])
     {
         $result = $this->_model;
-       
+
        if(!empty($cols)){
             $result = $result->select($cols);
-       }     
-            
+       }
+
         $result = $result->where('id', $id)
             ->first();
 
@@ -88,7 +90,7 @@ class UsergroupRoleEloquentRepository extends EloquentRepository implements User
             ->_model
             ->where('id',$id)
             ->delete();
-            
-        return $result;   
+
+        return $result;
     }
 }
