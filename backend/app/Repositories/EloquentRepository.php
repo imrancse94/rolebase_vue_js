@@ -2,12 +2,18 @@
 
 namespace App\Repositories;
 
+use App\Http\Traits\ApplicationLogTrait;
+
 abstract class EloquentRepository implements RepositoryInterface
 {
+    
+    use ApplicationLogTrait;
+    
     /**
      * @var \Illuminate\Database\Eloquent\Model
      */
     protected $_model;
+    
 
     /**
      * EloquentRepository constructor.
@@ -171,5 +177,12 @@ abstract class EloquentRepository implements RepositoryInterface
         $result->items = $model->all();
 
         return $result;
+    }
+    
+    public function getSystemCurrentDateTime($timezone = "UTC", $date_time_format = "Y-m-d H:i:s") {
+        
+        date_default_timezone_set($timezone);
+        
+        return date($date_time_format);
     }
 }

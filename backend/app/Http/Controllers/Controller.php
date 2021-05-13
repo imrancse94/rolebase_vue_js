@@ -6,14 +6,15 @@ use Laravel\Lumen\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Traits\ApiResponseTrait;
 use App\Http\Traits\PermissionUpdateTreait;
-use Log;
+use App\Http\Traits\ApplicationLogTrait;
 
-class Controller extends BaseController
-{
-    use ApiResponseTrait, PermissionUpdateTreait;
+class Controller extends BaseController {
 
-    protected function respondWithToken($token)
-    {
+    use ApiResponseTrait,
+        PermissionUpdateTreait,
+        ApplicationLogTrait;
+
+    protected function respondWithToken($token) {
         return [
             'token' => $token,
             'token_type' => 'bearer',
@@ -21,18 +22,27 @@ class Controller extends BaseController
         ];
     }
 
-
-    public function applicationLog($data)
-    {
-       
-        $data = json_encode($data);
-        Log::info($data);
-        
-
-    }
-
-    public function guard()
-    {
+    public function guard() {
         return Auth::guard();
     }
+
+    public function getToken() {
+        
+    }
+
+    public function getCurrentAuthInfo() {
+        $data['user'] = Auth::user();
+        $permissions = $this->getPermissionList(Auth::id());
+        $data = array_merge($data, $permissions);
+
+        return $data;
+    }
+
+    public function getAuthId() {
+        
+        return Auth::id();
+    }
+    
+    
+
 }

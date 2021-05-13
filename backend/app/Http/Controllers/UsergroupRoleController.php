@@ -24,6 +24,7 @@ class UsergroupRoleController extends Controller
                           \App\Repositories\Usergroup\UsergroupRepositoryInterface $usergroupRepository
                           ){
 
+        
         $roleList =  $roleRepository->getRoleList();
         $usergroupList = $usergroupRepository->getUserGroupList();
 
@@ -40,36 +41,32 @@ class UsergroupRoleController extends Controller
     public function assignUserGroupRole(\App\Http\Requests\UserGroupRoleRequest $request){
 
         $inputData = $request->all();
-        $usergroup_id = current($inputData['usergroup_ids']);
-        $role_ids = $inputData['role_ids'];
 
-        $insertData = [];
-
-        if(!empty($role_ids)){
-          foreach ($role_ids as $role_id) {
-            $insertData[] = [
-              'usergroup_id'=>$usergroup_id,
-              'role_id'=>$role_id,
-              'company_id'=>1
-            ];
-          }
-        }
-        //dd($insertData);
-        $result = $this->usergroupRoleRepository->insertData($insertData);
+        $result = $this->usergroupRoleRepository->insertData($inputData);
 
         $message = __("UsergroupRole assigned unsuccesfull");
         $code = config('constant.USERGROUP_ROLE_ASSIGNED_FAILED');
         $data = [];
 
+        $logdata['action_name'] = "USER_GROUP_ROLE_ASSIGNED";
+        $logdata['requestData'] = $inputData;
+        $logdata['status'] = "unsuccess";
+        
         if($result){
+            
           $message = __("UsergroupRole assigned succesfully");
           $code = config('constant.USERGROUP_ROLE_ASSIGNED_SUCCESS');
           $data = [];
+          
+          $logdata['status'] = "success";
+          $logdata['message'] = $message;
         }
 
+        
+            
+        $this->UserActivityLog($logdata);
 
-
-        return $this->sendResponse($data, $message,$code);
+        return $this->sendResponse($data, $message, $code);
     }
 
     public function roleAdd(RoleRequest $request){

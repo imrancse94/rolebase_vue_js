@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Repositories\Role;
+namespace App\Repositories\RolePage;
 
 use App\Repositories\EloquentRepository;
 
-class RoleEloquentRepository extends EloquentRepository implements RoleRepositoryInterface {
+class RolePageEloquentRepository extends EloquentRepository implements RolePageRepositoryInterface {
 
     /**
      * Get model.
@@ -13,12 +13,10 @@ class RoleEloquentRepository extends EloquentRepository implements RoleRepositor
      */
     public function getModel() {
 
-        return \App\Models\Role::class;
+        return \App\Models\RolePage::class;
     }
 
-    public function getRoleList() {
-        return $this->_model->pluck('title', 'id');
-    }
+    
 
     public function insertData($inputData) {
 
@@ -37,7 +35,7 @@ class RoleEloquentRepository extends EloquentRepository implements RoleRepositor
         return $result;
     }
 
-    public function getRoleById($id, $cols = []) {
+    public function getRolePageByRoleId($id, $cols = []) {
         $result = $this->_model;
 
         if (!empty($cols)) {

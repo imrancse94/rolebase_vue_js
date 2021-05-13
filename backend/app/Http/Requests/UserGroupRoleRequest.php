@@ -24,8 +24,9 @@ class UserGroupRoleRequest extends BaseRequest
     public function rules(): array
     {
         return [
-            'usergroup_ids'=>'required|array',
-            'role_ids'=>'required|array'
+            'usergroup_id'=>'required|integer',
+            'role_ids'=>'required|array',
+            'company_id'=>'required|integer',
         ];
     }
 

@@ -71,9 +71,7 @@ class AuthController extends Controller
 
     public function getAuthInfo()
     {
-        $data['user'] = Auth::user();
-        $permissions = $this->getPermissionList(Auth::id());
-        $data = array_merge($data, $permissions);
+        $data = $this->getCurrentAuthInfo();
 
         $message = __('Successfully Get Auth Data');
         $code = config('constant.AUTH_DATA_GET_SUCCESS');
@@ -104,13 +102,15 @@ class AuthController extends Controller
 
     public function refreshToken()
     {
-        $data = $this->respondWithToken($this->guard()->refresh());
-        $data['user'] = Auth::user();
-        $permissions = $this->getPermissionList(Auth::id());
-        $data = array_merge($data, $permissions);
+        
+        $data = array_merge(
+                    $this->respondWithToken($this->guard()->refresh()), 
+                    $this->getCurrentAuthInfo()
+                );
 
         $message = __('Successfully refreshed token');
         $code = config('constant.REFRESH_TOKEN');
+        
         return $this->sendResponse($data, $message, $code);
     }
 
