@@ -149,7 +149,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost/portfolio/backend/public/api/usergroup/edit/3",
+			"url": "http://localhost/rolebase_vue_js/backend/public/api/usergroup/edit/3",
 			"queryParams": [],
 			"pathVariables": {},
 			"pathVariableData": [],
@@ -187,7 +187,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost/portfolio/backend/public/api/page/delete/5978",
+			"url": "http://localhost/rolebase_vue_js/backend/public/api/page/delete/5978",
 			"queryParams": [],
 			"pathVariables": {},
 			"pathVariableData": [],
@@ -227,7 +227,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost/portfolio/backend/public/api/role/edit/1",
+			"url": "http://localhost/rolebase_vue_js/backend/public/api/role/edit/1",
 			"queryParams": [],
 			"pathVariables": {},
 			"pathVariableData": [],
@@ -265,7 +265,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost/portfolio/backend/public/api/user/edit/1",
+			"url": "http://localhost/rolebase_vue_js/backend/public/api/user/edit/1",
 			"queryParams": [],
 			"pathVariables": {},
 			"pathVariableData": [],
@@ -305,7 +305,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost/portfolio/backend/public/api/page/edit/5978",
+			"url": "http://localhost/rolebase_vue_js/backend/public/api/page/edit/5978",
 			"queryParams": [],
 			"pathVariables": {},
 			"pathVariableData": [],
@@ -343,7 +343,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost/portfolio/backend/public/api/roleAdd",
+			"url": "http://localhost/rolebase_vue_js/backend/public/api/roleAdd",
 			"queryParams": [],
 			"pathVariables": {},
 			"pathVariableData": [],
@@ -381,7 +381,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost/portfolio/backend/public/api/usergroups",
+			"url": "http://localhost/rolebase_vue_js/backend/public/api/usergroups",
 			"queryParams": [],
 			"pathVariables": {},
 			"pathVariableData": [],
@@ -419,7 +419,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost/portfolio/backend/public/api/usergrouprole",
+			"url": "http://localhost/rolebase_vue_js/backend/public/api/usergrouprole",
 			"queryParams": [],
 			"pathVariables": {},
 			"pathVariableData": [],
@@ -457,7 +457,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost/portfolio/backend/public/api/pageAdd",
+			"url": "http://localhost/rolebase_vue_js/backend/public/api/pageAdd",
 			"folder": "52295c1a-7ecd-268f-705c-b59a509b3750",
 			"queryParams": [],
 			"preRequestScript": null,
@@ -495,7 +495,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost/portfolio/backend/public/api/user/edit/3",
+			"url": "http://localhost/rolebase_vue_js/backend/public/api/user/edit/3",
 			"queryParams": [],
 			"pathVariables": {},
 			"pathVariableData": [],
@@ -539,7 +539,7 @@
 					"enabled": false
 				}
 			],
-			"url": "http://localhost/portfolio/backend/public/api/submodules",
+			"url": "http://localhost/rolebase_vue_js/backend/public/api/submodules",
 			"queryParams": [],
 			"pathVariables": {},
 			"pathVariableData": [],
@@ -576,7 +576,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost/portfolio/backend/public/api/page/edit/5978",
+			"url": "http://localhost/rolebase_vue_js/backend/public/api/page/edit/5978",
 			"queryParams": [],
 			"pathVariables": {},
 			"pathVariableData": [],
@@ -622,7 +622,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost/portfolio/backend/public/api/submodule/edit/1006",
+			"url": "http://localhost/rolebase_vue_js/backend/public/api/submodule/edit/1006",
 			"queryParams": [],
 			"pathVariables": {},
 			"pathVariableData": [],
@@ -654,7 +654,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost/portfolio/backend/public/api/module/edit/1001",
+			"url": "http://localhost/rolebase_vue_js/backend/public/api/module/edit/1001",
 			"queryParams": [],
 			"pathVariables": {},
 			"pathVariableData": [],
@@ -685,7 +685,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost/portfolio/backend/public/api/module/delete/1006",
+			"url": "http://localhost/rolebase_vue_js/backend/public/api/module/delete/1006",
 			"queryParams": [],
 			"pathVariables": {},
 			"pathVariableData": [],
@@ -722,7 +722,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost/portfolio/backend/public/api/userAdd",
+			"url": "http://localhost/rolebase_vue_js/backend/public/api/userAdd",
 			"queryParams": [],
 			"pathVariables": {},
 			"pathVariableData": [],
@@ -766,7 +766,7 @@
 					"enabled": false
 				}
 			],
-			"url": "http://localhost/portfolio/backend/public/api/submodules",
+			"url": "http://localhost/rolebase_vue_js/backend/public/api/submodules",
 			"folder": "c6caa8c3-bf7a-18ca-b6ff-2e8c3cacbdfe",
 			"queryParams": [],
 			"preRequestScript": null,
@@ -801,7 +801,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost/portfolio/backend/public/api/users",
+			"url": "http://localhost/rolebase_vue_js/backend/public/api/users",
 			"queryParams": [],
 			"pathVariables": {},
 			"pathVariableData": [],
@@ -839,7 +839,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost/portfolio/backend/public/api/role/delete/3",
+			"url": "http://localhost/rolebase_vue_js/backend/public/api/role/delete/3",
 			"queryParams": [],
 			"pathVariables": {},
 			"pathVariableData": [],
@@ -877,7 +877,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost/portfolio/backend/public/api/usergroupAdd",
+			"url": "http://localhost/rolebase_vue_js/backend/public/api/usergroupAdd",
 			"queryParams": [],
 			"pathVariables": {},
 			"pathVariableData": [],
@@ -915,7 +915,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost/portfolio/backend/public/api/submoduleAdd",
+			"url": "http://localhost/rolebase_vue_js/backend/public/api/submoduleAdd",
 			"folder": "c6caa8c3-bf7a-18ca-b6ff-2e8c3cacbdfe",
 			"queryParams": [],
 			"preRequestScript": null,
@@ -951,7 +951,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost/portfolio/backend/public/api/user/delete/3",
+			"url": "http://localhost/rolebase_vue_js/backend/public/api/user/delete/3",
 			"queryParams": [],
 			"pathVariables": {},
 			"pathVariableData": [],
@@ -989,7 +989,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost/portfolio/backend/public/api/roles",
+			"url": "http://localhost/rolebase_vue_js/backend/public/api/roles",
 			"queryParams": [],
 			"pathVariables": {},
 			"pathVariableData": [],
@@ -1014,7 +1014,7 @@
 			"id": "bc4a8b0c-933a-4e88-330d-03fe55f767ea",
 			"headers": "",
 			"headerData": [],
-			"url": "http://localhost/portfolio/backend/public/api/submodule/edit/1001",
+			"url": "http://localhost/rolebase_vue_js/backend/public/api/submodule/edit/1001",
 			"queryParams": [],
 			"pathVariables": {},
 			"pathVariableData": [],
@@ -1051,7 +1051,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost/portfolio/backend/public/api/pages",
+			"url": "http://localhost/rolebase_vue_js/backend/public/api/pages",
 			"folder": "52295c1a-7ecd-268f-705c-b59a509b3750",
 			"queryParams": [],
 			"preRequestScript": null,
@@ -1077,7 +1077,7 @@
 			"id": "cbf6de61-3668-f6b4-628f-392331e91d1a",
 			"headers": "",
 			"headerData": [],
-			"url": "http://localhost/portfolio/backend/public/api/submodule/delete/1006",
+			"url": "http://localhost/rolebase_vue_js/backend/public/api/submodule/delete/1006",
 			"queryParams": [],
 			"pathVariables": {},
 			"pathVariableData": [],
@@ -1114,7 +1114,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost/portfolio/backend/public/api/usergroup/delete/3",
+			"url": "http://localhost/rolebase_vue_js/backend/public/api/usergroup/delete/3",
 			"queryParams": [],
 			"pathVariables": {},
 			"pathVariableData": [],
@@ -1152,7 +1152,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost/portfolio/backend/public/api/role/edit/3",
+			"url": "http://localhost/rolebase_vue_js/backend/public/api/role/edit/3",
 			"queryParams": [],
 			"pathVariables": {},
 			"pathVariableData": [],
@@ -1196,7 +1196,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost/portfolio/backend/public/api/module/edit/1006",
+			"url": "http://localhost/rolebase_vue_js/backend/public/api/module/edit/1006",
 			"queryParams": [],
 			"pathVariables": {},
 			"pathVariableData": [],
@@ -1234,7 +1234,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost/portfolio/backend/public/api/usergroup/edit/3",
+			"url": "http://localhost/rolebase_vue_js/backend/public/api/usergroup/edit/3",
 			"queryParams": [],
 			"pathVariables": {},
 			"pathVariableData": [],
@@ -1272,7 +1272,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost/portfolio/backend/public/api/assignusergrouprole",
+			"url": "http://localhost/rolebase_vue_js/backend/public/api/assignusergrouprole",
 			"queryParams": [],
 			"pathVariables": {},
 			"pathVariableData": [],
@@ -1310,7 +1310,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost/portfolio/backend/public/api/usergrouplist",
+			"url": "http://localhost/rolebase_vue_js/backend/public/api/usergrouplist",
 			"queryParams": [],
 			"pathVariables": {},
 			"pathVariableData": [],
@@ -1348,7 +1348,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost/portfolio/backend/public/api/login",
+			"url": "http://localhost/rolebase_vue_js/backend/public/api/login",
 			"queryParams": [],
 			"pathVariables": {},
 			"pathVariableData": [],
