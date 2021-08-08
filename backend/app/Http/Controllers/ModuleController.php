@@ -19,16 +19,16 @@ class ModuleController extends Controller
     public function __construct(ModuleRepositoryInterface $moduleRepository)
     {
         $this->moduleRepository = $moduleRepository;
+
     }
 
     public function getModules(){
-        
+
         $limit = config('constant.PAGINATION_LIMIT');
 
         if(request('limit')){
             $limit = request('limit');
         }
-        
 
         $message = __("Module get succesfully");
         $code = config('constant.MODULE_LIST_SUCCESS');
@@ -38,8 +38,7 @@ class ModuleController extends Controller
 
 
     public function getAllModulList(){
-        
-        
+
         $message = __("Module get succesfully");
         $code = config('constant.MODULE_LIST_SUCCESS');
         $data = $this->moduleRepository->getAllModuleList();
@@ -48,19 +47,17 @@ class ModuleController extends Controller
 
 
     public function moduleAdd(ModuleAddRequest $request){
-        
-        $inputData = $request->all();
 
+        $inputData = $request->all();
+        
         $result = $this->moduleRepository->insertModule($inputData);
 
         $code = config('constant.MODULE_INSERT_FAILED');
         $message = __("Insert Failed");
         $data = [];
         if($result){
-
             $message = __("Inserted succesfully");
             $code = config('constant.MODULE_INSERT_SUCCESS');
-
         }
 
         return $this->sendResponse($data, $message,$code);
@@ -72,7 +69,7 @@ class ModuleController extends Controller
         $cols = ['id', 'name', 'icon', 'sequence'];
 
         $data = $this->moduleRepository->getModuleById($id, $cols);
-        
+
         $code = config('constant.MODULE_GET_BY_ID_FAILED');
         $message = __("Not Found");
 
@@ -94,7 +91,7 @@ class ModuleController extends Controller
         $result = $this->moduleRepository->updateById($id,$inputData);
         $message = __("Module Updated Failed or Data not found.");
         $data = [];
-        
+
         if(!empty($result)){
             $message = __("Module Updated succesfully");
             $code = config('constant.MODULE_UPDATED_SUCCESS');
@@ -109,8 +106,8 @@ class ModuleController extends Controller
         $code = config('constant.MODULE_DELETED_FAILED');
         $result = $this->moduleRepository->deleteModuleById($id);
         $data = [];
-
-        if(!empty($result)){
+        $message = __("Can't Delete. Please try again.");
+        if($result){
             $message = __("Module Deleted succesfully");
             $code = config('constant.MODULE_DELETED_SUCCESS');
         }

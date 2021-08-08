@@ -47,6 +47,11 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
         return $result;
     }
 
+    public function getUserInfoByEmail($email)
+    {
+        return $this->_model->getUserInfoByEmail($email);
+    }
+
     public function updateById($id,$inputData){
         $result = $this
             ->_model

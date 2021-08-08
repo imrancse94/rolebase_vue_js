@@ -24,7 +24,9 @@ class LoginRequest extends BaseRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|email',
+            'client_id' => 'required|integer',
+            'client_secret' => 'required',
+            'username' => 'required|email',
             'password' => 'required|string',
         ];
     }
@@ -37,7 +39,7 @@ class LoginRequest extends BaseRequest
     public function messages(): array
     {
         return [
-            //
+            'client_id.integer'=>'client_id must be integer'
         ];
     }
 

@@ -25,17 +25,17 @@ class SubmoduleRequest extends BaseRequest
     public function rules(): array
     {
         $rules = [
-            'module_id'=>'required|integer',
+            'module_id'=>'required|integer|gt:0',
             'name' => 'required|string',
             'icon' => 'required|string',
             'sequence' => 'required|integer',
-            'controller_name'=>'required',
-            'default_method'=>'required'
+            'permission_name'=>'required',
+            'is_index'=>'required|integer'
         ];
 
-        if(Request::isMethod('post')){
-            $rules['id'] = 'required|integer|unique:submodules,id';
-        }
+//        if(Request::isMethod('post')){
+//            $rules['id'] = 'required|integer|unique:submodules,id';
+//        }
 
         return $rules;
     }

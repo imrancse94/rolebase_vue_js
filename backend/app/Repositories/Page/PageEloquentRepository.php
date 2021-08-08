@@ -14,7 +14,7 @@ class PageEloquentRepository extends EloquentRepository implements PageRepositor
      */
     public function getModel()
     {
-        return \App\Models\Page::class;
+        return \App\Models\MenuSubmenuPermission::class;
     }
 
     /**
@@ -34,27 +34,12 @@ class PageEloquentRepository extends EloquentRepository implements PageRepositor
      */
     public function getAllPages($limit = 2)
     {
-        
-        $result = $this
-            ->_model
-            ->orderBy('id', 'asc')
-            ->paginate($limit);
-
-        return $result;
+        return $this->_model->getAllPages($limit);
     }
 
     public function getAllPagesWithModuleSubmodule($limit = 2)
     {
-        
-        $result = DB::table('pages')
-                ->join('modules', 'modules.id', '=', 'pages.module_id')
-                ->join('submodules', 'submodules.id', '=', 'pages.submodule_id')
-                ->select('modules.name AS module_name','submodules.*','pages.*')
-                ->orderBy('pages.id', 'desc')
-                ->paginate($limit);
-            
-
-        return $result;
+        return $this->_model->getModuleSubmodulePagesAssoc($limit);
     }
 
     public function insertData($inputData){
@@ -62,9 +47,12 @@ class PageEloquentRepository extends EloquentRepository implements PageRepositor
         $result = false;
         \DB::beginTransaction();
         try{
-            if($this->_model->create($inputData)){
+            $inputData['parent_id'] = $inputData['module_id'];
+            unset($inputData['module_id']);
+            
+            if($data = $this->_model->create($inputData)){
 
-                $result = true;
+                $result = $data;
             }
             \DB::commit();
         }catch(\Exception $e){
@@ -81,29 +69,12 @@ class PageEloquentRepository extends EloquentRepository implements PageRepositor
      */
     public function getPageById($id, $cols = [])
     {
-        $result = DB::table('pages')
-                ->join('modules', 'modules.id', '=', 'pages.module_id')
-                ->join('submodules', 'submodules.id', '=', 'pages.submodule_id')
-                ->select('modules.name AS module_name','submodules.*','pages.*');
-       
-       if(!empty($cols)){
-            $result = $result->select($cols);
-       }     
-            
-        $result = $result->where('pages.id', $id)
-            ->first();
-
-        return $result;
+        return $this->_model->getPageById($id, $cols);
     }
 
 
     public function deletePageById($id){
-        $result = $this
-            ->_model
-            ->where('id',$id)
-            ->delete();
-            
-        return $result;   
+        return $this->_model->deletePageById($id);  
     }
     /**
      * Get recent created modules.
@@ -122,12 +93,7 @@ class PageEloquentRepository extends EloquentRepository implements PageRepositor
 
 
     public function updateById($id,$inputData){
-        $result = $this
-            ->_model
-            ->where(['id'=>$id])
-            ->update($inputData);
-
-        return $result;
+        return $this->_model->updatePageById($id, $inputData);
     }
     /**
      * Get recent created modules.
@@ -189,4 +155,13 @@ class PageEloquentRepository extends EloquentRepository implements PageRepositor
 
         return $result;
     }
+    
+    public function getAllPageList() {
+        return $this->_model->getAllPageList();
+    }
+    
+    public function getAllPageListWithParentId() {
+        return $this->_model->getAllPageListWithParentId();
+    }
+    
 }

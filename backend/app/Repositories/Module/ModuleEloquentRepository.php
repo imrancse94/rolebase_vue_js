@@ -13,7 +13,7 @@ class ModuleEloquentRepository extends EloquentRepository implements ModuleRepos
      */
     public function getModel()
     {
-        return \App\Models\Module::class;
+        return \App\Models\MenuSubmenuPermission::class;
     }
 
     /**
@@ -33,46 +33,29 @@ class ModuleEloquentRepository extends EloquentRepository implements ModuleRepos
      */
     public function getAllModules($limit = 2)
     {
-        
+
         $result = $this
             ->_model
-            ->orderBy('id', 'asc')
-            ->paginate($limit);
+            ->getAllModules($limit);
 
         return $result;
     }
 
-    public function getAllModuleList()
-    {
-        
+    public function getAllModuleList() {
+
         $result = $this
-            ->_model
-            ->orderBy('id', 'asc')
-            ->pluck('name','id');
-
-
+                ->_model
+                ->getAllModuleList();
 
         return $result;
     }
 
     public function insertModule($inputData){
-
-        $result = false;
-        \DB::beginTransaction();
-        try{
-            if($this->_model->create($inputData)){
-
-                $result = true;
-            }
-            \DB::commit();
-        }catch(\Exception $e){
-            \DB::rollback();
-        }
-
-        return $result;
+        unset($inputData['id']);
+        return $this->_model->addModule($inputData);
     }
 
-    
+
     /**
      * Get most popular modules.
      *
@@ -81,27 +64,20 @@ class ModuleEloquentRepository extends EloquentRepository implements ModuleRepos
      */
     public function getModuleById($id, $cols = [])
     {
-        $result = $this
-            ->_model;
-       
-       if(!empty($cols)){
-            $result = $result->select($cols);
-       }     
-            
-        $result = $result->where('id', $id)
-            ->first();
+        return $this->_model->getModuleById($id,$cols);
 
-        return $result;
+       
     }
 
 
     public function deleteModuleById($id){
         $result = $this
             ->_model
+            ->where('parent_id', 0)    
             ->where('id',$id)
             ->delete();
-            
-        return $result;   
+        dd($result);
+        return $result;
     }
     /**
      * Get recent created modules.
@@ -120,9 +96,10 @@ class ModuleEloquentRepository extends EloquentRepository implements ModuleRepos
 
 
     public function updateById($id,$inputData){
+        unset($inputData['id']);
         $result = $this
             ->_model
-            ->where(['id'=>$id])
+            ->where(['id'=>$id,'parent_id'=>0])
             ->update($inputData);
 
         return $result;

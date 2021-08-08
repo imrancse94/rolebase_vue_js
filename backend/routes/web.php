@@ -1,5 +1,6 @@
 <?php
 
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -19,10 +20,12 @@
 
 $router->group(['prefix' => 'api'], function () use ($router) {
 
+    $router->get('test', 'ExampleController@index');
+
     // Matches "/api/login
     $router->post('login', 'AuthController@login');
 
-    $router->group(['middleware'=>['jwt']], function () use ($router) {
+    $router->group(['middleware'=>['auth']], function () use ($router) {
 
         // Matches "/api/register
         $router->post('register', 'AuthController@register');
@@ -39,6 +42,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         // Matches "/api/register
         $router->post('logout', 'AuthController@logout');
 
+        // Matches "/api/auth-user-data
+        $router->get('auth-user-data', 'AuthController@getAuthUserData');
 
         // Matches "/api/modules
         $router->get('moduleList', 'ModuleController@getAllModulList');
@@ -51,7 +56,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
         // Matches "/api/submodules
         $router->get('submodules', 'SubmoduleController@getSubModulesByUser');
-        $router->post('submoduleAdd', 'SubmoduleController@subModuleAdd');
+        $router->post('submoduleadd', 'SubmoduleController@subModuleAdd');
         $router->get('submodule/edit/{id}', 'SubmoduleController@getSubModuleById');
         $router->put('submodule/edit/{id}', 'SubmoduleController@subModuleUpdate');
         $router->delete('submodule/delete/{id}', 'SubmoduleController@deleteSubModuleById');
@@ -91,7 +96,9 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->get('usergrouprole', 'UsergroupRoleController@index');
         $router->post('assignusergrouprole','UsergroupRoleController@assignUserGroupRole');
 
-
+        // Matches "/api/role page association
+        $router->get('role-page-list','RolePageController@index');
+        $router->get('role-page-association','RolePageController@assignRoleMenuSubmenuPermission');
 
     });
 });

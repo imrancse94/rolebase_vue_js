@@ -27,4 +27,15 @@ class Submodule extends Model
     public function getPages(){
         return $this->belongsTo('\App\Models\Page', 'sub_module_id');
     }
+    
+    public function getAllSubmoduleList()
+    {
+        
+        $result = $this->orderBy('id', 'asc')
+                       ->pluck('name','id');
+
+
+
+        return $result;
+    }
 }

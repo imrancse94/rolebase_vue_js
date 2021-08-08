@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 use App\Repositories\Submodule\SubmoduleRepositoryInterface;
-use Illuminate\Support\Facades\Request;
-use Symfony\Component\Console\Input\Input;
-
 use App\Http\Requests\SubmoduleRequest;
 
 class SubmoduleController extends Controller
@@ -28,12 +25,11 @@ class SubmoduleController extends Controller
         if(request('limit')){
             $limit = request('limit');
         }
-        
-
 
         $message = __("Submodule get succesfully");
         $code = config('constant.SUBMODULE_LIST_SUCCESS');
         $data = $this->submoduleRepository->getAllSubModulesWithModule($limit);
+        
         return $this->sendResponse($data, $message,$code);
     }
 
@@ -41,17 +37,16 @@ class SubmoduleController extends Controller
     public function subModuleAdd(SubmoduleRequest $request){
         
         $inputData = $request->all();
-
-        $result = $this->submoduleRepository->insertSubModule($inputData);
-
+        
         $code = config('constant.SUBMODULE_INSERT_FAILED');
+        
+        $result = $this->submoduleRepository->insertSubModule($inputData);
         $message = __("Insert Failed");
         $data = [];
         if($result){
-
             $message = __("Inserted succesfully");
             $code = config('constant.SUBMODULE_INSERT_SUCCESS');
-
+            $data = $result;
         }
 
         return $this->sendResponse($data, $message,$code);
@@ -81,6 +76,7 @@ class SubmoduleController extends Controller
     public function subModuleUpdate(SubmoduleRequest $request,$id){
 
         $inputData = $request->all();
+        unset($inputData['id']);
         $code = config('constant.SUBMODULE_UPDATED_FAILED');
         $result = $this->submoduleRepository->updateById($id,$inputData);
         $message = __("Submodule Updated Failed");
@@ -89,6 +85,7 @@ class SubmoduleController extends Controller
         if(!empty($result)){
             $message = __("Submodule Updated succesfully");
             $code = config('constant.SUBMODULE_UPDATED_SUCCESS');
+            $data = $result;
         }
 
         return $this->sendResponse($data, $message,$code);

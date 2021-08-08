@@ -2,43 +2,39 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Http\Requests\UserGroupRoleRequest;
+use App\Facades\Role;
+use App\Facades\Usergroup;
+use App\Facades\UsergroupRole;
 use App\Repositories\UsergroupRole\UsergroupRoleRepositoryInterface;
-//use App\Http\Requests\UserGroupRoleRequest;
 
 class UsergroupRoleController extends Controller
 {
 
-    private $usergroupRepository;
+    private $usergroupRole;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(UsergroupRoleRepositoryInterface $usergroupRoleRepository)
+    public function __construct(UsergroupRoleRepositoryInterface $usergroupRole)
     {
-        $this->usergroupRoleRepository = $usergroupRoleRepository;
+        $this->usergroupRole = $usergroupRole;
     }
 
-    public function index(\App\Repositories\Role\RoleRepositoryInterface $roleRepository,
-                          \App\Repositories\Usergroup\UsergroupRepositoryInterface $usergroupRepository
-                          ){
+    public function index(){
 
-        
-        $roleList =  $roleRepository->getRoleList();
-        $usergroupList = $usergroupRepository->getUserGroupList();
-
-        $message = __("UsergroupRole index get succesfully");
+        $data = $this->usergroupRole->getAllUserGroupRoleRelatedInfo();
         $code = config('constant.USER_GROUP_ROLE_LIST_SUCCESS');
-        $data['roleList'] = $roleList;
-        $data['usergroupList'] = $usergroupList;
 
-        return $this->sendResponse($data, $message,$code);
+        return $this->sendResponse($data,"",$code);
     }
 
 
 
-    public function assignUserGroupRole(\App\Http\Requests\UserGroupRoleRequest $request){
+    public function assignUserGroupRole(UserGroupRoleRequest $request){
 
         $inputData = $request->all();
 
@@ -61,9 +57,7 @@ class UsergroupRoleController extends Controller
           $logdata['status'] = "success";
           $logdata['message'] = $message;
         }
-
-        
-            
+   
         $this->UserActivityLog($logdata);
 
         return $this->sendResponse($data, $message, $code);

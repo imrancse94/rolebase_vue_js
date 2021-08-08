@@ -5,17 +5,18 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 trait ApiResponseTrait
 {
 
-    public function sendResponse($result, $message,$code)
+    public function sendResponse($data, $message,$code)
     {
         
-    	$response = [
-            'statuscode'=>$code,
-            'success' => true,
-            'data'    => $result,
-            'message' => $message,
-        ];
+        $response['statuscode'] = $code;
+        $response['success'] = true;
 
-
+        if(!empty($message)){
+            $response['message'] = $message;
+        }
+        
+        $response['data'] = $data;
+    	
         return response()->json($response, 200);
     }
 

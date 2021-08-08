@@ -24,16 +24,17 @@ class PageRequest extends BaseRequest
     public function rules(): array
     {
         $rules = [
-            'id'=>'required',
             'module_id'=>'required',
-            'submodule_id'=>'required',
-            'name'=>'required',
-            'route_name'=>'required',
+            'name' => 'required|string',
+            'icon' => 'required|string',
+            'sequence' => 'required|integer',
+            'permission_name'=>'required',
+            'is_index'=>'required|integer'
         ];
 
-        if(Request::isMethod('post')){
-            $rules['id'] = 'required|integer|unique:pages,id';
-        }
+//        if(Request::isMethod('post')){
+//            $rules['id'] = 'required|integer|unique:pages,id';
+//        }
 
         return $rules;
     }

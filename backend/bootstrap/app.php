@@ -27,7 +27,7 @@ $app = new Laravel\Lumen\Application(
 
  $app->withEloquent();
 
- 
+
 
 /*
 |--------------------------------------------------------------------------
@@ -60,10 +60,14 @@ $app->singleton(
 | the default version. You may register other files below as needed.
 |
 */
-
 $app->configure('app');
+$app->configure('auth');
 $app->configure('constant');
+$app->configure('permission');
 $app->configure('cors');
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -82,7 +86,9 @@ $app->middleware([
 
 $app->routeMiddleware([
     'auth' => App\Http\Middleware\Authenticate::class,
-    'jwt' => App\Http\Middleware\JWT::class,
+    'permission' => App\Http\Middleware\Checkpermission::class
+    //'jwt' => App\Http\Middleware\JWT::class,
+    //'client' => \Laravel\Passport\Http\Middleware\CheckClientCredentials::class,
 ]);
 
 /*
@@ -97,17 +103,25 @@ $app->routeMiddleware([
 */
 
  $app->register(App\Providers\AppServiceProvider::class);
+
 // Uncomment this line
  $app->register(App\Providers\AuthServiceProvider::class);
-// $app->register(App\Providers\EventServiceProvider::class);
-// Add this line
-$app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
+
+ // For Facade service provider
+ $app->register(App\Providers\FacadeServiceProvider::class);
 
 // for form request
 $app->register(Pearl\RequestValidate\RequestServiceProvider::class);
 
 // for CORS Problem
 $app->register(Fruitcake\Cors\CorsServiceProvider::class);
+
+// For passport
+$app->register(Laravel\Passport\PassportServiceProvider::class);
+$app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
+
+\Dusterio\LumenPassport\LumenPassport::routes($app, ['prefix' => 'v1/oauth']);
+
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes

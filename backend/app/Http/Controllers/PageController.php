@@ -47,6 +47,7 @@ class PageController extends Controller
 
             $message = __("Inserted succesfully");
             $code = config('constant.PAGE_INSERT_SUCCESS');
+            $data = $result;
 
         }
 

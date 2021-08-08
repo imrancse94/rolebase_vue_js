@@ -3,6 +3,8 @@
 namespace App\Repositories\UsergroupRole;
 
 use App\Repositories\EloquentRepository;
+use App\Repositories\Role\RoleEloquentRepository;
+use App\Repositories\Usergroup\UsergroupEloquentRepository;
 
 class UsergroupRoleEloquentRepository extends EloquentRepository implements UsergroupRoleRepositoryInterface {
 
@@ -115,13 +117,26 @@ class UsergroupRoleEloquentRepository extends EloquentRepository implements User
      *
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function geAllUsergroups($limit) {
+    public function geAllUsergroupRole($limit = null) {
         $result = $this
                 ->_model
-                ->orderBy('created_at', 'desc')
-                ->paginate($limit);
+                ->orderBy('created_at', 'desc');
+
+        if(!is_null($limit)){
+            $result =  $result->paginate($limit);
+        }else{
+            $result =  $result->get();
+        }   
 
         return $result;
+    }
+
+    public function getAllUserGroupRoleRelatedInfo(){
+            $data['roleList'] = (new RoleEloquentRepository)->getRoleList();
+            $data['usergroup'] = (new UsergroupEloquentRepository)->getUserGroupList();
+            $data['usergroupRole'] = $this->geAllUsergroupRole();
+
+            return $data;
     }
 
     public function deleteById($id) {

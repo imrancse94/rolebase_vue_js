@@ -2,18 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\RolePage\RolePageRepositoryInterface;
+use App\Http\Requests\RoleMenuSubmenuPermissionRequest;
+
 class RolePageController extends Controller {
 
-    public function __construct() {
-        
+    private $rolepageRepository;
+
+    public function __construct(RolePageRepositoryInterface $rolepageRepository) {
+        $this->rolepageRepository = $rolepageRepository;
     }
 
     public function index() {
-        
-        // 1. Role List
-        // 2. Module List
-        // 3. Submodule List
-        // 4. Page List
+
+       $data = $this->rolepageRepository->getRolePageAssociationInfo();
+       
+       return $this->sendResponse($data,"",config('constant.ROLE_PAGE_LIST_SUCCESS'));
+    }
+    
+    public function assignRoleMenuSubmenuPermission(RoleMenuSubmenuPermissionRequest $request){
         
     }
 

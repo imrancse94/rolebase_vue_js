@@ -27,7 +27,7 @@ interface UsergroupRoleRepositoryInterface
      * Get all posts only published
      * @return mixed
      */
-    public function geAllUsergroups($limit);
+    public function geAllUsergroupRole($limit = null);
 
     /**
      * Get post only published

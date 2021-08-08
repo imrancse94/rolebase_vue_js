@@ -1,81 +1,89 @@
 <template>
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light navbar-static-top">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          @click.prevent="sidebarCollapse()"
-          data-widget="pushmenu"
-          href="#"
-          role="button"
-        >
-          <i class="fas fa-bars top-bars"></i>
-        </a>
-      </li>
-    </ul>
+  <div>
+    <!-- Preloader -->
+    <div
+      class="preloader flex-column justify-content-center align-items-center"
+    >
+      <img
+        class="animation__shake"
+        src="/dist/img/AdminLTELogo.png"
+        alt="AdminLTELogo"
+        height="60"
+        width="60"
+      />
+    </div>
 
-    <div class="navbar-custom-menu">
-      <ul class="nav navbar-nav profile-section">
-        <li class="dropdown user user-menu">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <img src="/dist/img/user2-160x160.jpg" class="user-image" alt="User Image" />
-            <span class="hidden-xs">{{user.name}}</span>
-          </a>
-          <ul class="dropdown-menu">
-            <li class="user-header">
-              <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
-              <p>
-                {{user.name}}
-                <small></small>
-              </p>
-            </li>
-            <li class="user-footer">
-              <div class="pull-left">
-                <a href="#" class="btn btn-default btn-flat">Profile</a>
-              </div>
-              <div class="pull-right">
-                <a href="#" @click.prevent="logout" class="btn btn-default btn-flat">Sign out</a>
-              </div>
-            </li>
-          </ul>
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"
+            ><i class="fas fa-bars"></i
+          ></a>
         </li>
       </ul>
-    </div>
-  </nav>
+
+      <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+            <i class="fas fa-expand-arrows-alt"></i>
+          </a>
+        </li>
+        
+        <li class="nav-item dropdown">
+          <a
+            @click.prevent="headerDropdown($event)"
+            class="nav-link"
+            data-toggle="dropdown"
+            href="#"
+            aria-expanded="true"
+          >
+            <i class="far fa-user"></i>
+          </a>
+          <div
+            class="dropdown-menu dropdown-menu-lg dropdown-menu-right"
+            style="left: inherit; right: 0px"
+          >
+            <span class="dropdown-item dropdown-header">15 Notifications</span>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-envelope mr-2"></i> 4 new messages
+              <span class="float-right text-muted text-sm">3 mins</span>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-users mr-2"></i> 8 friend requests
+              <span class="float-right text-muted text-sm">12 hours</span>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-file mr-2"></i> 3 new reports
+              <span class="float-right text-muted text-sm">2 days</span>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item dropdown-footer"
+              >See All Notifications</a
+            >
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.navbar -->
+  </div>
 </template>
 
 <script>
 export default {
-  name: "Footer",
-  data() {
-    return {
-      user: this.$store.state.auth.user,
-    };
-  },
-  methods: {
-    logout() {
-      this.$eventBus.$emit("loadingStatus", true);
-      this.$store.dispatch("auth/logout").then(() => {
-        this.$eventBus.$emit("loadingStatus", false);
-        this.$router.push("/login");
-      });
-    },
-    sidebarCollapse() {
-      const body = document.body;
-      if (body.classList.contains("sidebar-collapse")) {
-        body.classList.remove("sidebar-collapse");
-      } else {
-        body.classList.add("sidebar-collapse");
-      }
-
-      if (body.classList.contains("sidebar-open")) {
-        body.classList.remove("sidebar-open");
-        body.classList.remove("sidebar-collapse");
-      } else {
-        body.classList.add("sidebar-open");
-      }
-    },
-  },
+  name: "Header",
+  methods:{
+    headerDropdown($event){
+      var element = $event.target;
+      var parentElement = $(element).parents('li').first();
+      parentElement.toggleClass('show');
+      parentElement.find('div.dropdown-menu-right').toggleClass('show');
+    }
+  }
 };
 </script>
-

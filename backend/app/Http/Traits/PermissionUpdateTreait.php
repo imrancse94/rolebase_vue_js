@@ -12,232 +12,66 @@ trait PermissionUpdateTreait
     {
 
         $SUPER_SUPER_ADMIN_ID = config('app.constant.SSADMIN_ID');
-        $sql = 'SELECT  users.id AS user_id,users.permission_version,pages.id AS page_id, pages.name AS page_name,
-                                 modules.id AS module_id,submodules.controller_name,submodules.name AS submodule_name, submodules.id
-                                 AS submodule_id,pages.route_name,submodules.default_method,pages.is_default_method FROM users
-					INNER JOIN user_usergroups ON users.id = user_usergroups.user_id
-					INNER JOIN usergroups ON user_usergroups.usergroup_id = usergroups.id
-					INNER JOIN usergroup_roles ON usergroups.id = usergroup_roles.usergroup_id
-					INNER JOIN roles ON usergroup_roles.role_id = roles.id
-					INNER JOIN role_pages ON roles.id = role_pages.role_id
-					INNER JOIN pages ON role_pages.page_id = pages.id
-					INNER JOIN submodules ON pages.submodule_id = submodules.id
-					INNER JOIN modules ON submodules.module_id = modules.id
-					WHERE  users.id = ' . $user_id;
-        //$user_id = 2;
+        $sql = 'SELECT  DISTINCT menu_submenu_permissions.id,
+                        users.id AS user_id,
+                        users.permission_version,
+                        menu_submenu_permissions.id,
+                        menu_submenu_permissions.name AS page_name,
+                        menu_submenu_permissions.parent_id,
+                        menu_submenu_permissions.is_index,
+                        menu_submenu_permissions.icon,
+                        menu_submenu_permissions.permission_name FROM users
+                        INNER JOIN user_usergroups ON users.id = user_usergroups.user_id
+                        INNER JOIN usergroups ON user_usergroups.usergroup_id = usergroups.id
+                        INNER JOIN usergroup_roles ON usergroups.id = usergroup_roles.usergroup_id
+                        INNER JOIN roles ON usergroup_roles.role_id = roles.id
+                        INNER JOIN role_menu_submenu_permissions ON roles.id = role_menu_submenu_permissions.role_id
+                        INNER JOIN menu_submenu_permissions ON role_menu_submenu_permissions.menu_submenu_permission_id = menu_submenu_permissions.id
+                        WHERE users.id =' . $user_id;
+
         $permissions = DB::select($sql);
-        $moduleSubmodulePageAssoc = [];
-        $masterArray = [1001, 1002, 1007];
-        if (!empty($permissions)) {
-            if($user_id == 1){
-                $modules = Module::with('submodules', 'submodules.pages')->get();
-            }else{
-                $modules = Module::with('submodules', 'submodules.pages')->whereNotIn('id',$masterArray)->get();
-            }
+         // object to array
 
-            $moduleSubmodulePageAssoc = $this->getOrganizePermission($modules,$permissions);
-        }
-        return $moduleSubmodulePageAssoc;
-    }
+        $result['permissions'] = $this->getPermissions($permissions);
+        $result['sidebar'] = buildTree($permissions);
 
+        //echo "<pre>";print_r($result);exit;
 
-    private function getOrganizePermission($modules,$permissions){
-
-        $result = [];
-        $sideBarList = [];
-        $moduleSubmodulePageAssoc = [];
-        $permittedPageIdList = [];
-        $sideBarPermittedPageIdList = [];
-        $permittedModuleIdList = [];
-        $permittedSubmoduleIdList = [];
-        $defaultRouteList = [];
-        foreach ($permissions as $perm){
-            if(!empty($perm)) {
-                $permittedPageIdList[] = $perm->page_id;
-                $permittedModuleIdList[] = $perm->module_id;
-                $permittedSubmoduleIdList[] = $perm->submodule_id;
-                if ($perm->is_default_method == 1) {
-                    $sideBarPermittedPageIdList[] = $perm->page_id;
-                    $defaultRouteList[$perm->module_id] = $perm->route_name;
-                }
-            }
-        }
-
-        if(!empty($permittedModuleIdList) && is_array($permittedModuleIdList)){
-            $permittedModuleIdList = array_unique($permittedModuleIdList);
-        }
-
-        if(!empty($permittedSubmoduleIdList) && is_array($permittedSubmoduleIdList)){
-            $permittedSubmoduleIdList = array_unique($permittedSubmoduleIdList);
-        }
-
-        if(!empty($permittedPageIdList) && is_array($permittedPageIdList)){
-            $permittedPageIdList = array_unique($permittedPageIdList);
-        }
-
-        if(!empty($sideBarPermittedPageIdList) && is_array($sideBarPermittedPageIdList)){
-            $sideBarPermittedPageIdList = array_unique($sideBarPermittedPageIdList);
-        }
-
-        $module_url_list = [];
-
-        if(!empty($modules)){
-            foreach ($modules as $m){
-                if(in_array($m->id,$permittedModuleIdList)) {
-                    $moduleName = strtolower(str_replace(" ","",$m->name));
-                    $moduleSubmodulePageAssoc[$m->id]['name'] = $m->name;
-                    $moduleSubmodulePageAssoc[$m->id]['icon'] = $m->icon;
-                    $moduleSubmodulePageAssoc[$m->id]['url'] = $moduleName;
-                    
-                    $module_url_list[$m->id]= $moduleName;
-
-                    $sideBarList[$m->id]['id'] = $m->id;
-                    $sideBarList[$m->id]['name'] = $m->name;
-                    $sideBarList[$m->id]['icon'] = $m->icon;
-                    $sideBarList[$m->id]['url'] = $moduleSubmodulePageAssoc[$m->id]['url'];
-
-                    $pagesAssoc = [];
-                    $sideBarPagesAssoc = [];
-                    if (!empty($m->submodules)) {
-                        foreach ($m->submodules as $submodule) {
-                            //dd($submodule);
-                            if(in_array($submodule->id,$permittedSubmoduleIdList)) {
-                                $submoduleAssoc['id'] = $submodule->id;
-                                $submoduleAssoc['name'] = $submodule->name;
-                                $submoduleAssoc['icon'] = $submodule->icon;
-                                $sideBarSubmodule = $submoduleAssoc;
-                                $currentpages = [];
-                                $currentSideBarpages = "";
-                                if (!empty($submodule->pages)) {
-
-                                    foreach ($submodule->pages as $page) {
-
-                                        if (in_array($page->id, $permittedPageIdList)) {
-                                            $current_page['id'] = $page->id;
-                                            $current_page['name'] = $page->name;
-                                            $current_page['route'] = $page->route_name;
-                                            $currentpages[] = $current_page;
-                                            if($page->id > 0 && in_array($page->id,$sideBarPermittedPageIdList)){
-                                                $currentSideBarpages = $current_page['route'];
-                                            }
-                                        }
-                                    }
-
-                                    $sideBarSubmodule['url'] = $currentSideBarpages;
-                                    $submoduleAssoc['url'] = $submodule->default_method;
-                                    $submoduleAssoc['pages'] = $currentpages;
-                                    $pagesAssoc[] = $submoduleAssoc;
-                                    $sideBarPagesAssoc[] = $sideBarSubmodule;
-                                }
-                            }
-                        }
-                        $moduleSubmodulePageAssoc[$m->id]['children'] = $pagesAssoc;
-                        $sideBarList[$m->id]['children'] = $sideBarPagesAssoc;
-                    }
-                }
-            }
-        }
-
-        $permittedRouteName = $this->getPermittedPageRouteName($module_url_list,$permissions);
-
-        $permittedRouteName[] = "/admin";
-        $permittedRouteName[] = "/admin/dashboard";
-        
-        if(!empty($permittedRouteName)){
-            $permittedRouteName = array_unique($permittedRouteName);
-        }
-
-        $result['allpermissions'] = $moduleSubmodulePageAssoc;
-        $result['routeList'] = $permittedRouteName;
-        $result['sideBarList'] = $sideBarList;
         return $result;
     }
 
-    private function getSideBarList($permissions)
-    {
-        $permittedRouteName = [];
-        if(!empty($permissions)) {
-            foreach ($permissions as $key => $permission) {
-                $permittedRouteName[$key] = strtolower($permission->route_name);
-            }
-        }
-        return $permittedRouteName;
-    }
+    private function getPermissions($permissions){
+        $result = [];
 
-    private function getPermittedPageRouteName($moduleSubmodulePageAssoc,$permissions)
-    {
-       
-        $permittedRouteName = [];
-        foreach ($permissions as $key => $permission) {
-
-            if(!empty($permission->route_name)){
-                if($permission->module_id != 1001 && isset($moduleSubmodulePageAssoc[$permission->module_id])){
-                    $permittedRouteName[$key] =  "/".$moduleSubmodulePageAssoc[$permission->module_id].strtolower($permission->route_name);
-                }else{
-                    //dd($permission);
-                    $permittedRouteName[$key] =  strtolower($permission->route_name);
-                }
-                
-            }
-            
-        }
-        return $permittedRouteName;
-    }
-
-
-    public function getSubModules($request_controller)
-    {
-
-
-        if ($request_controller == "dashboard") {
-            return array();
-        }
-        $current_submodule_arr = array();
-        $modules = Session::get('modules');
-        if (!empty($modules)) {
-            foreach ($modules as $module) {
-                foreach ($module->submodules as $submodule) {
-
-                    $submodule['controller_name'] = trim($submodule['controller_name']);
-                    //echo $request_controller."=====".$submodule['controller_name']."<br/>";
-                    if (strtolower($request_controller) == strtolower($submodule['controller_name'])) {
-                        //echo "Sds";exit;
-                        $current_submodule_arr = array($submodule['name'] => $submodule['id']);
-                        break 2;
-                    }
-                }//exit;
-            }
-        }
-        return $current_submodule_arr;
-    }
-
-
-    public function getPages($request_controller)
-    {
-
-        if ($request_controller == "dashboard") {
-            return array();
-        }
-        $pages_arr = array();
-        $current_submodule_arr = $this->getSubModules($request_controller);
-
-        $modules = Session::get('modules');
-
-        if (!empty($modules)) {
-            foreach ($modules as $module) {
-                foreach ($module->submodules as $submodule) {
-                    if (current($current_submodule_arr) == $submodule['id']) {
-                        foreach ($submodule['pages'] as $page) {
-                            $pages_arr[$page['route_name']] = $page['id'];
-
-                        }
-                        break 2;
-                    }
+        if(!empty($permissions)){
+            $permissions = json_decode(json_encode($permissions),true);
+            foreach($permissions as $p){
+                if(!empty($p['permission_name'])){
+                    $result[] = $p['permission_name'];
                 }
             }
         }
-        return $pages_arr;
+
+        return $result;
     }
+
+//    private function buildTree($elements, $parentId = 0) {
+//        $branch = array();
+//
+//        foreach ($elements as $element) {
+//            if ($element['parent_id'] == $parentId) {
+//                $children = $this->buildTree($elements, $element['permission_id']);
+//
+//                if (!empty($children)) {
+//                    $element['submenu'] = $children;
+//                }
+//                $branch[$element['permission_id']] = $element;
+//                unset($elements[$element['permission_id']]);
+//            }
+//        }
+//        return $branch;
+//    }
+
 
 
     public function verifyUser($auth_id, $db_user_id){
@@ -245,7 +79,14 @@ trait PermissionUpdateTreait
         if($auth_id == $db_user_id){
             $result  = true;
         }
+
+
+
         return $result;
     }
+
+
+
+
 
 }

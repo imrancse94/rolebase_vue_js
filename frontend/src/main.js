@@ -1,105 +1,82 @@
+import Vue from 'vue'
+import IdleVue from "idle-vue";
+import App from './App.vue'
+import router from './router'
+import store from './store'
+import { getToken } from './Helper'
 
-import Vue from 'vue' // vue import from library
-import IdleVue from 'idle-vue' // check user is active or not
-import App from './components/App.vue' // master layout
-import router from './router'; // all route of application
-import store from './store'; // vuex store
-import { getToken,removeToken } from './helper/token'; // set token, get token here
-import jwt from 'jsonwebtoken';
-import CxltToastr from 'cxlt-vue2-toastr'
-import VueSweetalert2 from 'vue-sweetalert2';
-
-Vue.use(VueSweetalert2);
-
-import * as GLOBAL_CONSTANT from './constant';
-
-import * as config from './config';
-
-// all css & js here
-import './assets/css';
-import './assets/js';
-
-import 'cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css';
-//Vue.use(GLOBAL_CONSTANT);
-
-Vue.use(IdleVue, { 
-  ventEmitter: new Vue(), 
-  store ,
-  idleTime: 30000, // 30 seconds
-  startAtIdle: false
-})
+global.jQuery = require('jquery');
+const $ = require('jquery');
+window.$ = $;
 
 
-// events of application
-import './events/eventbus';
+// CSS
+import './assets/fontawesome-free/css/all.min.css'
+import './assets/css/adminlte.min.css';
+import './assets/toastr/toastr.min.css';
+import './assets/js/overlayScrollbars/css/OverlayScrollbars.css';
+import './assets/css/custom.css';
 
-//pagination component
+// JS
+import './assets/js/overlayScrollbars/js/jquery.overlayScrollbars';
+import './assets/js/adminlte';
+import './assets/js/demo';
+import './assets/toastr/toastr.min';
+import './assets/js/pages/dashboard';
+import './assets/js/custom';
+
+import './Events/eventbus';
+
 import pagination from './components/pagination';
-import ErrorValidation from './components/include/ErrorValidation';
+import ErrorValidation from './components/Include/ErrorValidation';
 
+Vue.component('pagination', pagination);
+Vue.component('ErrorValidation', ErrorValidation);
 
-var toastrConfigs = {
-    position: 'top right',
-    showDuration: 1000,
-    hideDuration:1000,
-    timeOut:5000,
-    showMethod:'fadeIn',
-    hideMethod:'fadeOut'
-}
-Vue.use(CxltToastr, toastrConfigs)
+import GLOBAL_CONSTANT from './constant';
 
-Vue.component('pagination',pagination);
-Vue.component('ErrorValidation',ErrorValidation);
+// import plugin
+import VueToastr from "vue-toastr";
+// use plugin
+Vue.use(VueToastr, {
+    defaultTimeout: 2000,
+    defaultProgressBar: false
+});
 
-// application enviroment
+Vue.component("vue-toastr", VueToastr);
+
 Vue.config.productionTip = false
 
-
-// vue app initialization
-const main = () => {
-  var mixin = {
-    data: function () {
-      return {GLOBAL_CONSTANT}
-    }
-  }
-  new Vue({
-    mixins: [mixin],
-    router,
-    store,
-    render: h => h(App),
-  }).$mount('#app')
-}
-
-// vue token check when token exist & every time app initialize
 var token = getToken();
-
-if (token) {
-  jwt.verify(token, config.jwt_secret, (err, decoded) => {
-
-    if (err) {
-      removeToken();
-      token = null;
-    } else {
-      if (decoded.iss !== config.API_BASE_URL+"login") {
-        removeToken();
-        token = null;
-      }
-    }
-  });
+const eventsHub = new Vue();
+const inactiveTime = 10 // min
+Vue.use(IdleVue, {
+    eventEmitter: eventsHub,
+    store,
+    idleTime: 60000 * inactiveTime,
+    startAtIdle: false
+});
+const main = () => {
+    var mixin = {
+            data: function() {
+                return { GLOBAL_CONSTANT }
+            }
+        }
+        // vue app initialization
+    new Vue({
+        mixins: [mixin],
+        store,
+        router,
+        render: h => h(App)
+    }).$mount('#app')
 }
 
 
 if (token) {
-  store.dispatch("auth/setAuth")
-    .then(() => {
-      main();
-    })
+    store.dispatch("auth/authUser")
+        .then((response) => {
+            main();
+        })
 } else {
-  main();
+    main();
 }
-
-
-
-
-
-

@@ -63,6 +63,12 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\UsergroupRole\UsergroupRoleRepositoryInterface::class,
             \App\Repositories\UsergroupRole\UsergroupRoleEloquentRepository::class
         );
+        
+        // Role Page Repository
+        $this->app->singleton(
+            \App\Repositories\RolePage\RolePageRepositoryInterface::class,
+            \App\Repositories\RolePage\RolePageEloquentRepository::class
+        );
     }
     
     public function boot(){

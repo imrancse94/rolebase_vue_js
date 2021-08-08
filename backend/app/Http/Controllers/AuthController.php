@@ -2,20 +2,38 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\RefreshTokenRequest;
+use App\Repositories\User\UserRepositoryInterface;
 
 
 class AuthController extends Controller
 {
 
-    public function __construct()
+    private $userRepository;
+
+    public function __construct(UserRepositoryInterface $userRepository)
     {
-        $this->middleware('jwt', ['except' => ['login']]);
+        $this->middleware('auth', ['except' => ['login']]);
+        $this->userRepository = $userRepository;
     }
 
+    public function getAuthUserData(Request $request) {
+        $data['user'] = auth()->user();
+        $message = __('Email or password is incorrect.');
+        $code = config('constant.LOGIN_UNSUCCESSFULL');
+        if(!empty($data['user'])){
+            $message = __('Successfully logged in');
+            $code = config('constant.LOGIN_SUCCESS');
+            $permissions = $this->getPermissionList($data['user']['id']);
+            $data['access_token'] = $request->bearerToken();
+            $data = array_merge($data, $permissions);
+        }
+        return $this->sendResponse($data, $message, $code);
+    }
     /**
      * Store a new user.
      *
@@ -24,7 +42,7 @@ class AuthController extends Controller
      */
     public function register(Request $request)
     {
-        //validate incoming request 
+        //validate incoming request
         $this->validate($request, [
             'name' => 'required|string',
             'email' => 'required|email|unique:users',
@@ -51,21 +69,31 @@ class AuthController extends Controller
 
     public function login(LoginRequest $request)
     {
-        $credentials = $request->only(['email', 'password']);
+        $credentials = $request->all();
 
-        if (!$token = Auth::attempt($credentials)) {
-            $message = __('Username or password is incorrect.');
-            $code = config('constant.LOGIN_UNSUCCESSFULL');
-            $data = 'Unauthorized';
-            return $this->sendError($message, $data, $code);
+        $code = config('constant.LOGIN_UNSUCCESSFULL');
+
+        $response = $this->respondWithToken($credentials);
+
+        $data = [];
+        $message = $response;
+        if($response != "Client Unauthenticate"){
+          if(isset($response['access_token']) && !empty($response['access_token'])){
+              
+              $message = __('Successfully logged in');
+              $code = config('constant.LOGIN_SUCCESS');
+              $data = $response;
+              
+              $data['user'] = $this->userRepository->getUserInfoByEmail($credentials['username']);
+              $permissions = $this->getPermissionList($data['user']['id']);
+              $data = array_merge($data, $permissions);
+              
+          }else{
+              $message = __('Email or password is incorrect.');
+            }
+
         }
-        $data = $this->respondWithToken($token);
-        $data['user'] = Auth::user();
-        $permissions = $this->getPermissionList(Auth::id());
-        $data = array_merge($data, $permissions);
-
-        $message = __('Successfully logged in');
-        $code = config('constant.LOGIN_SUCCESS');
+        //dd($message);
         return $this->sendResponse($data, $message, $code);
     }
 
@@ -94,26 +122,31 @@ class AuthController extends Controller
         $code = config('constant.AUTH_LOGOUT');
         $data = [];
         $token =  str_replace('Bearer ','',$request->header('Authorization'));
-        
+
         $message = "Successfully logged out.";
 
         return $this->sendResponse($data, $message,$code);
     } */
 
-    public function refreshToken()
+    public function refreshToken(RefreshTokenRequest $request)
     {
-        
-        $data = array_merge(
-                    $this->respondWithToken($this->guard()->refresh()), 
-                    $this->getCurrentAuthInfo()
-                );
+        $credentials = $request->all();
+        $url = config('app.APP_URL').'/v1/oauth/token';
+        $credentials['grant_type'] = 'refresh_token';
+        $data = $this->sendRequest('POST',$url,$credentials);
 
-        $message = __('Successfully refreshed token');
-        $code = config('constant.REFRESH_TOKEN');
-        
+        $message = __('Invalid Request');
+        $code = config('constant.LOGIN_UNSUCCESSFULL');
+
+        if(!is_null($data)){
+            $message = __('Successfully refreshed token');
+            $code = config('constant.REFRESH_TOKEN');
+        }
+
+
         return $this->sendResponse($data, $message, $code);
     }
 
 
-    
+
 }

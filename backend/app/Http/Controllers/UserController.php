@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function __construct(UserRepositoryInterface $userRepository)
     {
-        
+
         $this->userRepository = $userRepository;
     }
 
@@ -25,7 +25,7 @@ class UserController extends Controller
     public function userAdd(UserRequest $request){
 
         $inputData = $request->all();
-        
+        $inputData['company_id'] = 1;
         $result = $this->userRepository->insertData($inputData);
 
         $code = config('constant.USER_INSERT_FAILED');
@@ -49,7 +49,7 @@ class UserController extends Controller
         $result = $this->userRepository->updateById($id,$inputData);
         $message = __("User Updated Failed");
         $data = [];
-        
+
         if(!empty($result)){
             $message = __("User Updated succesfully");
             $code = config('constant.USER_UPDATED_SUCCESS');
@@ -61,7 +61,7 @@ class UserController extends Controller
 
     public function deleteUserById($id){
 
-        $code = config('constant.PAGE_DELETED_FAILED');
+        $code = config('constant.USER_DELETED_FAILED');
         $result = $this->userRepository->deleteById($id);
         $data = [];
 
@@ -78,9 +78,8 @@ class UserController extends Controller
      * @return Response
      */
     public function profile()
-    {   
-        
-        return response()->json(['user' => Auth::user()], 200);
+    {
+        return response()->json(['user' => auth()->user()], 200);
     }
 
     /**
@@ -90,12 +89,12 @@ class UserController extends Controller
      */
     public function getallUsers()
     {
-        $limit = config('constant.PAGINATION_LIMIT');
+        $limit = config('app.PAGE_LIMIT');
 
         if(request('limit')){
             $limit = request('limit');
         }
-        
+
         $message = __("User get succesfully");
         $code = config('constant.USER_LIST_SUCCESS');
         $data = $this->userRepository->geAllusers($limit);
@@ -112,7 +111,7 @@ class UserController extends Controller
         $cols = [];
 
         $data = $this->userRepository->getUserById($id, $cols);
-        
+
         $code = config('constant.USER_GET_BY_ID_FAILED');
         $message = __("Not Found");
 
@@ -128,6 +127,6 @@ class UserController extends Controller
     }
 
 
-    
+
 
 }

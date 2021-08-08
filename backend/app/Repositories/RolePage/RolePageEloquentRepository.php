@@ -3,6 +3,10 @@
 namespace App\Repositories\RolePage;
 
 use App\Repositories\EloquentRepository;
+use App\Repositories\Role\RoleEloquentRepository;
+use App\Repositories\Page\PageEloquentRepository;
+use App\Repositories\Module\ModuleEloquentRepository;
+use App\Repositories\Submodule\SubmoduleEloquentRepository;
 
 class RolePageEloquentRepository extends EloquentRepository implements RolePageRepositoryInterface {
 
@@ -13,19 +17,19 @@ class RolePageEloquentRepository extends EloquentRepository implements RolePageR
      */
     public function getModel() {
 
-        return \App\Models\RolePage::class;
+        return \App\Models\RoleMenuSubmenuPermission::class;
     }
 
-    
+
 
     public function insertData($inputData) {
 
         $result = false;
         \DB::beginTransaction();
         try {
-            if ($this->_model->create($inputData)) {
+            if ($data = $this->_model->add($inputData)) {
 
-                $result = true;
+                $result = $data;
             }
             \DB::commit();
         } catch (\Exception $e) {
@@ -88,6 +92,15 @@ class RolePageEloquentRepository extends EloquentRepository implements RolePageR
                 ->delete();
 
         return $result;
+    }
+
+    public function getRolePageAssociationInfo(){
+        
+       $data['roleList'] = (new RoleEloquentRepository)->getRoleList();
+       $data['moduleList'] = buildTree(\App\Models\MenuSubmenuPermission::all());
+      
+      
+      return $data;
     }
 
 }

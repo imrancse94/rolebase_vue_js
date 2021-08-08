@@ -3,10 +3,12 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Http\Traits\ApiResponseTrait;
 use Illuminate\Contracts\Auth\Factory as Auth;
 
 class Authenticate
 {
+    use ApiResponseTrait;
     /**
      * The authentication guard factory instance.
      *
@@ -35,8 +37,8 @@ class Authenticate
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if ($this->auth->guard($guard)->guest()) {
-            return response('Unauthorized.', 401);
+		if ($this->auth->guard($guard)->guest()) {
+            return $this->sendResponse([],'Unauthorized',config('constant.UNAUTHENTICATED_RESPONSE_CODE'));
         }
 
         return $next($request);

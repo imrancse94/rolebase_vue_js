@@ -32,9 +32,9 @@ class ModuleAddRequest extends BaseRequest
             'sequence' => 'required|integer',
         ];
 
-        if(Request::isMethod('post')){
-            $rules['id'] = 'required|integer|unique:modules,id';
-        }
+//        if(Request::isMethod('post')){
+//            $rules['id'] = 'required|integer|unique:menu_submenu_permissions,id';
+//        }
 
         return $rules;
     }

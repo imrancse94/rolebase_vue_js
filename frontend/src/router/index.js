@@ -1,193 +1,73 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-import HelloWorld from '../components/HelloWorld';
-import Login from '../components/pages/Login';
-import Dashboard from '../components/pages/Dashboard';
-import Admin from '../components/pages/Admin';
-
-// module
-import ModuleList from '../components/pages/Module/index.vue';
-import ModuleAdd from '../components/pages/Module/add.vue';
-import ModuleEdit from '../components/pages/Module/edit.vue';
-
-// submodule
-import SubModuleList from '../components/pages/Submodule/index.vue';
-import SubModuleAdd from '../components/pages/Submodule/add.vue';
-import SubModuleEdit from '../components/pages/Submodule/edit.vue';
-
-
-import store from '../store'
-
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import store from './../store';
+import routes from './routes';
 Vue.use(VueRouter);
 
-const routes = [
-        {
-            path:'/login',
-            name:'login',
-            component:Login,
-            meta: { 
-                outofauth: true
-            }
-        },
-        {
-            path:'/hello',
-            name:'hello',
-            component:HelloWorld
-            
-        },
-        {
-            path:'/',
-            name:'HelloWorld',
-            component:HelloWorld,
-            redirect:{path:"login"}
-        },
-        {
-            path:'/admin',
-            name:'admin',
-            component:Admin,
-            meta: { 
-                requiresAuth: true
-            },
-            redirect:{path:"/admin/dashboard"},
-            children:[
-                {
-                    path:'dashboard',
-                    name:'admin.dashboard',
-                    component:Dashboard
-                   
-                }
-            ]
-        },
-        {
-            path:'/company',
-            name:'company',
-            component:Admin,
-            meta: { 
-                requiresAuth: true
-            },
-            redirect:{path:"/company/list"},
-            children:[
-                {
-                    path:'list',
-                    name:'company.list',
-                    component:Dashboard
-                   
-                }
-            ]
-        },
-        {
-            path:'/masterdata',
-            name:'masterdata',
-            component:Admin,
-            meta: { 
-                requiresAuth: true
-            },
-            redirect:{path:"/masterdata/module"},
-            children:[
-                {
-                    path:'module',
-                    name:'module',
-                    component:ModuleList
-                   
-                },
-                {
-                    path:'module/add',
-                    name:'module.add',
-                    component:ModuleAdd
-                   
-                },
-                {
-                    path:'module/edit/:id',
-                    name:'module.edit',
-                    component:ModuleEdit
-                   
-                },
-
-                {
-                    path:'submodule',
-                    name:'submodule',
-                    component:SubModuleList
-                   
-                },
-                {
-                    path:'submodule/add',
-                    name:'submodule.add',
-                    component:SubModuleAdd
-                   
-                },
-                {
-                    path:'submodule/edit/:id',
-                    name:'submodule.edit',
-                    component:SubModuleEdit
-                   
-                }
-            ]
-        }
-        
-
-        
-  ];
 
 const router = new VueRouter({
-    routes,
-    mode:'history',
-    linkActiveClass: "active",
-    linkExactActiveClass: "active"
-});
+    mode: 'history',
+    base: process.env.BASE_URL,
+    routes
+})
 
 
-/*const isExist = (arr, name) => {
-  const { length } = arr;
-  const id = length + 1;
-  const found = arr.some(el => el.username === name);
-  if (!found) arr.push({ id, username: name });
-  return arr;
-}*/
 
-// check valid route
-router.beforeEach((to, from, next) => {
-    if(to.name == 'login') {
-        if(store.state.auth.status.loggedIn) { 
-            next('/admin');
-        } else {
-            next();
-        }
-    } else{
-        if(store.state.auth.status.loggedIn) { 
-            
-            var routeList = store.getters['auth/routeList'];
-            var isValidRoute = false;
 
-            for(var route in routeList){
-                var request_path = to.path;
-                request_path = request_path.replace("/"+to.params.id,"");
-                if(routeList[route] == request_path){
-                    isValidRoute = true;
-                    break;
-                }
-            }
+// Auth
+function isLoggedIn() {
+    return store.getters['auth/isAuthenticated'];
+}
 
-            console.log('router',isValidRoute,to,request_path)
-            if(isValidRoute){
-                next();
-            }else{
+function isNotPermitted() {
+    return store.getters['auth/isNotPermitted'];
+}
 
-                if(to.name){
-                    store.dispatch('auth/inValidRoute',1);
-                   next(from.path);
-                }else{
-                    store.dispatch('auth/inValidRoute',2);
-                    next(from.path);
-                }
-            }
-            
-            
-        } else {
-            next('/login');
-        }
+function isRoutePermitted(route_name) {
+    var result = false;
+
+    const permissionList = store.getters['auth/getPermissionList'];
+    if (!permissionList) {
+        return false;
     }
+    let l = router.resolve({ name: route_name });
+    if (permissionList.includes(route_name) && l.resolved.matched.length > 0) {
+        result = true;
+    }
+    console.log('isRoutePermitted', route_name, result)
+    return result;
+}
+
+router.beforeEach((to, from, next) => {
+
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+        var isPermitted = isRoutePermitted(to.name);
+        // this route requires auth, check if logged in
+        // if not, redirect to login page.
+        if (!isLoggedIn()) {
+            next({ name: 'Login' })
+        } else {
+            if (isPermitted) {
+                next();
+            } else if (!isPermitted && to.name == '404') {
+                next();
+            } else {
+                next({ name: '404' })
+            }
+        }
+    } else if (to.matched.some(record => record.meta.isLoginRoute)) {
+        // this route requires auth, check if logged in
+        // if not, redirect to login page.
+        if (isLoggedIn()) {
+            next({ name: 'admin' })
+        } else {
+            next()
+        }
+    } else {
+        next() // make sure to always call next()!
+    }
+
+
 })
 
 export default router
-
-  

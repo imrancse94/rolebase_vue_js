@@ -27,8 +27,7 @@ class UserRequest extends BaseRequest
         $rules = [
             'name'=>'required',
             'email'=>'required|email',
-            'password'=>'required',
-            'company_id'=>'required|integer'
+            'password'=>'required'
         ];
 
 

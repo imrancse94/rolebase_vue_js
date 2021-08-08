@@ -1,3 +1,3 @@
-if($('.sidebar ul.nav-treeview li a').hasClass('active')){
-	
-}
+setTimeout(() => {
+    $('#toast-container').hide();
+}, 3000);
