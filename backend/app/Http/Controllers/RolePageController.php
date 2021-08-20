@@ -27,7 +27,27 @@ class RolePageController extends Controller {
     }
     
     public function assignRoleMenuSubmenuPermission(RoleMenuSubmenuPermissionRequest $request){
+        $inputData = $request->all();
+        $role_id = $inputData['role_id'];
+        $organized_data = [];
+        $data = false;
+        $code = config('constant.ROLE_PAGE_INSERTED_FAILED');
+        $message = __('Inserted Failed');
+        if(!empty($inputData['page_ids'])){
+            foreach($inputData['page_ids'] as $page_id){
+                $organized_data[] = [
+                    'role_id'=>$role_id,
+                    'menu_submenu_permission_id'=>$page_id
+                ];
+            }
+            $data = $this->rolepageRepository->insertPermission($organized_data);
+            if($data){
+                $code = config('constant.ROLE_PAGE_INSERTED_SUCCESS');
+                $message = __('Inserted Successfully');
+            }
+        }
         
+        return $this->sendResponse([],$message,$code);
     }
 
 }

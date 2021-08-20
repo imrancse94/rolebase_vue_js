@@ -23,7 +23,8 @@ class RoleMenuSubmenuPermissionRequest extends BaseRequest
     public function rules(): array
     {
         return [
-            //
+            'role_id'=>'required|integer',
+            'page_ids'=>'required|array'
         ];
     }
 

@@ -28,4 +28,9 @@ class RoleMenuSubmenuPermission extends Model
 
         return $result;
     }
+    
+    
+    public static function insertPermission($inputData) {
+        return RoleMenuSubmenuPermission::insert($inputData);
+    }
 }
