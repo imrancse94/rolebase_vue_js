@@ -56,7 +56,7 @@
 
                   <div class="form-group">
                     <router-link
-                      :to="{'path':'/masterdata/submodule'}"
+                      :to="{name:'submodule-index'}"
                       class="btn btn-sm btn-primary mr-2"
                     >Back</router-link>
                     <button type="submit" class="btn btn-sm btn-success">Save</button>

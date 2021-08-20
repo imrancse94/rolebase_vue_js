@@ -98,7 +98,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
         // Matches "/api/role page association
         $router->get('role-page-list','RolePageController@index');
-        $router->get('role-page-association','RolePageController@assignRoleMenuSubmenuPermission');
-
+        $router->post('role-page-assign','RolePageController@assignRoleMenuSubmenuPermission');
+        $router->get('role-page-info/{role_id}','RolePageController@getRolePageInfoByRoleId');
     });
 });

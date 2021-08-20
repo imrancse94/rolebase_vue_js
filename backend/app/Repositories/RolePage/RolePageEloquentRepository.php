@@ -96,11 +96,14 @@ class RolePageEloquentRepository extends EloquentRepository implements RolePageR
 
     public function getRolePageAssociationInfo(){
         
-       $data['roleList'] = (new RoleEloquentRepository)->getRoleList();
-       $data['moduleList'] = buildTree(\App\Models\MenuSubmenuPermission::all());
-      
-      
-      return $data;
+        $data['roleList'] = (new RoleEloquentRepository)->getRoleList();
+
+        return $data;
+    }
+
+    public function getModuleSubmodulePageInfoByRoleId($role_id){
+
+        return buildTree(\App\Models\RoleMenuSubmenuPermission::getModuleSubmodulePageInfoByRoleId($role_id));
     }
 
 }

@@ -19,6 +19,12 @@ class RolePageController extends Controller {
        
        return $this->sendResponse($data,"",config('constant.ROLE_PAGE_LIST_SUCCESS'));
     }
+
+    public function getRolePageInfoByRoleId($role_id){
+        
+        $data = $this->rolepageRepository->getModuleSubmodulePageInfoByRoleId($role_id);
+        return $this->sendResponse($data,"",config('constant.ROLE_PAGE_LIST_SUCCESS'));
+    }
     
     public function assignRoleMenuSubmenuPermission(RoleMenuSubmenuPermissionRequest $request){
         

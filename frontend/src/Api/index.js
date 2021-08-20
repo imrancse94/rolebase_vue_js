@@ -51,6 +51,7 @@ Api.interceptors.response.use(
     error => {
         req.done();
         console.log('resquest.error', error);
+        removeToken();
         return Promise.reject(error);
         // Reject promise if usual error
 

@@ -49,6 +49,45 @@ const routes = [{
                 }
             },
             {
+                path: 'submodule',
+                name: 'submodule-index',
+                component: () =>
+                    import ('../components/Content/Submodule/index.vue'),
+                meta: {
+                    requiresAuth: true,
+                }
+            },
+            {
+                path: 'submodule/add',
+                name: 'submodule-add',
+                component: () =>
+                    import ('../components/Content/Submodule/add.vue'),
+                meta: {
+                    requiresAuth: true,
+
+                }
+            },
+            {
+                path: 'submodule/edit/:id',
+                name: 'submodule-edit',
+                component: () =>
+                    import ('../components/Content/Submodule/edit.vue'),
+                meta: {
+                    requiresAuth: true,
+
+                }
+            },
+            {
+                path: 'rolepage/list',
+                name: 'role-page-assoc',
+                component: () =>
+                    import ('../components/Content/RolePage/index.vue'),
+                meta: {
+                    requiresAuth: true,
+
+                }
+            },
+            {
                 path: '*',
                 name: '404',
                 component: () =>
