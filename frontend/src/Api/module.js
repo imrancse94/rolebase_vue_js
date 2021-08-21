@@ -3,7 +3,7 @@ import { Api } from './index';
 
 export default {
     getModules(params) {
-        return Api.get('modules', params)
+        return Api.get('modules?page=' + params.page)
     },
 
     moduleAdd(params) {

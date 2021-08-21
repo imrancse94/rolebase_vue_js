@@ -28,8 +28,6 @@ export default {
 
   methods: {
     paginateTo(page) {
-
-
       if (this.$router.currentRoute.query.page != page) {
         this.paginateFunction(page);
       }
@@ -40,10 +38,10 @@ export default {
       var queryparams = Object.assign({}, this.$router.currentRoute.query, { 'page': page });
 
       this.$router
-        .push({
+        .replace({
           path: this.$router.currentRoute.path,
           query: queryparams,
-        })
+        }).catch(err => {})
         
       this.$emit("paginateTo", page);
     },

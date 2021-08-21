@@ -2,15 +2,14 @@ import module from './../../Api/module';
 
 export const getModules = ({ commit }, params) => {
     return module.getModules(params).then(({ data }) => {
-        const response = data.data;
-        commit('GET_MODULE', response);
-        return Promise.resolve(response);
+        return Promise.resolve(data.data);
+    }).catch(error => {
+        return Promise.reject(error);
     })
 }
 
 
 export const moduleAdd = ({ commit }, params) => {
-
     return module.moduleAdd(params).then(({ data }) => {
         const response = data;
         commit('ADD_MODULE', response);
@@ -21,7 +20,6 @@ export const moduleAdd = ({ commit }, params) => {
 
 
 export const getModuleById = ({ commit }, params) => {
-
     return module.getModuleById(params).then(({ data }) => {
         const response = data.data;
         commit('GET_MODULE_BY_ID', response);

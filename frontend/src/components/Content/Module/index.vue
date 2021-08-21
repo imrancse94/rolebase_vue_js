@@ -38,7 +38,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(m,index) in module.data" :key="index">
+              <tr v-for="(m,index) in moduleData.data" :key="index">
                 <td class="text-center">{{m.id}}</td>
                 <td class="text-center">{{m.name}}</td>
                 <td class="text-center">{{setDateFormat(m.created_at)}}</td>
@@ -59,7 +59,7 @@
             </tbody>
           </table>
         </div>
-        <pagination :data="module" @paginateTo="moduleMethod"/>
+        <pagination :data="moduleData" @paginateTo="moduleMethod"/>
         
       </div>
     </section>
@@ -82,15 +82,22 @@ export default {
     ...mapState("module", ["module"]),
   },
   mounted() {
-    this.getModules(this.$router.currentRoute.query);
+    this.moduleData = [];
+    this.getModules(this.$router.currentRoute.query).then((data)=>{
+      this.moduleData = data;
+    })
   },
   methods: {
     ...mapActions("module", ["getModules","moduleDelete"]),
 
     moduleMethod(){
-      var params = this.$router.currentRoute.query
-      this.getModules(params);
+      this.moduleData = [];
+      this.getModules(this.$router.currentRoute.query)
+          .then((data)=>{
+            this.moduleData = data;
+          })
     },
+
     deleteModule(id){
       console.log(id);
       this.$swal({
