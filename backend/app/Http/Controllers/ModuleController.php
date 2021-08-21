@@ -23,16 +23,11 @@ class ModuleController extends Controller
     }
 
     public function getModules(){
-
-        $limit = config('constant.PAGINATION_LIMIT');
-
-        if(request('limit')){
-            $limit = request('limit');
-        }
-
+        
+        $request_all = request()->all(); 
         $message = __("Module get succesfully");
         $code = config('constant.MODULE_LIST_SUCCESS');
-        $data = $this->moduleRepository->getAllModules($limit);
+        $data = $this->moduleRepository->getAllModules($request_all);
         return $this->sendResponse($data, $message,$code);
     }
 

@@ -5,7 +5,7 @@ return [
     'APP_CLIENT_ID'=>2,
     'APP_CLIENT_SECRET'=>'jZIDNUBVkd4Do1DOmQ69ycjzqxnvkW4dfMEjnnxP',
 
-    'PAGINATION_LIMIT'=>2,
+    'PAGINATION_LIMIT'=>10,
     'VALIDATION_ERROR'=> -1000,
     'SSADMIN_ID'=>1,
     'LOGIN_SUCCESS'=>100,

@@ -3,8 +3,10 @@ import submodule from './../../Api/submodule';
 export const getSubModules = ({ commit }, params) => {
     return submodule.getSubModules(params).then(({ data }) => {
         const response = data.data;
-        commit('GET_SUBMODULE', response);
+        //commit('GET_SUBMODULE', response);
         return Promise.resolve(response);
+    }).catch(error => {
+        return Promise.reject(error);
     })
 }
 

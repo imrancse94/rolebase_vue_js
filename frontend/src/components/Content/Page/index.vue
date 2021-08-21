@@ -5,7 +5,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>SubModule Management</h1>
+            <h1>Page Management</h1>
           </div>
         </div>
       </div>
@@ -18,10 +18,10 @@
         <div class="card-header">
           <div class="row">
             <div class="col">
-              <h3 class="card-title">SubModule List</h3>
+              <h3 class="card-title">Page List</h3>
             </div>
             <div class="col text-right">
-              <router-link :to="{name:'submodule-add'}" class="btn btn-sm btn-primary">Add SubModule</router-link>
+              <router-link :to="{name:'Page-add'}" class="btn btn-sm btn-primary">Add Page</router-link>
             </div>
           </div>
         </div>
@@ -32,14 +32,14 @@
               <tr>
                 <th class="text-center" style="width: 10px">ID</th>
                 <th class="text-center">Module Name</th>
-                <th class="text-center">SubModule Name</th>
+                <th class="text-center">Page Name</th>
                 <th class="text-center">Created At</th>
                 <th class="text-center">Updated At</th>
                 <th class="text-center">Actions</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(m,index) in submoduleData.data" :key="index">
+              <tr v-for="(m,index) in PageData.data" :key="index">
                 <td class="text-center">{{m.id}}</td>
                 <td class="text-center">{{moduleData[m.parent_id]}}</td>
                 <td class="text-center">{{m.name}}</td>
@@ -47,11 +47,11 @@
                 <td class="text-center">{{setDateFormat(m.updated_at)}}</td>
                 <td class="text-center">
                   <div class="tools action-btns">
-                    <router-link class="text-primary" :to="{name:'submodule-edit',params:{id:m.id}}">
+                    <router-link class="text-primary" :to="{name:'Page-edit',params:{id:m.id}}">
                       <i class="fas fa-edit"></i>
                     </router-link>
                       
-                    <a href="#" class="text-danger" @click.prevent="deleteSubModule(m.id)" >
+                    <a href="#" class="text-danger" @click.prevent="deletePage(m.id)" >
                       <i class="fas fa-trash"></i>
                     </a>
                       
@@ -61,7 +61,7 @@
             </tbody>
           </table>
         </div>
-        <pagination :data="submoduleData" @paginateTo="subModuleMethod"/>
+        <pagination :data="PageData" @paginateTo="PageMethod"/>
         
       </div>
     </section>
@@ -78,32 +78,35 @@ export default {
   data() {
     return {
       moduleData:[],
-      submoduleData: [],
+      submoduleData:[],
+      PageData: [],
     };
   },
   computed: {
-    ...mapState("submodule", ["submodule"]),
+    ...mapState("Page", ["Page"]),
   },
   mounted() {
-    this.getSubModules(this.$router.currentRoute.query)
+    this.getPages(this.$router.currentRoute.query)
         .then((data) =>{
+          this.PageData = data.pages;
           this.submoduleData = data.submodules;
           this.moduleData = data.modules;
-          console.log('submoduleData',this.submoduleData)
+          console.log('PageData',this.PageData)
         });
   },
   methods: {
-    ...mapActions("submodule", ["getSubModules","subModuleDelete"]),
+    ...mapActions("Page", ["getPages","PageDelete"]),
 
-    subModuleMethod(){
-      this.getSubModules(this.$router.currentRoute.query)
+    PageMethod(){
+      this.getPages(this.$router.currentRoute.query)
           .then((data) =>{
+            this.PageData = data.pages;
             this.submoduleData = data.submodules;
             this.moduleData = data.modules;
-            console.log('subModuleMethod',this.submoduleData)
+            console.log('PageMethod',this.PageData)
           });
     },
-    deleteSubModule(id){
+    deletePage(id){
       console.log(id);
       this.$swal({
               title: 'Are you sure?',
@@ -115,13 +118,13 @@ export default {
               confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
               if (result.value) {
-                this.subModuleDelete(id).then(()=>{
+                this.PageDelete(id).then(()=>{
                     this.$swal(
                       'Deleted!',
-                      'Module has been deleted.',
+                      'Page has been deleted.',
                       'success'
                     )
-                  this.subModuleMethod();  
+                  this.PageMethod();  
                 })
                 
               }

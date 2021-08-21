@@ -15,7 +15,12 @@ class MenuSubmenuPermission extends Model
     ];
 
     // Modules
-    public function getModules() {
+    public function getModules($inputData) {
+//        if(!isset($inputData['page'])){
+//            $inputData['page'] = config('constant.PAGINATION_LIMIT');
+//        }
+        dd($inputData);
+        //$modules = $this->where('parent_id', 0)->paginate($inputData['page']);
         $modules = $this->where('parent_id', 0)->get();
         return $modules;
     }
@@ -96,14 +101,22 @@ class MenuSubmenuPermission extends Model
         return $result;
     }
 
-    public function getAllModules($limit = 10)
-    {   $result = $this->where('parent_id', 0)
-                        ->orderBy('id', 'asc');
-
-        if($limit > 0){
-            $result = $result->paginate($limit);
+    public function getAllModules($inputData)
+    {   
+        if(!isset($inputData['limit'])){
+            $inputData['limit'] = config('constant.PAGINATION_LIMIT');
         }
-                        
+
+        $result = $this->where('parent_id', 0);
+        
+        if(isset($inputData['name'])){
+           $name = $inputData['name'];
+           $result = $result->where('name', 'LIKE',"%$name%");
+        }
+        
+        $result = $result->orderBy('id', 'asc')->paginate($inputData['limit']);
+
+                    
         return $result;
     }
 

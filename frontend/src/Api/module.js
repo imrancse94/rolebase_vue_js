@@ -1,9 +1,9 @@
 import { Api } from './index';
-
+import { makeURLQueryString } from './../Helper';
 
 export default {
     getModules(params) {
-        return Api.get('modules?page=' + params.page)
+        return Api.get(makeURLQueryString('modules', params))
     },
 
     moduleAdd(params) {

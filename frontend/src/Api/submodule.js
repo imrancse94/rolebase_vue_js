@@ -1,9 +1,9 @@
 import { Api } from './index';
-
+import { makeURLQueryString } from './../Helper';
 
 export default {
     getSubModules(params) {
-        return Api.get('submodules', params)
+        return Api.get(makeURLQueryString('submodules', params))
     },
 
     subModuleAdd(params) {

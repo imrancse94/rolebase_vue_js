@@ -10,7 +10,7 @@
         :class="index === data.current_page ? 'active':''"
         class="page-item"
       >
-       <button type="button"  @click.prevent="paginateTo(index)" class="page-link">{{index}}</button>
+       <button type="button" v-if="data.last_page > 1"  @click.prevent="paginateTo(index)" class="page-link">{{index}}</button>
       </li>
       <li class="page-item">
         <button type="button" :disabled="!data.next_page_url" @click.prevent="paginateTo(data.current_page +1)" class="page-link" href="#">»</button>

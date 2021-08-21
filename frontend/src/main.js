@@ -4,6 +4,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import { getToken } from './Helper'
+import VueSweetalert2 from 'vue-sweetalert2';
 
 global.jQuery = require('jquery');
 const $ = require('jquery');
@@ -16,6 +17,9 @@ import './assets/css/adminlte.min.css';
 import './assets/toastr/toastr.min.css';
 import './assets/js/overlayScrollbars/css/OverlayScrollbars.css';
 import './assets/css/custom.css';
+
+// If you don't need the styles, do not connect
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 // JS
 import './assets/js/overlayScrollbars/js/jquery.overlayScrollbars';
@@ -37,6 +41,9 @@ import GLOBAL_CONSTANT from './constant';
 
 // import plugin
 import VueToastr from "vue-toastr";
+
+// sweetallert2 plugin
+Vue.use(VueSweetalert2);
 // use plugin
 Vue.use(VueToastr, {
     defaultTimeout: 2000,
@@ -49,7 +56,7 @@ Vue.config.productionTip = false
 
 var token = getToken();
 const eventsHub = new Vue();
-const inactiveTime = 10 // min
+const inactiveTime = 100 // min
 Vue.use(IdleVue, {
     eventEmitter: eventsHub,
     store,

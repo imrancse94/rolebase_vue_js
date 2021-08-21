@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{isIdle}}
     <div class="wrapper">
       <Header />
       <Sidebar />
@@ -39,7 +40,7 @@ export default {
           this.$router.push({ name: 'Login' })
         }
       }
-			return this.$store.state.idleVue.isIdle;
+			//return this.$store.state.idleVue.isIdle;
 		}
   }
   

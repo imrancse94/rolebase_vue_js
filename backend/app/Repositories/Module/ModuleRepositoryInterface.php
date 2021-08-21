@@ -15,7 +15,7 @@ interface ModuleRepositoryInterface
      * Get all most popular Modules.
      * @return mixed
      */
-    public function getAllModules();
+    public function getAllModules(array $data);
 
     /**
      * Get all recent created Modules.

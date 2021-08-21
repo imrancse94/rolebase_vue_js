@@ -78,6 +78,35 @@ const routes = [{
                 }
             },
             {
+                path: 'page',
+                name: 'page-index',
+                component: () =>
+                    import ('../components/Content/Page/index.vue'),
+                meta: {
+                    requiresAuth: true,
+                }
+            },
+            {
+                path: 'page/add',
+                name: 'page-add',
+                component: () =>
+                    import ('../components/Content/Page/add.vue'),
+                meta: {
+                    requiresAuth: true,
+
+                }
+            },
+            {
+                path: 'page/edit/:id',
+                name: 'page-edit',
+                component: () =>
+                    import ('../components/Content/Page/edit.vue'),
+                meta: {
+                    requiresAuth: true,
+
+                }
+            },
+            {
                 path: 'rolepage/list',
                 name: 'role-page-assoc',
                 component: () =>

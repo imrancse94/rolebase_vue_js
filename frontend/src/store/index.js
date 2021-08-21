@@ -6,6 +6,7 @@ import auth from "./auth";
 import module from "./module";
 import submodule from "./submodule";
 import RolePage from "./RolePage";
+import Page from "./page";
 import loading from "./loading";
 import test from './test';
 
@@ -16,6 +17,7 @@ export default new Vuex.Store({
         loading,
         module,
         submodule,
+        Page,
         RolePage
     }
 });

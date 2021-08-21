@@ -21,7 +21,7 @@
               <h3 class="card-title">SubModule Add</h3>
             </div>
             <div class="col text-right">
-              <router-link :to="{'path':'/masterdata/submodule'}" class="btn btn-sm btn-primary">SubModule List</router-link>
+              <router-link :to="{name:'submodule-index'}" class="btn btn-sm btn-primary">SubModule List</router-link>
             </div>
           </div>
         </div>

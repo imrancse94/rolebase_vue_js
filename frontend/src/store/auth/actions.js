@@ -32,14 +32,14 @@ export const authUser = ({ commit }) => {
                 setToken(response.access_token)
                 commit('SET_LOGIN', response);
             } else {
-                setLogout(commit)
+                removeToken();
             }
         } else {
-            setLogout(commit)
+            removeToken();
         }
         return Promise.resolve(data);
     }).catch(error => {
-        setLogout(commit)
+        removeToken();
         return Promise.reject(error);
     })
 }
