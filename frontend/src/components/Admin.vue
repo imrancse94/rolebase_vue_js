@@ -1,7 +1,6 @@
 <template>
   <div>
     <div class="wrapper">
-      <p>Is it Idle? - {{ isIdle }}</p>
       <Header />
       <Sidebar />
         <transition name="fade" mode="out-in">
