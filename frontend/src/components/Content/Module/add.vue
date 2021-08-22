@@ -23,22 +23,14 @@
             <div class="row">
                 <div class="col-6">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Module ID</label>
-                    <input type="text" :class="errors.id ? 'is-invalid':''" v-model="module.id" class="form-control" placeholder="Module ID" />
-                    <ErrorValidation :msg="errors.id" />
-                  </div>
-
-                  <div class="form-group">
                     <label for="exampleInputEmail1">Module Name</label>
                     <input type="text" :class="errors.name ? 'is-invalid':''" v-model="module.name" class="form-control" placeholder="Module Name" />
                     <ErrorValidation :msg="errors.name" />
                   </div>
                   <div class="form-group">
-                    <router-link
-                      :to="{name:'module-index'}"
-                      class="btn btn-sm btn-primary mr-2"
-                    >Back</router-link>
-                    <button type="submit" class="btn btn-sm btn-success">Save</button>
+                    <label for="exampleInputEmail1">Sequence</label>
+                    <input type="text" :class="errors.sequence ? 'is-invalid':''" v-model="module.sequence" class="form-control" placeholder="Sequence" />
+                    <ErrorValidation :msg="errors.sequence" />
                   </div>
                 </div>
                 <div class="col-6">
@@ -47,13 +39,15 @@
                     <input type="text" :class="errors.icon ? 'is-invalid':''" v-model="module.icon" class="form-control" placeholder="Module Icon" />
                     <ErrorValidation :msg="errors.icon" />
                   </div>
-
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Sequence</label>
-                    <input type="text" :class="errors.sequence ? 'is-invalid':''" v-model="module.sequence" class="form-control" placeholder="Sequence" />
-                    <ErrorValidation :msg="errors.sequence" />
-                  </div>
                 </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                    <LinkButton route='module-index'  classname='btn btn-sm btn-primary mr-2' name='Back' />
+                    <button type="submit" class="btn btn-sm btn-success">Save</button>
+                  </div>
+              </div>
             </div>
           </form>
         </div>
