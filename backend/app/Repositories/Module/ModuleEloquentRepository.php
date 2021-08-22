@@ -75,7 +75,6 @@ class ModuleEloquentRepository extends EloquentRepository implements ModuleRepos
             ->where('parent_id', 0)    
             ->where('id',$id)
             ->delete();
-        dd($result);
         return $result;
     }
     /**
