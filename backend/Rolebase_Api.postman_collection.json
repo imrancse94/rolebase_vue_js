@@ -174,7 +174,7 @@
 				{
 					"name": "Delete Module By Id",
 					"request": {
-						"url": "http://localhost/rolebase_vue_js/backend/public/api/module/delete/1005",
+						"url": "http://localhost/rolebase_vue_js/backend/public/api/module/delete/40",
 						"method": "DELETE",
 						"header": [
 							{
@@ -989,6 +989,63 @@
 							}
 						],
 						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Role Page By Role Id",
+					"request": {
+						"url": "http://localhost/rolebase_vue_js/backend/public/api/role-page-info/1",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Role Page Assignment",
+					"request": {
+						"url": "http://localhost/rolebase_vue_js/backend/public/api/role-page-assign",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"role_id\": 5,\n        \"page_ids\": [100,200]\n    }"
+						},
 						"description": ""
 					},
 					"response": []
