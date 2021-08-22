@@ -26,8 +26,10 @@ export const getPageById = ({ commit }, params) => {
 
     return Page.getPageById(params).then(({ data }) => {
         const response = data.data;
-        commit('GET_Page_BY_ID', response);
+        //commit('GET_Page_BY_ID', response);
         return Promise.resolve(response);
+    }).catch(err => {
+        return Promise.reject(err);
     })
 }
 

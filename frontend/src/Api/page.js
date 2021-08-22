@@ -11,7 +11,7 @@ export default {
     },
 
     getPageById(params) {
-        return Api.get('page/edit/' + params)
+        return Api.get('page/edit/' + params.id)
     },
 
     PageEdit(params) {

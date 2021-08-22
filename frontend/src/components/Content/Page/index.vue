@@ -1,15 +1,7 @@
 <template>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Page Management</h1>
-          </div>
-        </div>
-      </div>
-    </section>
+    <ContentPageHeader header='Page Management'/>
 
     <!-- Main content -->
     <section class="content">
@@ -21,8 +13,8 @@
               <h3 class="card-title">Page List</h3>
             </div>
             <div class="col text-right">
-              <router-link :to="{name:'Page-add'}" class="btn btn-sm btn-primary">Add Page</router-link>
-            </div>
+              <LinkButton route='page-add'  classname='btn btn-sm btn-primary' name='Add Page' />
+             </div>
           </div>
         </div>
         <!-- /.card-header -->
@@ -46,16 +38,7 @@
                 <td class="text-center">{{setDateFormat(m.created_at)}}</td>
                 <td class="text-center">{{setDateFormat(m.updated_at)}}</td>
                 <td class="text-center">
-                  <div class="tools action-btns">
-                    <router-link class="text-primary" :to="{name:'Page-edit',params:{id:m.id}}">
-                      <i class="fas fa-edit"></i>
-                    </router-link>
-                      
-                    <a href="#" class="text-danger" @click.prevent="deletePage(m.id)" >
-                      <i class="fas fa-trash"></i>
-                    </a>
-                      
-                    </div>
+                  <ActionButton route="page-edit" :id="m.id" @action="deletePage"/>
                 </td>
               </tr>
             </tbody>

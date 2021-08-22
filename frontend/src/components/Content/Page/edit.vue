@@ -1,15 +1,7 @@
 <template>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Sub Module Management</h1>
-          </div>
-        </div>
-      </div>
-    </section>
+    <ContentPageHeader header='Page Management'/>
 
     <!-- Main content -->
     <section class="content">
@@ -18,48 +10,45 @@
         <div class="card-header">
           <div class="row">
             <div class="col">
-              <h3 class="card-title">Sub Module Edit</h3>
+              <h3 class="card-title">Page Edit</h3>
             </div>
             <div class="col text-right">
-              <router-link :to="{'path':'/masterdata/submodule'}" class="btn btn-sm btn-primary">SubModule List</router-link>
+              <LinkButton route='page-index'  classname='btn btn-sm btn-primary' name='Page List' />
             </div>
           </div>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-           <form role="form" @submit.prevent="editSubModule">
+           <form role="form" @submit.prevent="editPage">
             <div class="row">
                 <div class="col-6">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">SubModule ID</label>
-                    <input :disabled="true" type="text" :class="errors.id ? 'is-invalid':''" v-model="submoduleGetData.id" class="form-control" placeholder="SubModule ID" />
+                    <label for="exampleInputEmail1">Page ID</label>
+                    <input :disabled="true" type="text" :class="errors.id ? 'is-invalid':''" v-model="pageData.id" class="form-control" placeholder="Page ID" />
                     <ErrorValidation :msg="errors.id" />
                   </div>
 
                   <div class="form-group">
-                    <label for="exampleInputEmail1">SubModule Name</label>
-                    <input type="text" :class="errors.name ? 'is-invalid':''" v-model="submoduleGetData.name" class="form-control" placeholder="SubModule Name" />
+                    <label for="exampleInputEmail1">Page Name</label>
+                    <input type="text" :class="errors.name ? 'is-invalid':''" v-model="pageData.name" class="form-control" placeholder="Page Name" />
                     <ErrorValidation :msg="errors.name" />
                   </div>
 
                   <div class="form-group">
-                    <label for="exampleInputEmail1">SubModule Icon</label>
-                    <input type="text" :class="errors.icon ? 'is-invalid':''" v-model="submoduleGetData.icon" class="form-control" placeholder="SubModule Icon" />
+                    <label for="exampleInputEmail1">Page Icon</label>
+                    <input type="text" :class="errors.icon ? 'is-invalid':''" v-model="pageData.icon" class="form-control" placeholder="Page Icon" />
                     <ErrorValidation :msg="errors.icon" />
                   </div>
 
                   <div class="form-group">
-                    <router-link
-                      :to="{name:'submodule-index'}"
-                      class="btn btn-sm btn-primary mr-2"
-                    >Back</router-link>
+                    <LinkButton route='page-index'  classname='btn btn-sm btn-primary mr-2' name='Back' />
                     <button type="submit" class="btn btn-sm btn-success">Save</button>
                   </div>
                 </div>
                 <div class="col-6">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Module Name</label>
-                    <select type="text" :class="errors.module_id ? 'is-invalid':''" v-model="submoduleGetData.module_id" class="form-control" placeholder="Module Name" >
+                    <select type="text" :class="errors.module_id ? 'is-invalid':''" v-model="pageData.module_id" class="form-control" placeholder="Module Name" >
                       <option value="">Please select</option>
                       <option v-for="(value,index) in modulelist.modulelist" :key="index" :value="index">{{value}}</option>
                     </select>
@@ -69,7 +58,7 @@
 
                   <div class="form-group">
                     <label for="exampleInputEmail1">Sequence</label>
-                    <input type="text" :class="errors.sequence ? 'is-invalid':''" v-model="submoduleGetData.sequence" class="form-control" placeholder="Sequence" />
+                    <input type="text" :class="errors.sequence ? 'is-invalid':''" v-model="pageData.sequence" class="form-control" placeholder="Sequence" />
                     <ErrorValidation :msg="errors.sequence" />
                   </div>
                 </div>
@@ -88,31 +77,32 @@ import GLOBAL_CONSTANT from "./../../../constant";
 
 export default {
   mixins: [Helper],
-  name: "subModuleEdit",
+  name: "PageEdit",
   data() {
     return {
       errors:{},
       modulelist:this.$store.getters['module/getModule'],
+      pageData:{}
     };
   },
   computed: {
-     ...mapState("submodule", ["submoduleGetData"]),
+     //...mapState("Page", ["pageData"]),
   },
   mounted() {
     var module_id = this.$router.currentRoute.params.id;
-    this.getSubModuleById(module_id);
-    this.moduleList();
+    this.getPageById(this.$router.currentRoute.params).then((data)=>{
+      this.pageData = data;
+    })
   },
   methods: {
 
-    ...mapActions("submodule", ["getSubModuleById","subModuleEdit"]),
-    ...mapActions("module",["moduleList"]),
+    ...mapActions("Page", ["getPageById","PageEdit"]),
     
-    editSubModule(){
+    editPage(){
       
-      this.subModuleEdit(this.submoduleGetData).then(response =>{
+      this.PageEdit(this.pageData).then(response =>{
         
-        if(response.success && response.statuscode == GLOBAL_CONSTANT['SUBMODULE_UPDATED_SUCCESS']){
+        if(response.success && response.statuscode == GLOBAL_CONSTANT['Page_UPDATED_SUCCESS']){
              this.errors = {}; 
              this.$toast.success({
                         title:'Saved',

@@ -1,15 +1,7 @@
 <template>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Module Management</h1>
-          </div>
-        </div>
-      </div>
-    </section>
+    <ContentPageHeader header='Module Management'/>
 
     <!-- Main content -->
     <section class="content">
@@ -21,7 +13,7 @@
               <h3 class="card-title">Module Edit</h3>
             </div>
             <div class="col text-right">
-              <router-link :to="{name:'module-index'}" class="btn btn-sm btn-primary">Module List</router-link>
+              <LinkButton route='module-index' classname='btn btn-sm btn-primary' name='Module List' />
             </div>
           </div>
         </div>

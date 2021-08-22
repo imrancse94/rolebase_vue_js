@@ -1,15 +1,7 @@
 <template>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Module Management</h1>
-          </div>
-        </div>
-      </div>
-    </section>
+    <ContentPageHeader header='Module Management'/>
 
     <!-- Main content -->
     <section class="content">
@@ -21,7 +13,7 @@
               <h3 class="card-title">Module List</h3>
             </div>
             <div class="col text-right">
-              <router-link :to="{name:'module-add'}" class="btn btn-sm btn-primary">Add Module</router-link>
+              <LinkButton route='module-add'  classname='btn btn-sm btn-primary' name='Add Module' />
             </div>
           </div>
         </div>
@@ -44,16 +36,7 @@
                 <td class="text-center">{{setDateFormat(m.created_at)}}</td>
                 <td class="text-center">{{setDateFormat(m.updated_at)}}</td>
                 <td class="text-center">
-                  <div class="tools action-btns">
-                    <router-link class="text-primary" :to="{name:'module-edit',params:{id:m.id}}">
-                      <i class="fas fa-edit"></i>
-                    </router-link>
-                      
-                    <a href="#" class="text-danger" @click.prevent="deleteModule(m.id)" >
-                      <i class="fas fa-trash"></i>
-                    </a>
-                      
-                    </div>
+                  <ActionButton route="module-edit" :id="m.id" @action="deleteModule"/>
                 </td>
               </tr>
             </tbody>

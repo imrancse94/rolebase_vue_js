@@ -1,15 +1,7 @@
 <template>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Sub Module Management</h1>
-          </div>
-        </div>
-      </div>
-    </section>
+    <ContentPageHeader header='SubModule Management'/>
 
     <!-- Main content -->
     <section class="content">
@@ -21,8 +13,8 @@
               <h3 class="card-title">Sub Module Edit</h3>
             </div>
             <div class="col text-right">
-              <router-link :to="{'path':'/masterdata/submodule'}" class="btn btn-sm btn-primary">SubModule List</router-link>
-            </div>
+              <LinkButton route='submodule-index'  classname='btn btn-sm btn-primary' name='SubModule List' />
+             </div>
           </div>
         </div>
         <!-- /.card-header -->
@@ -49,10 +41,7 @@
                   </div>
 
                   <div class="form-group">
-                    <router-link
-                      :to="{name:'submodule-index'}"
-                      class="btn btn-sm btn-primary mr-2"
-                    >Back</router-link>
+                    <LinkButton route='submodule-index'  classname='btn btn-sm btn-primary mr-2' name='Back' />
                     <button type="submit" class="btn btn-sm btn-success">Save</button>
                   </div>
                 </div>

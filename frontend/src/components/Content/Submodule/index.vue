@@ -1,15 +1,7 @@
 <template>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>SubModule Management</h1>
-          </div>
-        </div>
-      </div>
-    </section>
+    <ContentPageHeader header='SubModule Management'/>
 
     <!-- Main content -->
     <section class="content">
@@ -21,7 +13,7 @@
               <h3 class="card-title">SubModule List</h3>
             </div>
             <div class="col text-right">
-              <router-link :to="{name:'submodule-add'}" class="btn btn-sm btn-primary">Add SubModule</router-link>
+              <LinkButton route='submodule-add'  classname='btn btn-sm btn-primary' name='Add SubModule' />
             </div>
           </div>
         </div>
@@ -46,16 +38,7 @@
                 <td class="text-center">{{setDateFormat(m.created_at)}}</td>
                 <td class="text-center">{{setDateFormat(m.updated_at)}}</td>
                 <td class="text-center">
-                  <div class="tools action-btns">
-                    <router-link class="text-primary" :to="{name:'submodule-edit',params:{id:m.id}}">
-                      <i class="fas fa-edit"></i>
-                    </router-link>
-                      
-                    <a href="#" class="text-danger" @click.prevent="deleteSubModule(m.id)" >
-                      <i class="fas fa-trash"></i>
-                    </a>
-                      
-                    </div>
+                  <ActionButton route="submodule-edit" :id="m.id" @action="deleteSubModule"/>
                 </td>
               </tr>
             </tbody>
@@ -87,6 +70,7 @@ export default {
   mounted() {
     this.getSubModules(this.$router.currentRoute.query)
         .then((data) =>{
+          console.log('submoduleData',data)
           this.submoduleData = data.submodules;
           this.moduleData = data.modules;
           console.log('submoduleData',this.submoduleData)

@@ -1,16 +1,7 @@
 <template>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Page Management</h1>
-          </div>
-        </div>
-      </div>
-    </section>
-
+    <ContentPageHeader header='Page Management'/>
     <!-- Main content -->
     <section class="content">
       <div class="card">
@@ -21,7 +12,7 @@
               <h3 class="card-title">Page Add</h3>
             </div>
             <div class="col text-right">
-              <router-link :to="{name:'Page-index'}" class="btn btn-sm btn-primary">Page List</router-link>
+              <LinkButton route='page-index' classname='btn btn-sm btn-primary' name='Page List' />
             </div>
           </div>
         </div>
@@ -55,10 +46,7 @@
                   </div>
 
                   <div class="form-group">
-                    <router-link
-                      :to="{name:'Page-index'}"
-                      class="btn btn-sm btn-primary mr-2"
-                    >Back</router-link>
+                    <LinkButton route='page-index' classname='btn btn-sm btn-primary mr-2' name='Back' />
                     <button type="submit" class="btn btn-sm btn-success">Save</button>
                   </div>
                 </div>

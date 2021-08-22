@@ -32,10 +32,20 @@ import './assets/js/custom';
 import './Events/eventbus';
 
 import pagination from './components/pagination';
+import ActionButton from './components/Include/Buttons/ActionButton';
 import ErrorValidation from './components/Include/ErrorValidation';
+import Button from './components/Include/Buttons/Button';
+import LinkButton from './components/Include/Buttons/LinkButton';
+import IconButton from './components/Include/Buttons/IconButton';
+import ContentPageHeader from './components/Include/ContentPageHeader';
 
 Vue.component('pagination', pagination);
 Vue.component('ErrorValidation', ErrorValidation);
+Vue.component('ActionButton', ActionButton);
+Vue.component('Button', Button);
+Vue.component('LinkButton', LinkButton);
+Vue.component('IconButton', IconButton);
+Vue.component('ContentPageHeader', ContentPageHeader);
 
 import GLOBAL_CONSTANT from './constant';
 
