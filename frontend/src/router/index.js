@@ -27,19 +27,20 @@ function isRoutePermitted(route_name) {
     var result = false;
 
     const permissionList = store.getters['auth/getPermissionList'];
+    console.log('permissionList', permissionList)
     if (!permissionList) {
-        return false;
+        return true;
     }
     let l = router.resolve({ name: route_name });
     if (permissionList.includes(route_name) && l.resolved.matched.length > 0) {
         result = true;
     }
-    console.log('isRoutePermitted', route_name, result)
+
     return result;
 }
 
 router.beforeEach((to, from, next) => {
-
+    console.log('to', to)
     if (to.matched.some(record => record.meta.requiresAuth)) {
         var isPermitted = isRoutePermitted(to.name);
         // this route requires auth, check if logged in

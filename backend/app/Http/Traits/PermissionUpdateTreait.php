@@ -33,11 +33,46 @@ trait PermissionUpdateTreait
          // object to array
 
         $result['permissions'] = $this->getPermissions($permissions);
-        $result['sidebar'] = buildTree($permissions);
 
+       // echo "<pre>";print_r($index_list);exit;
+        $permissions_array = json_decode(json_encode($permissions),true);
+        $index_list = [];
+        foreach($permissions_array as $p){
+            if($p['is_index'] == 1){
+                $index_list[$p['parent_id']] = $p;
+            }
+        }
+        //$tree = buildTree($permissions_array);
+        
+        $result['sidebar'] = $this->makeSideBar($permissions_array,0,$index_list);
+        //$result['sidebar'] = $tree;
+        //$result['index'] = $index_list;
         //echo "<pre>";print_r($result);exit;
-
+        
         return $result;
+    }
+    
+    
+    private function makeSideBar($elements,$parent_id = 0, $index_list) {
+            $branch = array();
+            foreach ($elements as $element) {
+                if ($element['parent_id'] == $parent_id) {
+                    $children = $this->makeSideBar($elements, $element['id'],$index_list);
+                    //dd($element);
+                    if(isset($index_list[$element['id']])){
+                        $element['permission_name'] = $index_list[$element['id']]['permission_name'];
+                        $element['is_index'] = 1;
+                    }
+                    
+                    if (!empty($children)) {
+                        $element['submenu'] = $children;
+                    }
+                    $branch[$element['id']] = $element;
+                    
+                    unset($elements[$element['id']]);
+                }
+            }
+            return $branch;
     }
 
     private function getPermissions($permissions){
@@ -55,22 +90,6 @@ trait PermissionUpdateTreait
         return $result;
     }
 
-//    private function buildTree($elements, $parentId = 0) {
-//        $branch = array();
-//
-//        foreach ($elements as $element) {
-//            if ($element['parent_id'] == $parentId) {
-//                $children = $this->buildTree($elements, $element['permission_id']);
-//
-//                if (!empty($children)) {
-//                    $element['submenu'] = $children;
-//                }
-//                $branch[$element['permission_id']] = $element;
-//                unset($elements[$element['permission_id']]);
-//            }
-//        }
-//        return $branch;
-//    }
 
 
 
