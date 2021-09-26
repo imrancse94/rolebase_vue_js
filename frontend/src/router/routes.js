@@ -204,6 +204,35 @@ const routes = [{
                 }
             },
             {
+                path: 'usergroup',
+                name: 'usergroup-index',
+                component: () =>
+                    import ('../components/Content/Usergroup/index.vue'),
+                meta: {
+                    requiresAuth: true,
+                }
+            },
+            {
+                path: 'usergroup/add',
+                name: 'usergroup-add',
+                component: () =>
+                    import ('../components/Content/Usergroup/add.vue'),
+                meta: {
+                    requiresAuth: true,
+
+                }
+            },
+            {
+                path: 'usergroup/edit/:id',
+                name: 'usergroup-edit',
+                component: () =>
+                    import ('../components/Content/Usergroup/edit.vue'),
+                meta: {
+                    requiresAuth: true,
+
+                }
+            },
+            {
                 path: '*',
                 name: '404',
                 component: () =>
