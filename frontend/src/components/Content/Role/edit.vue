@@ -65,7 +65,7 @@
 
                 <div class="form-group">
                   <LinkButton
-                    route="page-index"
+                    route="role-index"
                     classname="btn btn-sm btn-primary mr-2"
                     name="Back"
                   />

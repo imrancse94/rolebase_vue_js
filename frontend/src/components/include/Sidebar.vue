@@ -20,7 +20,9 @@
             />
           </div>
           <div class="info">
-            <a href="#" class="d-block">Alexander Pierce</a>
+            <a href="#" class="d-block">{{
+              this.$store.getters["auth/loginResult"].name
+            }}</a>
           </div>
         </div>
         <!-- Sidebar Menu -->

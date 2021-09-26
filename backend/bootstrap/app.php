@@ -122,6 +122,7 @@ $app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
 
 \Dusterio\LumenPassport\LumenPassport::routes($app, ['prefix' => 'v1/oauth']);
 
+
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes

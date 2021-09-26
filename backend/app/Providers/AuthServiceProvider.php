@@ -41,5 +41,7 @@ class AuthServiceProvider extends ServiceProvider
 
         LumenPassport::tokensExpireIn(Carbon::now()->addHours(1));
         Passport::refreshTokensExpireIn(Carbon::now()->addDays(90));
+        // Somewhere in your application service provider or bootstrap process
+        LumenPassport::allowMultipleTokens();
     }
 }

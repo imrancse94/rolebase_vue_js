@@ -27,74 +27,70 @@
             <thead>
               <tr>
                 <th class="text-center" style="width: 10px">ID</th>
-                <th class="text-center">Module Name</th>
-                <th class="text-center">Page Name</th>
+                <th class="text-center">Role Name</th>
                 <th class="text-center">Created At</th>
                 <th class="text-center">Updated At</th>
                 <th class="text-center">Actions</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(m, index) in PageData.data" :key="index">
+              <tr v-for="(m, index) in RoleData.data" :key="index">
                 <td class="text-center">{{ m.id }}</td>
-                <td class="text-center">{{ moduleData[m.parent_id] }}</td>
-                <td class="text-center">{{ m.name }}</td>
+                <td class="text-center">{{ m.title }}</td>
                 <td class="text-center">{{ setDateFormat(m.created_at) }}</td>
                 <td class="text-center">{{ setDateFormat(m.updated_at) }}</td>
                 <td class="text-center">
                   <ActionButton
-                    route="page-edit"
+                    route="role-edit"
                     :id="m.id"
-                    @action="deletePage"
+                    @action="deleteRole"
                   />
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
-        <pagination :data="PageData" @paginateTo="PageMethod" />
+        <pagination :data="RoleData" @paginateTo="RoleMethod" />
       </div>
     </section>
   </div>
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapActions } from "vuex";
 import Helper from "./../../../Helper/moment";
 
 export default {
   mixins: [Helper],
-  name: "ModuleList",
+  name: "RoleList",
   data() {
     return {
       moduleData: [],
       submoduleData: [],
-      PageData: [],
+      RoleData: [],
     };
   },
-  computed: {
-    ...mapState("Page", ["Page"]),
-  },
+
   mounted() {
-    this.getPages(this.$router.currentRoute.query).then((data) => {
-      this.PageData = data.pages;
+    this.getRoles(this.$router.currentRoute.query).then((data) => {
+      this.RoleData = data.data;
       this.submoduleData = data.submodules;
       this.moduleData = data.modules;
-      console.log("PageData", this.PageData);
+      console.log("RoleData", this.RoleData);
     });
   },
   methods: {
-    ...mapActions("Page", ["getPages", "PageDelete"]),
+    ...mapActions("Role", ["getRoles", "RoleDelete"]),
 
-    PageMethod() {
-      this.getPages(this.$router.currentRoute.query).then((data) => {
-        this.PageData = data.pages;
+    RoleMethod() {
+      this.getRoles(this.$router.currentRoute.query).then((data) => {
+        console.log("RoleMethod111", data);
+        this.RoleData = data.data;
         this.submoduleData = data.submodules;
         this.moduleData = data.modules;
-        console.log("PageMethod", this.PageData);
       });
     },
-    deletePage(id) {
+    deleteRole(id) {
       console.log(id);
       this.$swal({
         title: "Are you sure?",
@@ -106,9 +102,9 @@ export default {
         confirmButtonText: "Yes, delete it!",
       }).then((result) => {
         if (result.value) {
-          this.PageDelete(id).then(() => {
+          this.RoleDelete(id).then(() => {
             this.$swal("Deleted!", "Page has been deleted.", "success");
-            this.PageMethod();
+            this.RoleMethod();
           });
         }
       });
