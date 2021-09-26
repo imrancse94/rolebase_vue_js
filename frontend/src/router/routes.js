@@ -117,6 +117,93 @@ const routes = [{
                 }
             },
             {
+                path: 'company',
+                name: 'company-index',
+                component: () =>
+                    import ('../components/Content/Company/index.vue'),
+                meta: {
+                    requiresAuth: true,
+                }
+            },
+            {
+                path: 'company/add',
+                name: 'company-add',
+                component: () =>
+                    import ('../components/Content/Company/add.vue'),
+                meta: {
+                    requiresAuth: true,
+
+                }
+            },
+            {
+                path: 'company/edit/:id',
+                name: 'company-edit',
+                component: () =>
+                    import ('../components/Content/Company/edit.vue'),
+                meta: {
+                    requiresAuth: true,
+
+                }
+            },
+            {
+                path: 'user',
+                name: 'user-index',
+                component: () =>
+                    import ('../components/Content/User/index.vue'),
+                meta: {
+                    requiresAuth: true,
+                }
+            },
+            {
+                path: 'user/add',
+                name: 'user-add',
+                component: () =>
+                    import ('../components/Content/User/add.vue'),
+                meta: {
+                    requiresAuth: true,
+
+                }
+            },
+            {
+                path: 'user/edit/:id',
+                name: 'user-edit',
+                component: () =>
+                    import ('../components/Content/User/edit.vue'),
+                meta: {
+                    requiresAuth: true,
+
+                }
+            },
+            {
+                path: 'role',
+                name: 'role-index',
+                component: () =>
+                    import ('../components/Content/Role/index.vue'),
+                meta: {
+                    requiresAuth: true,
+                }
+            },
+            {
+                path: 'role/add',
+                name: 'role-add',
+                component: () =>
+                    import ('../components/Content/Role/add.vue'),
+                meta: {
+                    requiresAuth: true,
+
+                }
+            },
+            {
+                path: 'role/edit/:id',
+                name: 'role-edit',
+                component: () =>
+                    import ('../components/Content/Role/edit.vue'),
+                meta: {
+                    requiresAuth: true,
+
+                }
+            },
+            {
                 path: '*',
                 name: '404',
                 component: () =>

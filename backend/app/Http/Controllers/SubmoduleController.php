@@ -21,11 +21,11 @@ class SubmoduleController extends Controller
     public function getSubModulesByUser(){
         
         $limit = config('constant.PAGINATION_LIMIT');
-
+        
         if(request('limit')){
             $limit = request('limit');
         }
-
+        $limit = 2;
         $message = __("Submodule get succesfully");
         $code = config('constant.SUBMODULE_LIST_SUCCESS');
         $data = $this->submoduleRepository->getAllSubModulesWithModule($limit);

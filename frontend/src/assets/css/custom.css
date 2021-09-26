@@ -1,7 +1,7 @@
 body {
     margin: 0;
-    font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
-    font-size: 1rem;
+    font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
     font-weight: 400;
     line-height: 1.5;
     color: #212529;
@@ -25,7 +25,7 @@ body {
 }
 
 .elevation-4 {
-    box-shadow: 0 14px 28px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .22)!important;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22) !important;
 }
 
 .main-sidebar {
@@ -47,7 +47,7 @@ body {
     display: block;
     text-align: center;
     height: 100%;
-    color: #FFF;
+    color: #fff;
     transform: translateY(-50%);
     z-index: 10000;
     visibility: hidden;
@@ -88,7 +88,7 @@ body {
 
 .loader:before,
 .loader:after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
 }
@@ -139,7 +139,7 @@ body {
 
 .spanner.show,
 .overlay.show {
-    opacity: 1
+    opacity: 1;
 }
 
 .spanner.show p {
@@ -149,10 +149,14 @@ body {
     font-weight: bold;
 }
 
-[class*=sidebar-dark-] .nav-treeview>.nav-item>.nav-link:focus {
+[class*="sidebar-dark-"] .nav-treeview>.nav-item>.nav-link:focus {
     background-color: none;
 }
 
 .action-btns a {
     padding: 5px;
+}
+
+.os-theme-dark>.os-scrollbar>.os-scrollbar-track>.os-scrollbar-handle {
+    background: #ececec;
 }

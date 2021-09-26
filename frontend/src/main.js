@@ -4,25 +4,29 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import { getToken } from './Helper'
+import { OverlayScrollbarsPlugin, OverlayScrollbarsComponent } from 'overlayscrollbars-vue';
 import VueSweetalert2 from 'vue-sweetalert2';
+
+Vue.use(OverlayScrollbarsPlugin);
 
 global.jQuery = require('jquery');
 const $ = require('jquery');
 window.$ = $;
 
+// For Multi-select
+//https://vuejsexamples.com/vue-multi-select-dual-listbox/
 
 // CSS
 import './assets/fontawesome-free/css/all.min.css'
 import './assets/css/adminlte.min.css';
 import './assets/toastr/toastr.min.css';
-import './assets/js/overlayScrollbars/css/OverlayScrollbars.css';
+import 'overlayscrollbars/css/OverlayScrollbars.css';
 import './assets/css/custom.css';
 
 // If you don't need the styles, do not connect
 import 'sweetalert2/dist/sweetalert2.min.css';
 
 // JS
-import './assets/js/overlayScrollbars/js/jquery.overlayScrollbars';
 import './assets/js/adminlte';
 import './assets/js/demo';
 import './assets/toastr/toastr.min';
@@ -48,6 +52,8 @@ Vue.component('SubmitButton', SubmitButton);
 Vue.component('LinkButton', LinkButton);
 Vue.component('IconButton', IconButton);
 Vue.component('ContentPageHeader', ContentPageHeader);
+// global registration
+Vue.component('overlay-scrollbars', OverlayScrollbarsComponent);
 
 import GLOBAL_CONSTANT from './constant';
 

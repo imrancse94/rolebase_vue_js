@@ -22,7 +22,9 @@ class RolePageController extends Controller {
 
     public function getRolePageInfoByRoleId($role_id){
         
-        $data = $this->rolepageRepository->getModuleSubmodulePageInfoByRoleId($role_id);
+        //$data = $this->rolepageRepository->getModuleSubmodulePageInfoByRoleId($role_id);
+        $data['selected_ids'] = $this->rolepageRepository->getModuleSubmodulePageIdsByRoleId($role_id);
+        $data['all_data'] = $this->rolepageRepository->getAllModuleSubmodulePageInfo();
         return $this->sendResponse($data,"",config('constant.ROLE_PAGE_LIST_SUCCESS'));
     }
     

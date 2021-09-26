@@ -59,7 +59,6 @@
                                       <input
                                         v-model="page_ids"
                                         type="checkbox"
-                                        :checked="false"
                                         :value="ssubm.id"
                                       />
                                     </div>
@@ -99,6 +98,7 @@ export default {
     return {
       rolePageData: [],
       roleList: [],
+      role_selected_ids: [],
       role_id: 0,
       page_ids: [],
     };
@@ -118,13 +118,23 @@ export default {
       this.rolePageData = [];
       if (role_id > 0) {
         this.getRolePageInfoByRoleId(role_id).then(({ data }) => {
-          this.rolePageData = data;
-          console.log("getRolePageInfoByRoleId", this.rolePageData.length);
+          this.rolePageData = data.all_data;
+          this.page_ids = data.selected_ids;
+          //console.log("getRolePageInfoByRoleId", this.rolePageData);
         });
       }
     },
     roleAssign() {
       console.log(this.page_ids, this.role_id);
+    },
+
+    isSelected(id, selected_ids) {
+      //return true;
+      var exists = selected_ids.some(function(field) {
+        return field === id;
+      });
+
+      return exists ? this.page_ids.push(id) : "";
     },
   },
 };
