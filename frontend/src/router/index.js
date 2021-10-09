@@ -27,7 +27,7 @@ function isRoutePermitted(route_name) {
     var result = false;
 
     const permissionList = store.getters['auth/getPermissionList'];
-    console.log('permissionList', permissionList)
+    //console.log('permissionList', permissionList)
     if (!permissionList) {
         return true;
     }
