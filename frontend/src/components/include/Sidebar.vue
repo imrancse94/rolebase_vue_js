@@ -37,9 +37,9 @@
             <li
               v-for="(item, i1) in sidebarList"
               :key="i1"
-              class="nav-item"
+              class="nav-item main-tree"
               :class="
-                $route.matched[0].name == item.page_name
+                route_parent_name_assoc[$route.name] == item.page_name
                   ? 'menu-is-opening menu-open'
                   : ''
               "
@@ -59,7 +59,7 @@
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
-              <ul class="nav nav-treeview">
+              <ul class="nav nav-treeview" v-show="route_parent_name_assoc[$route.name] == item.page_name">
                 <li
                   v-for="(item1, index) in item.submenu"
                   :key="index"
@@ -94,6 +94,7 @@ export default {
       sidebarList: [],
       children: [],
       current_route: this.$route.name,
+      route_parent_name_assoc:{}
     };
   },
   computed: {
@@ -105,11 +106,12 @@ export default {
     accordiaon(elem) {
       var element = event.target;
       var targetElement = $(element)
-        .parents("li")
+        .parents("li.main-tree")
         .first();
+      
       targetElement.find("ul.nav-treeview").slideToggle();
       targetElement.toggleClass("menu-is-opening menu-open");
-    },
+    }
   },
   mounted() {
     //&& $router.resolve({ name: item1.permission_name }).resolved.matched.length > 0
@@ -133,7 +135,20 @@ export default {
       }
     }
 
+  
+    for(var j in this.sidebarList){
+      var page_name = this.sidebarList[j].page_name;
+      for(var k in this.sidebarList[j].submenu){
+        if(this.sidebarList[j].submenu[k].is_index == 1){
+         this.route_parent_name_assoc[this.sidebarList[j].submenu[k].permission_name] = page_name;
+        }
+      }
+      
+    }
+      //console.log('$route.name',this.route_parent_name_assoc)
+     //hasCurrentRoute();
     //this.sidebarList = this.$store.getters['auth/getSidebarList'];
   },
+
 };
 </script>
