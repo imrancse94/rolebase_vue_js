@@ -233,6 +233,26 @@ const routes = [{
                 }
             },
             {
+                path: 'usergroup/role/assoc',
+                name: 'usergroup-role-assoc',
+                component: () =>
+                    import ('../components/Content/Usergroup/index.vue'),
+                meta: {
+                    requiresAuth: true,
+
+                }
+            },
+            {
+                path: 'site/settings',
+                name: 'site-settings',
+                component: () =>
+                    import ('../components/Content/Usergroup/index.vue'),
+                meta: {
+                    requiresAuth: true,
+
+                }
+            },
+            {
                 path: '*',
                 name: '404',
                 component: () =>

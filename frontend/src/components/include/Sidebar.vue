@@ -94,7 +94,8 @@ export default {
       sidebarList: [],
       children: [],
       current_route: this.$route.name,
-      route_parent_name_assoc:{}
+      route_parent_name_assoc:{},
+      route_submodule_name_assoc:{}
     };
   },
   computed: {
@@ -111,7 +112,8 @@ export default {
       
       targetElement.find("ul.nav-treeview").slideToggle();
       targetElement.toggleClass("menu-is-opening menu-open");
-    }
+    },
+
   },
   mounted() {
     //&& $router.resolve({ name: item1.permission_name }).resolved.matched.length > 0
@@ -142,12 +144,14 @@ export default {
         if(this.sidebarList[j].submenu[k].is_index == 1){
          this.route_parent_name_assoc[this.sidebarList[j].submenu[k].permission_name] = page_name;
         }
+
+        for(var l in this.sidebarList[j].submenu[k].submenu){
+          //console.log('$route.name',this.sidebarList[j].submenu[k].submenu[l].permission_name)
+          this.route_parent_name_assoc[this.sidebarList[j].submenu[k].submenu[l].permission_name] = page_name;
+        }
       }
       
     }
-      //console.log('$route.name',this.route_parent_name_assoc)
-     //hasCurrentRoute();
-    //this.sidebarList = this.$store.getters['auth/getSidebarList'];
   },
 
 };

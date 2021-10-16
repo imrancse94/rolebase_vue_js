@@ -161,7 +161,7 @@ body {
     background: #ececec;
 }
 
-.router-link-exact-active.router-link-active{
+.router-link-exact-active.router-link-active, li .router-link-active{
     background-color: rgba(255,255,255,.9) !important;
     color: #343a40 !important;
 }
