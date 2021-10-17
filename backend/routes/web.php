@@ -100,5 +100,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->get('role-page-list','RolePageController@index');
         $router->post('role-page-assign','RolePageController@assignRoleMenuSubmenuPermission');
         $router->get('role-page-info/{role_id}','RolePageController@getRolePageInfoByRoleId');
+
+        //user password update
+        $router->put('user/password/update/{id}','UserController@changePassword');
     });
 });

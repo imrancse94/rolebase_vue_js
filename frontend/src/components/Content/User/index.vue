@@ -27,74 +27,64 @@
             <thead>
               <tr>
                 <th class="text-center" style="width: 10px">ID</th>
-                <th class="text-center">Module Name</th>
-                <th class="text-center">Page Name</th>
+                <th class="text-center">Name</th>
                 <th class="text-center">Created At</th>
                 <th class="text-center">Updated At</th>
                 <th class="text-center">Actions</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(m, index) in PageData.data" :key="index">
+              <tr v-for="(m, index) in userlist.data" :key="index">
                 <td class="text-center">{{ m.id }}</td>
-                <td class="text-center">{{ moduleData[m.parent_id] }}</td>
                 <td class="text-center">{{ m.name }}</td>
                 <td class="text-center">{{ setDateFormat(m.created_at) }}</td>
                 <td class="text-center">{{ setDateFormat(m.updated_at) }}</td>
                 <td class="text-center">
                   <ActionButton
-                    route="page-edit"
+                    route="user-edit"
                     :id="m.id"
-                    @action="deletePage"
+                    @action="deleteUser"
                   />
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
-        <pagination :data="PageData" @paginateTo="PageMethod" />
+        <pagination :data="userlist" @paginateTo="UserMethod" />
       </div>
     </section>
   </div>
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapActions } from "vuex";
 import Helper from "./../../../Helper/moment";
 
 export default {
   mixins: [Helper],
-  name: "ModuleList",
+  name: "UserList",
   data() {
     return {
-      moduleData: [],
-      submoduleData: [],
-      PageData: [],
+      userlist: [],
     };
   },
-  computed: {
-    ...mapState("Page", ["Page"]),
-  },
+  
   mounted() {
-    this.getPages(this.$router.currentRoute.query).then((data) => {
-      this.PageData = data.pages;
-      this.submoduleData = data.submodules;
-      this.moduleData = data.modules;
-      console.log("PageData", this.PageData);
+    this.getUserList(this.$router.currentRoute.query).then((data) => {
+      this.userlist = data;
+      console.log("userlist", data);
     });
   },
   methods: {
-    ...mapActions("Page", ["getPages", "PageDelete"]),
+    ...mapActions("User", ["getUserList"]),
 
-    PageMethod() {
-      this.getPages(this.$router.currentRoute.query).then((data) => {
-        this.PageData = data.pages;
-        this.submoduleData = data.submodules;
-        this.moduleData = data.modules;
-        console.log("PageMethod", this.PageData);
+    UserMethod() {
+      this.getUserList(this.$router.currentRoute.query).then((data) => {
+        this.userlist = data;
+        console.log("UserMethod", this.userlist);
       });
     },
-    deletePage(id) {
+    deleteUser(id) {
       console.log(id);
       this.$swal({
         title: "Are you sure?",
@@ -108,7 +98,7 @@ export default {
         if (result.value) {
           this.PageDelete(id).then(() => {
             this.$swal("Deleted!", "Page has been deleted.", "success");
-            this.PageMethod();
+            this.UserMethod();
           });
         }
       });

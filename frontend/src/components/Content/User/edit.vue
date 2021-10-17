@@ -23,28 +23,15 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-          <form role="form" @submit.prevent="editPage">
+          <form role="form" @submit.prevent="editUser">
             <div class="row">
               <div class="col-6">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Page ID</label>
-                  <input
-                    :disabled="true"
-                    type="text"
-                    :class="errors.id ? 'is-invalid' : ''"
-                    v-model="pageData.id"
-                    class="form-control"
-                    placeholder="Page ID"
-                  />
-                  <ErrorValidation :msg="errors.id" />
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Page Name</label>
+                  <label for="exampleInputEmail1">Name</label>
                   <input
                     type="text"
                     :class="errors.name ? 'is-invalid' : ''"
-                    v-model="pageData.name"
+                    v-model="userData.name"
                     class="form-control"
                     placeholder="Page Name"
                   />
@@ -52,15 +39,8 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Page Icon</label>
-                  <input
-                    type="text"
-                    :class="errors.icon ? 'is-invalid' : ''"
-                    v-model="pageData.icon"
-                    class="form-control"
-                    placeholder="Page Icon"
-                  />
-                  <ErrorValidation :msg="errors.icon" />
+                  <label for="exampleInputEmail1">
+                  <a href="#" @click.prevent="toggleModal">Change Password</a></label>
                 </div>
 
                 <div class="form-group">
@@ -76,35 +56,15 @@
               </div>
               <div class="col-6">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Module Name</label>
-                  <select
-                    type="text"
-                    :class="errors.module_id ? 'is-invalid' : ''"
-                    v-model="pageData.module_id"
-                    class="form-control"
-                    placeholder="Module Name"
-                  >
-                    <option value="">Please select</option>
-                    <option
-                      v-for="(value, index) in modulelist.modulelist"
-                      :key="index"
-                      :value="index"
-                      >{{ value }}</option
-                    >
-                  </select>
-                  <ErrorValidation :msg="errors.module_id" />
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Sequence</label>
+                  <label for="exampleInputEmail1">Email</label>
                   <input
                     type="text"
-                    :class="errors.sequence ? 'is-invalid' : ''"
-                    v-model="pageData.sequence"
+                    :class="errors.email ? 'is-invalid' : ''"
+                    v-model="userData.email"
                     class="form-control"
                     placeholder="Sequence"
                   />
-                  <ErrorValidation :msg="errors.sequence" />
+                  <ErrorValidation :msg="errors.email" />
                 </div>
               </div>
             </div>
@@ -112,42 +72,77 @@
         </div>
       </div>
     </section>
+    <base-modal v-if="isShowModal" @close="toggleModal" title="Change Password">
+     <template v-slot:body>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Old Password</label>
+            <input
+              type="text"
+              :class="passwordErrors.oldpassword ? 'is-invalid' : ''"
+              v-model="passwordData.oldpassword"
+              class="form-control"
+              placeholder="Old Password"
+            />
+            <ErrorValidation :msg="passwordErrors.oldpassword" />
+          </div>
+          <div class="form-group">
+              <label for="exampleInputEmail1">New Password</label>
+              <input
+                type="text"
+                :class="passwordErrors.password ? 'is-invalid' : ''"
+                v-model="passwordData.password"
+                class="form-control"
+                placeholder="Password"
+              />
+              <ErrorValidation :msg="passwordErrors.password" />
+          </div>
+     </template>
+     <template v-slot:footer>
+        <button type="button" @click.prevent="changePassword" class="btn btn-primary">Save changes</button>
+     </template>
+    </base-modal>
   </div>
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapActions } from "vuex";
 import Helper from "./../../../Helper/moment";
 import GLOBAL_CONSTANT from "./../../../constant";
+import BaseModal from "../../Include/Modal.vue";
 
 export default {
+  components: {BaseModal},
   mixins: [Helper],
-  name: "PageEdit",
+  name: "userEdit",
   data() {
     return {
       errors: {},
-      modulelist: this.$store.getters["module/getModule"],
-      pageData: {},
+      userData: {},
+      isModalOpen:false,
+      isShowModal: false,
+      passwordData:{},
+      passwordErrors:{}
     };
   },
-  computed: {
-    //...mapState("Page", ["pageData"]),
-  },
+
   mounted() {
-    var module_id = this.$router.currentRoute.params.id;
-    this.getPageById(this.$router.currentRoute.params).then((data) => {
-      this.pageData = data;
+    var user_id = this.$router.currentRoute.params.id;
+    this.getUserById(user_id).then((data) => {
+      this.userData = data;
     });
   },
   methods: {
-    ...mapActions("Page", ["getPageById", "PageEdit"]),
-
-    editPage() {
-      this.PageEdit(this.pageData)
+    ...mapActions("User", ["getUserById","userEdit","updatePassword"]),
+    modalOpen(){
+      this.isModalOpen = true;
+    },
+    editUser() {
+      this.userEdit(this.userData)
         .then((response) => {
+          console.log('response',response,GLOBAL_CONSTANT)
           if (
             response.success &&
-            response.statuscode == GLOBAL_CONSTANT["Page_UPDATED_SUCCESS"]
+            response.statuscode == GLOBAL_CONSTANT["USER_UPDATED_SUCCESS"]
           ) {
             this.errors = {};
             this.$toast.success({
@@ -155,11 +150,31 @@ export default {
               message: "Sub Module Changes Saved successfully.",
             });
           } else {
-            this.errors = response.data;
+            this.errors = response;
           }
+          //console.log('this.errors',this.errors,response)
         })
         .catch(() => {});
     },
+    toggleModal() {
+      this.passwordData = {};
+      this.passwordErrors = {};
+      this.isShowModal = !this.isShowModal;
+    },
+    changePassword(){
+     this.passwordData['id'] = this.$router.currentRoute.params.id;
+      this.updatePassword(this.passwordData).then((data) => {
+        if (data.success){
+
+        }else{
+          this.passwordErrors = data;
+          console.log('pass',this.passwordErrors);
+        }
+        
+      });
+      
+    }
+    
   },
 };
 </script>

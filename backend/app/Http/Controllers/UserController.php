@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserPasswordRequest;
 use Illuminate\Support\Facades\Auth;
 
 use App\Repositories\User\UserRepositoryInterface;
@@ -54,6 +55,15 @@ class UserController extends Controller
             $message = __("User Updated succesfully");
             $code = config('constant.USER_UPDATED_SUCCESS');
         }
+
+        return $this->sendResponse($data, $message,$code);
+    }
+
+    public function changePassword(UserPasswordRequest $request, $id){
+        $inputData = $request->all();
+        $code = config('constant.USER_PASSWORD_UPDATED_FAILED');
+        $message = __("Password Updated Failed");
+        $data = [];
 
         return $this->sendResponse($data, $message,$code);
     }

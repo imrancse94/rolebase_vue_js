@@ -10,6 +10,7 @@ import Page from "./page";
 import loading from "./loading";
 import test from './test';
 import Role from "./Role";
+import User from "./user";
 
 export default new Vuex.Store({
     modules: {
@@ -20,6 +21,7 @@ export default new Vuex.Store({
         submodule,
         Page,
         RolePage,
-        Role
+        Role,
+        User
     }
 });
