@@ -55,17 +55,15 @@
                 </div>
               </div>
               <div class="col-6">
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Email</label>
-                  <input
-                    type="text"
-                    :class="errors.email ? 'is-invalid' : ''"
-                    v-model="userData.email"
-                    class="form-control"
-                    placeholder="Sequence"
-                  />
-                  <ErrorValidation :msg="errors.email" />
-                </div>
+                <InputText
+                  title="Email"
+                  wrapperclass='form-group'
+                  classname='form-control'
+                  :errors="errors.email"
+                  v-model="userData.email"
+                />
+                
+                
               </div>
             </div>
           </form>
@@ -74,28 +72,21 @@
     </section>
     <base-modal v-if="isShowModal" @close="toggleModal" title="Change Password">
      <template v-slot:body>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Old Password</label>
-            <input
-              type="text"
-              :class="passwordErrors.oldpassword ? 'is-invalid' : ''"
-              v-model="passwordData.oldpassword"
-              class="form-control"
-              placeholder="Old Password"
-            />
-            <ErrorValidation :msg="passwordErrors.oldpassword" />
-          </div>
-          <div class="form-group">
-              <label for="exampleInputEmail1">New Password</label>
-              <input
-                type="text"
-                :class="passwordErrors.password ? 'is-invalid' : ''"
-                v-model="passwordData.password"
-                class="form-control"
-                placeholder="Password"
-              />
-              <ErrorValidation :msg="passwordErrors.password" />
-          </div>
+          <InputPassword
+            title="Old Password"
+            wrapperclass='form-group'
+            classname='form-control'
+            :errors="passwordErrors.oldpassword"
+            v-model="passwordData.oldpassword"
+          />
+          <InputPassword
+            title="New Password"
+            wrapperclass='form-group'
+            classname='form-control'
+            :errors="passwordErrors.password"
+            v-model="passwordData.password"
+          />
+          
      </template>
      <template v-slot:footer>
         <button type="button" @click.prevent="changePassword" class="btn btn-primary">Save changes</button>
@@ -137,6 +128,7 @@ export default {
       this.isModalOpen = true;
     },
     editUser() {
+      console.log('this.userData',this.userData)
       this.userEdit(this.userData)
         .then((response) => {
           console.log('response',response,GLOBAL_CONSTANT)
@@ -162,6 +154,7 @@ export default {
       this.isShowModal = !this.isShowModal;
     },
     changePassword(){
+      console.log('pass',this.passwordData);
      this.passwordData['id'] = this.$router.currentRoute.params.id;
       this.updatePassword(this.passwordData).then((data) => {
         if (data.success){

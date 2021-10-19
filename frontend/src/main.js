@@ -43,6 +43,8 @@ import SubmitButton from './components/Include/Buttons/SubmitButton';
 import LinkButton from './components/Include/Buttons/LinkButton';
 import IconButton from './components/Include/Buttons/IconButton';
 import ContentPageHeader from './components/Include/ContentPageHeader';
+import InputText from './components/Include/InputComponent/InputText.vue';
+import InputPassword from './components/Include/InputComponent/InputPassword.vue';
 
 Vue.component('pagination', pagination);
 Vue.component('ErrorValidation', ErrorValidation);
@@ -54,6 +56,8 @@ Vue.component('IconButton', IconButton);
 Vue.component('ContentPageHeader', ContentPageHeader);
 // global registration
 Vue.component('overlay-scrollbars', OverlayScrollbarsComponent);
+Vue.component('InputText',InputText);
+Vue.component('InputPassword',InputPassword);
 
 import GLOBAL_CONSTANT from './constant';
 

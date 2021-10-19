@@ -21,7 +21,6 @@
 $router->group(['prefix' => 'api'], function () use ($router) {
 
     $router->get('test', 'ExampleController@index');
-
     // Matches "/api/login
     $router->post('login', 'AuthController@login');
 
