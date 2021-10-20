@@ -21,3 +21,27 @@ export const getRoleById = ({ commit }, params) => {
     })
 
 }
+
+export const roleAdd = ({ commit }, params) => {
+    return new Promise((resolve, reject) => {
+        return role.roleAdd(params).then(({ data }) => {
+            resolve(data)
+        }).catch(error => {
+            reject(error) // return error to calling function
+        })
+    })
+
+}
+
+export const roleDelete = ({ commit }, params) => {
+    return new Promise((resolve, reject) => {
+        return role.roleDelete(params).then(({ data }) => {
+            resolve(data)
+        }).catch(error => {
+            reject(error) // return error to calling function
+        })
+    })
+
+}
+
+

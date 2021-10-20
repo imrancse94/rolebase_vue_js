@@ -24,8 +24,8 @@ class RoleRequest extends BaseRequest
     public function rules(): array
     {
         $rules = [
-            'title'=>'required',
-            'company_id'=>'required|integer'
+            'title'=>'required|regex:'.$this->start_with_letter_only,
+            //'company_id'=>'required|integer'
         ];
 
 
@@ -40,7 +40,7 @@ class RoleRequest extends BaseRequest
     public function messages(): array
     {
         return [
-            //
+            'title.regex'=>'Must be start with letter.'
         ];
     }
 }

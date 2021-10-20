@@ -6,7 +6,7 @@ export default {
         return Api.get(makeURLQueryString('roles', params))
     },
 
-    RoleAdd(params) {
+    roleAdd(params) {
         return Api.post('roleAdd', params)
     },
 
@@ -14,11 +14,11 @@ export default {
         return Api.get('role/edit/' + params.id)
     },
 
-    RoleEdit(params) {
+    roleEdit(params) {
         return Api.put('role/edit/' + params.id, params)
     },
 
-    RoleDelete(params) {
+    roleDelete(params) {
         return Api.delete('role/delete/' + params)
     }
 }

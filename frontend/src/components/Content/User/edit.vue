@@ -26,23 +26,14 @@
           <form role="form" @submit.prevent="editUser">
             <div class="row">
               <div class="col-6">
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Name</label>
-                  <input
-                    type="text"
-                    :class="errors.name ? 'is-invalid' : ''"
-                    v-model="userData.name"
-                    class="form-control"
-                    placeholder="Page Name"
-                  />
-                  <ErrorValidation :msg="errors.name" />
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputEmail1">
-                  <a href="#" @click.prevent="toggleModal">Change Password</a></label>
-                </div>
-
+                <InputText
+                  title="Name"
+                  wrapperclass='form-group'
+                  classname='form-control'
+                  :errors="errors.name"
+                  v-model="userData.name"
+                />
+                
                 <div class="form-group">
                   <LinkButton
                     route="page-index"
@@ -62,15 +53,23 @@
                   :errors="errors.email"
                   v-model="userData.email"
                 />
-                
-                
+
+                <!-- <SelectDropdown
+                  :options="options"
+                  title="List"
+                  wrapperclass='form-group'
+                  classname='form-control'
+                  :errors="errors.list"
+                  v-model="userData.list"
+                /> -->
+
               </div>
             </div>
           </form>
         </div>
       </div>
     </section>
-    <base-modal v-if="isShowModal" @close="toggleModal" title="Change Password">
+    <!-- <base-modal v-if="isShowModal" @close="toggleModal" title="Change Password">
      <template v-slot:body>
           <InputPassword
             title="Old Password"
@@ -91,7 +90,7 @@
      <template v-slot:footer>
         <button type="button" @click.prevent="changePassword" class="btn btn-primary">Save changes</button>
      </template>
-    </base-modal>
+    </base-modal> -->
   </div>
 </template>
 
@@ -101,6 +100,7 @@ import Helper from "./../../../Helper/moment";
 import GLOBAL_CONSTANT from "./../../../constant";
 import BaseModal from "../../Include/Modal.vue";
 
+
 export default {
   components: {BaseModal},
   mixins: [Helper],
@@ -108,11 +108,15 @@ export default {
   data() {
     return {
       errors: {},
-      userData: {},
+      userData: {list:2},
       isModalOpen:false,
       isShowModal: false,
       passwordData:{},
-      passwordErrors:{}
+      passwordErrors:{},
+      options:[
+        {name:"Imran",value:1},
+        {name:"hossain",value:2}
+      ]
     };
   },
 
@@ -128,10 +132,9 @@ export default {
       this.isModalOpen = true;
     },
     editUser() {
-      console.log('this.userData',this.userData)
+      
       this.userEdit(this.userData)
         .then((response) => {
-          console.log('response',response,GLOBAL_CONSTANT)
           if (
             response.success &&
             response.statuscode == GLOBAL_CONSTANT["USER_UPDATED_SUCCESS"]

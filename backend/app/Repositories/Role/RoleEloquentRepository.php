@@ -25,6 +25,7 @@ class RoleEloquentRepository extends EloquentRepository implements RoleRepositor
         $result = false;
         \DB::beginTransaction();
         try {
+            $inputData['company_id'] = 1;
             if ($this->_model->create($inputData)) {
 
                 $result = true;

@@ -27,10 +27,10 @@ import './assets/css/custom.css';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
 // JS
-import './assets/js/adminlte';
-import './assets/js/demo';
+//import './assets/js/adminlte';
+//import './assets/js/demo';
 import './assets/toastr/toastr.min';
-import './assets/js/pages/dashboard';
+//import './assets/js/pages/dashboard';
 import './assets/js/custom';
 
 import './Events/eventbus';
@@ -45,6 +45,8 @@ import IconButton from './components/Include/Buttons/IconButton';
 import ContentPageHeader from './components/Include/ContentPageHeader';
 import InputText from './components/Include/InputComponent/InputText.vue';
 import InputPassword from './components/Include/InputComponent/InputPassword.vue';
+import SelectDropdown from './components/Include/InputComponent/SelectDropdown.vue';
+import InputEmail from './components/Include/InputComponent/InputEmail.vue';
 
 Vue.component('pagination', pagination);
 Vue.component('ErrorValidation', ErrorValidation);
@@ -58,6 +60,8 @@ Vue.component('ContentPageHeader', ContentPageHeader);
 Vue.component('overlay-scrollbars', OverlayScrollbarsComponent);
 Vue.component('InputText',InputText);
 Vue.component('InputPassword',InputPassword);
+Vue.component('SelectDropdown',SelectDropdown);
+Vue.component('InputEmail',InputEmail);
 
 import GLOBAL_CONSTANT from './constant';
 

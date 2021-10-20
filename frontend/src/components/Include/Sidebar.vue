@@ -59,7 +59,7 @@
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
-              <ul class="nav nav-treeview" v-show="route_parent_name_assoc[$route.name] == item.page_name">
+              <ul class="nav nav-treeview">
                 <li
                   v-for="(item1, index) in item.submenu"
                   :key="index"
@@ -110,6 +110,7 @@ export default {
         .parents("li.main-tree")
         .first();
       
+
       targetElement.find("ul.nav-treeview").slideToggle();
       targetElement.toggleClass("menu-is-opening menu-open");
     },

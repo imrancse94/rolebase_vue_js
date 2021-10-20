@@ -26,8 +26,9 @@ class UserRequest extends BaseRequest
 
         $rules = [
             'name'=>'required',
-            'email'=>'required|email',
-            'password'=>'required'
+            'email'=>'required|email|unique:users,email',
+            'password'=>'required',
+            'c_password'=>'required|same:password'
         ];
 
 
@@ -42,7 +43,8 @@ class UserRequest extends BaseRequest
     public function messages(): array
     {
         return [
-            //
+            "c_password.same"=>"This doesn't match with password."
+            
         ];
     }
 }

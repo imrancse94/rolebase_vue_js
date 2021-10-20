@@ -80,7 +80,7 @@ export default {
     });
   },
   methods: {
-    ...mapActions("Role", ["getRoles", "RoleDelete"]),
+    ...mapActions("Role", ["getRoles", "roleDelete"]),
 
     RoleMethod() {
       this.getRoles(this.$router.currentRoute.query).then((data) => {
@@ -102,7 +102,7 @@ export default {
         confirmButtonText: "Yes, delete it!",
       }).then((result) => {
         if (result.value) {
-          this.RoleDelete(id).then(() => {
+          this.roleDelete(id).then(() => {
             this.$swal("Deleted!", "Page has been deleted.", "success");
             this.RoleMethod();
           });

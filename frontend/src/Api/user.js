@@ -16,6 +16,14 @@ export default {
 
   updatePassword(params){
       return Api.put('user/password/update/' + params.id, params)
+  },
+
+  userAdd(params){
+      return Api.post('userAdd', params)
+  },
+
+  userDelete(params){
+   return Api.delete('user/delete/' + params)
   }
 
 }

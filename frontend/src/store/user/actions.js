@@ -32,3 +32,23 @@ export const updatePassword = ({commit},params) =>{
         return Promise.reject(error);
     })
 }
+
+export const userAdd = ({commit},params) => {
+    return user.userAdd(params).then(({ data }) => {
+        const response = data;
+        return Promise.resolve(response);
+    }).catch(error => {
+        return Promise.reject(error);
+    })
+}
+
+export const userDelete = ({commit},params) =>{
+
+    return user.userDelete(params).then(({ data }) => {
+        const response = data;
+        return Promise.resolve(response);
+    }).catch(error => {
+        return Promise.reject(error);
+    })
+
+}

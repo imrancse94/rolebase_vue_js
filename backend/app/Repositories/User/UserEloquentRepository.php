@@ -3,6 +3,7 @@
 namespace App\Repositories\User;
 
 use App\Repositories\EloquentRepository;
+use Illuminate\Support\Facades\Hash;
 
 class UserEloquentRepository extends EloquentRepository implements UserRepositoryInterface
 {
@@ -21,6 +22,7 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
         $result = false;
         \DB::beginTransaction();
         try{
+            $inputData['password'] = Hash::make($inputData['password']);
             if($this->_model->create($inputData)){
 
                 $result = true;

@@ -76,7 +76,7 @@ export default {
     });
   },
   methods: {
-    ...mapActions("User", ["getUserList"]),
+    ...mapActions("User", ["getUserList","userDelete"]),
 
     UserMethod() {
       this.getUserList(this.$router.currentRoute.query).then((data) => {
@@ -85,7 +85,6 @@ export default {
       });
     },
     deleteUser(id) {
-      console.log(id);
       this.$swal({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
@@ -96,8 +95,8 @@ export default {
         confirmButtonText: "Yes, delete it!",
       }).then((result) => {
         if (result.value) {
-          this.PageDelete(id).then(() => {
-            this.$swal("Deleted!", "Page has been deleted.", "success");
+          this.userDelete(id).then(() => {
+            this.$swal("Deleted!", "User has been deleted.", "success");
             this.UserMethod();
           });
         }

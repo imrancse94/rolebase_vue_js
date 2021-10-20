@@ -11,6 +11,9 @@ use App\Http\Traits\ApiResponseTrait;
 class BaseRequest extends RequestAbstract
 {
     use ApiResponseTrait;
+
+    protected $start_with_letter_only = '/^[A-Z][a-zA-Z0-9_-]+$/';
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -51,7 +54,14 @@ class BaseRequest extends RequestAbstract
         $errorData = [];
         if(!empty($errors)){
             foreach($errors as $key => $err){
-                $errorData[$key] = current($err);
+                $message = current($err);
+                $message_array = explode(".",$message);
+                if($message_array[1] == "required"){
+                    $message = "The field is required.";
+                }else if($message_array[1] == "unique"){
+                    $message = "The value already exist.";
+                }
+                $errorData[$key] = $message;
             }
         }
         

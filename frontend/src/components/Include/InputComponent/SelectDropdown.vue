@@ -1,14 +1,17 @@
 <template>
   <div :class="wrapperclass">
     <label>{{ title }}</label>
-    <input
-      autocomplete="off"
-      type="text"
+    <select 
       :class="[{'is-invalid ' : errors},  classname ? classname : '']"
       :placeholder="title"
-      @input="updateInput"
+      @change="updateInput()"
       v-model="modelValue"
-    />
+    >
+      <option value="">Please select</option>
+      <option v-for="(option, index) in options" :key="index" :value="option.value">
+          {{ option.name }}
+      </option>                   
+      </select>
     <ErrorValidation v-if="errors" :msg="errors" />
   </div>
 </template>
@@ -17,25 +20,26 @@
 export default {
   data(){
     return {
-      modelValue : ""
+      modelValue : this.value
     }
   },
-  mounted() {
-    //console.log('this.model.modelValue',)
-    //this.modelValue = this.value
-  },
+  
   methods: {
     updateInput() {
-      this.$emit('input', this.modelValue)
+      this.$emit('update', this.modelValue)
     }
   },
   
   props: {
+    options:{
+      type:Array,
+      required:true
+    },
     title: {
       type: String,
       required: true,
     },
-    
+    value:{},
     errors: {
       type: String,
     },
