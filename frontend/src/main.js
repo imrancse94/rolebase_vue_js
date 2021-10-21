@@ -89,6 +89,7 @@ Vue.use(IdleVue, {
     idleTime: 60000 * inactiveTime,
     startAtIdle: false
 });
+
 const main = () => {
     var mixin = {
             data: function() {

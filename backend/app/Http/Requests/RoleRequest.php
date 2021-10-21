@@ -23,8 +23,9 @@ class RoleRequest extends BaseRequest
      */
     public function rules(): array
     {
+       
         $rules = [
-            'title'=>'required|regex:'.$this->start_with_letter_only,
+            'title'=>'required|unique:roles,title,'.request('id').'|regex:'.$this->start_with_letter_only,
             //'company_id'=>'required|integer'
         ];
 

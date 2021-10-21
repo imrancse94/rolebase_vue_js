@@ -21,7 +21,7 @@
           </div>
           <div class="info">
             <a href="#" class="d-block">{{
-              this.$store.getters["auth/loginResult"] ? this.$store.getters["auth/loginResult"].name:""
+              profile.name
             }}</a>
           </div>
         </div>
@@ -95,7 +95,10 @@ export default {
       children: [],
       current_route: this.$route.name,
       route_parent_name_assoc:{},
-      route_submodule_name_assoc:{}
+      route_submodule_name_assoc:{},
+      profile:{
+        name:""
+      }
     };
   },
   computed: {
@@ -117,7 +120,7 @@ export default {
 
   },
   mounted() {
-    //&& $router.resolve({ name: item1.permission_name }).resolved.matched.length > 0
+    this.profile = this.$store.getters["auth/loginResult"];
     const sidebarlist = this.$store.getters["auth/getSidebarList"];
     if (sidebarlist) {
       for (var i in sidebarlist) {
