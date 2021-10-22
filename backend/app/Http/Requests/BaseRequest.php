@@ -12,7 +12,7 @@ class BaseRequest extends RequestAbstract
 {
     use ApiResponseTrait;
 
-    protected $start_with_letter_only = '/^[A-Z][a-zA-Z0-9_-]+$/';
+    protected $start_with_letter_only = '/^[a-zA-Z]+[a-zA-Z0-9-]*$/u';
 
     /**
      * Determine if the user is authorized to make this request.
