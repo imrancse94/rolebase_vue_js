@@ -52,11 +52,19 @@ class RoleEloquentRepository extends EloquentRepository implements RoleRepositor
     }
 
     public function updateById($id, $inputData) {
+        
+        if(isset($inputData['updated_at']))
+        $inputData['updated_at'] = \Carbon\Carbon::parse($inputData['updated_at'])->format('Y-m-d H:i:s');
+        
+        if(isset($inputData['created_at']))
+        $inputData['created_at'] = \Carbon\Carbon::parse($inputData['created_at'])->format('Y-m-d H:i:s');
+        
         $result = $this
                 ->_model
                 ->where(['id' => $id])
                 ->update($inputData);
 
+        $result = true;
         return $result;
     }
 

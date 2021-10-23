@@ -78,11 +78,10 @@ class RoleController extends Controller
 
         $inputData = $request->all();
         $code = config('constant.ROLE_UPDATED_FAILED');
-        $result = $this->roleRepository->updateById($id,$inputData);
         $message = __("Role Updated Failed");
         $data = [];
-        
-        if(!empty($result)){
+
+        if($this->roleRepository->updateById($id,$inputData)){
             $message = __("Role Updated succesfully");
             $code = config('constant.ROLE_UPDATED_SUCCESS');
         }

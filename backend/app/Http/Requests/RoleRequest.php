@@ -23,10 +23,14 @@ class RoleRequest extends BaseRequest
      */
     public function rules(): array
     {
-       
+        $rule_string = 'required|unique:roles,title|regex:'.$this->start_with_letter_only;
+
+        if(request()->isMethod('PUT')){
+            $rule_string = 'required|unique:roles,title,'.request('id').'|regex:'.$this->start_with_letter_only;
+        }
+
         $rules = [
-            'title'=>'required|unique:roles,title,'.request('id').'|regex:'.$this->start_with_letter_only,
-            //'company_id'=>'required|integer'
+            'title'=>$rule_string,
         ];
 
 

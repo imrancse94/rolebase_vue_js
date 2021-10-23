@@ -3,6 +3,7 @@ import { getToken, setToken, removeToken } from './../Helper'
 //import router from './../router' 
 import store from './../store';
 import * as config from './../config';
+import router from './../router'
 
 export const Api = axios.create({
     baseURL: config.API_BASE_URL
@@ -51,7 +52,8 @@ Api.interceptors.response.use(
     error => {
         req.done();
         console.log('resquest.error', error);
-        removeToken();
+        //store.dispatch('auth/setLogout');
+        //router.push({name:'Login'})
         return Promise.reject(error);
         // Reject promise if usual error
 

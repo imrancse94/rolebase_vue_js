@@ -27,32 +27,30 @@
             <thead>
               <tr>
                 <th class="text-center" style="width: 10px">ID</th>
-                <th class="text-center">Module Name</th>
-                <th class="text-center">Page Name</th>
+                <th class="text-center">Name</th>
                 <th class="text-center">Created At</th>
                 <th class="text-center">Updated At</th>
                 <th class="text-center">Actions</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(m, index) in PageData.data" :key="index">
+              <tr v-for="(m, index) in usergroupData.data" :key="index">
                 <td class="text-center">{{ m.id }}</td>
-                <td class="text-center">{{ moduleData[m.parent_id] }}</td>
                 <td class="text-center">{{ m.name }}</td>
                 <td class="text-center">{{ setDateFormat(m.created_at) }}</td>
                 <td class="text-center">{{ setDateFormat(m.updated_at) }}</td>
                 <td class="text-center">
                   <ActionButton
-                    route="page-edit"
+                    route="usergroup-edit"
                     :id="m.id"
-                    @action="deletePage"
+                    @action="deleteUsergroup"
                   />
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
-        <pagination :data="PageData" @paginateTo="PageMethod" />
+        <pagination :data="usergroupData" @paginateTo="usergroupMethod" />
       </div>
     </section>
   </div>
@@ -64,37 +62,28 @@ import Helper from "./../../../Helper/moment";
 
 export default {
   mixins: [Helper],
-  name: "ModuleList",
+  name: "UserGrpupList",
   data() {
     return {
-      moduleData: [],
-      submoduleData: [],
-      PageData: [],
+      usergroupData: [],
     };
   },
-  computed: {
-    ...mapState("Page", ["Page"]),
-  },
+  
   mounted() {
-    this.getPages(this.$router.currentRoute.query).then((data) => {
-      this.PageData = data.pages;
-      this.submoduleData = data.submodules;
-      this.moduleData = data.modules;
-      console.log("PageData", this.PageData);
+    this.getUserGroups(this.$router.currentRoute.query).then((data) => {
+      this.usergroupData = data;
+      console.log("usergroupData", this.usergroupData);
     });
   },
   methods: {
-    ...mapActions("Page", ["getPages", "PageDelete"]),
-
-    PageMethod() {
-      this.getPages(this.$router.currentRoute.query).then((data) => {
-        this.PageData = data.pages;
-        this.submoduleData = data.submodules;
-        this.moduleData = data.modules;
-        console.log("PageMethod", this.PageData);
+    ...mapActions("Usergroup", ["getUserGroups", "deleteUsergroupById"]),
+    usergroupMethod() {
+      this.getUserGroups(this.$router.currentRoute.query).then((data) => {
+        this.usergroupData = data;
+        console.log("usergroupMethod", this.usergroupData);
       });
     },
-    deletePage(id) {
+    deleteUsergroup(id) {
       console.log(id);
       this.$swal({
         title: "Are you sure?",
@@ -106,9 +95,9 @@ export default {
         confirmButtonText: "Yes, delete it!",
       }).then((result) => {
         if (result.value) {
-          this.PageDelete(id).then(() => {
-            this.$swal("Deleted!", "Page has been deleted.", "success");
-            this.PageMethod();
+          this.deleteUsergroupById(id).then((response) => {
+          this.$toastr.s(response.message, "success");
+          this.usergroupMethod();
           });
         }
       });

@@ -91,6 +91,7 @@ export default {
             this.$toastr.s(response.message, "Success");
           } else {
             this.errors = response.data;
+            this.$toastr.e(response.message, "Failed");
           }
         })
         .catch(() => {});

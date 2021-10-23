@@ -23,11 +23,18 @@ class UsergroupRequest extends BaseRequest
      */
     public function rules(): array
     {
+
+        $rule_string = 'required|unique:usergroups,name|regex:'.$this->start_with_letter_only;
+
+        if(request()->isMethod('PUT')){
+            $rule_string = 'required|unique:usergroups,name,'.request('id').'|regex:'.$this->start_with_letter_only;
+        }
+
         $rules = [
-            'name'=>'required',
-            'company_id'=>'required|integer'
+            'name'=>$rule_string,
         ];
 
+        
 
         return $rules;
     }
@@ -40,7 +47,7 @@ class UsergroupRequest extends BaseRequest
     public function messages(): array
     {
         return [
-            //
+            'name.regex'=>'Must be start with letter.'
         ];
     }
 }

@@ -23,11 +23,13 @@ $app = new Laravel\Lumen\Application(
     dirname(__DIR__)
 );
 
+$app->instance('path.storage', app()->basePath() . DIRECTORY_SEPARATOR . 'storage');
+
  $app->withFacades();
 
  $app->withEloquent();
 
-
+ $app->configure('swagger-lume');
 
 /*
 |--------------------------------------------------------------------------
@@ -122,7 +124,7 @@ $app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
 
 \Dusterio\LumenPassport\LumenPassport::routes($app, ['prefix' => 'v1/oauth']);
 
-
+$app->register(\SwaggerLume\ServiceProvider::class);
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes

@@ -25,57 +25,17 @@
           <form role="form" @submit.prevent="addPage">
             <div class="row">
               <div class="col-6">
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Page ID</label>
-                  <input
-                    type="text"
-                    :class="errors.id ? 'is-invalid' : ''"
-                    v-model="module.id"
-                    class="form-control"
-                    placeholder="Page ID"
-                  />
-                  <ErrorValidation :msg="errors.id" />
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Page Name</label>
-                  <input
-                    type="text"
-                    :class="errors.name ? 'is-invalid' : ''"
-                    v-model="module.name"
-                    class="form-control"
-                    placeholder="Page Name"
-                  />
-                  <ErrorValidation :msg="errors.name" />
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Page Icon</label>
-                  <input
-                    type="text"
-                    :class="errors.icon ? 'is-invalid' : ''"
-                    v-model="module.icon"
-                    class="form-control"
-                    placeholder="Page Icon"
-                  />
-                  <ErrorValidation :msg="errors.icon" />
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Default Method</label>
-                  <input
-                    type="text"
-                    :class="errors.default_method ? 'is-invalid' : ''"
-                    v-model="module.default_method"
-                    class="form-control"
-                    placeholder="Default Method"
-                  />
-                  <ErrorValidation :msg="errors.default_method" />
-                </div>
+                <InputText
+                  title="Name"
+                  wrapperclass='form-group'
+                  classname='form-control'
+                  :errors="errors.name"
+                  v-model="usergroupData.name"
+                />
 
                 <div class="form-group">
                   <LinkButton
-                    route="page-index"
+                    route="usergroup-index"
                     classname="btn btn-sm btn-primary mr-2"
                     name="Back"
                   />
@@ -85,49 +45,7 @@
                 </div>
               </div>
               <div class="col-6">
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Module Name</label>
-                  <select
-                    type="text"
-                    :class="errors.module_id ? 'is-invalid' : ''"
-                    v-model="module.module_id"
-                    class="custom-select"
-                    placeholder="Module Name"
-                  >
-                    <option value="">Please select</option>
-                    <option
-                      v-for="(value, index) in modulelist.modulelist"
-                      :key="index"
-                      :value="index"
-                      >{{ value }}</option
-                    >
-                  </select>
-                  <ErrorValidation :msg="errors.module_id" />
-                </div>
 
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Sequence</label>
-                  <input
-                    type="text"
-                    :class="errors.sequence ? 'is-invalid' : ''"
-                    v-model="module.sequence"
-                    class="form-control"
-                    placeholder="Sequence"
-                  />
-                  <ErrorValidation :msg="errors.sequence" />
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Controller Name</label>
-                  <input
-                    type="text"
-                    :class="errors.controller_name ? 'is-invalid' : ''"
-                    v-model="module.controller_name"
-                    class="form-control"
-                    placeholder="Page Icon"
-                  />
-                  <ErrorValidation :msg="errors.controller_name" />
-                </div>
               </div>
             </div>
           </form>
@@ -144,50 +62,31 @@ import GLOBAL_CONSTANT from "./../../../constant";
 
 export default {
   mixins: [Helper],
-  name: "ModuleAdd",
+  name: "UserggroupAdd",
   data() {
     return {
-      module: {
-        id: "",
-        module_id: "",
-        name: "",
-        icon: "",
-        sequence: "",
-        controller_name: "",
-        default_method: "",
-      },
-      modulelist: this.$store.getters["module/getModule"],
+      usergroupData:{},
       errors: {},
     };
   },
-  computed: {
-    //...mapState("module", ["modulelist"]),
-  },
   mounted() {
-    this.moduleList();
 
-    console.log("sss", this.$store.getters["module/getModule"]);
   },
   methods: {
-    ...mapActions("Page", ["PageAdd"]),
-
-    ...mapActions("module", ["moduleList"]),
+    ...mapActions("Usergroup", ["userGroupAdd"]),
 
     addPage() {
-      this.PageAdd(this.module)
+      this.userGroupAdd(this.usergroupData)
         .then((response) => {
           if (
             response.success &&
-            response.statuscode == GLOBAL_CONSTANT["Page_INSERT_SUCCESS"]
+            response.statuscode == GLOBAL_CONSTANT["USERGROUP_INSERT_SUCCESS"]
           ) {
             this.errors = {};
-            this.$toast.success({
-              title: "Saved",
-              message: "Page Saved successfully.",
-            });
-            this.$router.push("/masterdata/Page");
+            this.$toastr.s(response.message,"Success");
+            this.$router.push({name:'usergroup-index'});
           } else {
-            this.errors = response.data;
+            this.errors = response;
           }
         })
         .catch(() => {});

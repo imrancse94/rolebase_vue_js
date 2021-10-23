@@ -24,3 +24,4 @@ Homestead.json
 frontend/package-lock.json
 /nbproject/private/
 backend/composer.lock
+/nbproject

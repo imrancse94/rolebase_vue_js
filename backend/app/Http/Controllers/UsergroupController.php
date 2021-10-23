@@ -44,7 +44,7 @@ class UsergroupController extends Controller
     public function usergroupAdd(UsergroupRequest $request){
         
         $inputData = $request->all();
-        
+        $inputData['company_id'] = 1;
         $result = $this->usergroupRepository->insertData($inputData);
 
         $code = config('constant.USERGROUP_INSERT_FAILED');

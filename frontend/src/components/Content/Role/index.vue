@@ -34,7 +34,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(m, index) in RoleData.data" :key="index">
+              <tr v-for="(m, index) in roleData.data" :key="index">
                 <td class="text-center">{{ m.id }}</td>
                 <td class="text-center">{{ m.title }}</td>
                 <td class="text-center">{{ setDateFormat(m.created_at) }}</td>
@@ -50,7 +50,7 @@
             </tbody>
           </table>
         </div>
-        <pagination :data="RoleData" @paginateTo="RoleMethod" />
+        <pagination :data="roleData" @paginateTo="roleMethod" />
       </div>
     </section>
   </div>
@@ -67,25 +67,23 @@ export default {
     return {
       moduleData: [],
       submoduleData: [],
-      RoleData: [],
+      roleData: [],
     };
   },
 
   mounted() {
     this.getRoles(this.$router.currentRoute.query).then((data) => {
-      this.RoleData = data.data;
-      this.submoduleData = data.submodules;
-      this.moduleData = data.modules;
-      console.log("RoleData", this.RoleData);
+      this.roleData = data.data;
+      console.log("roleData", this.roleData);
     });
   },
   methods: {
     ...mapActions("Role", ["getRoles", "roleDelete"]),
 
-    RoleMethod() {
+    roleMethod() {
       this.getRoles(this.$router.currentRoute.query).then((data) => {
-        console.log("RoleMethod111", data);
-        this.RoleData = data.data;
+        
+        this.roleData = data.data;
         this.submoduleData = data.submodules;
         this.moduleData = data.modules;
       });
@@ -102,9 +100,9 @@ export default {
         confirmButtonText: "Yes, delete it!",
       }).then((result) => {
         if (result.value) {
-          this.roleDelete(id).then(() => {
-            this.$swal("Deleted!", "Page has been deleted.", "success");
-            this.RoleMethod();
+          this.roleDelete(id).then((response) => {
+            this.$toastr.s(response.message, "success");
+            this.roleMethod();
           });
         }
       });
