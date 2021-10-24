@@ -45,12 +45,10 @@ class UsergroupController extends Controller
         
         $inputData = $request->all();
         $inputData['company_id'] = 1;
-        $result = $this->usergroupRepository->insertData($inputData);
-
         $code = config('constant.USERGROUP_INSERT_FAILED');
         $message = __("Insert Failed");
         $data = [];
-        if($result){
+        if($this->usergroupRepository->insertData($inputData)){
 
             $message = __("Inserted succesfully");
             $code = config('constant.USERGROUP_INSERT_SUCCESS');

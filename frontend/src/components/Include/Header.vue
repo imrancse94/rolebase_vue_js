@@ -17,8 +17,8 @@
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
       <!-- Left navbar links -->
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" data-widget="pushmenu" href="#" role="button"
+        <li class="nav-item" ref="collapse_bar">
+          <a @click.prevent="collapseSidebar" class="nav-link" data-widget="pushmenu" href="#" role="button"
             ><i class="fas fa-bars"></i
           ></a>
         </li>
@@ -32,9 +32,9 @@
           </a>
         </li>
         
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" ref="profile_section">
           <a
-            @click.prevent="headerDropdown($event)"
+            @click.prevent="headerDropdown()"
             class="nav-link"
             data-toggle="dropdown"
             href="#"
@@ -44,6 +44,7 @@
           </a>
           <div
             class="dropdown-menu dropdown-menu-lg dropdown-menu-right"
+            :class="{show:isShowProfileDropdown}"
             style="left: inherit; right: 0px"
           >
             <span class="dropdown-item dropdown-header">Profile</span>
@@ -62,17 +63,36 @@
 <script>
 export default {
   name: "Header",
+  data(){
+    return {
+      isShowProfileDropdown:false,
+    }
+  },
   methods:{
-    headerDropdown($event){
-      var element = $event.target;
-      var parentElement = $(element).parents('li').first();
-      parentElement.toggleClass('show');
-      parentElement.find('div.dropdown-menu-right').toggleClass('show');
+    headerDropdown(){
+      this.isShowProfileDropdown = !this.isShowProfileDropdown
     },
     logout(){
       this.$store.dispatch("auth/setLogout");
       this.$router.push("/login");
+    },
+    collapseSidebar(){
+      $('body').toggleClass('sidebar-collapse');
+    },
+
+    close (e) {
+      if (!this.$refs.profile_section.contains(e.target)) {
+        this.isShowProfileDropdown = false
+      }
+      
     }
+    
+  },
+  mounted () {
+    document.addEventListener('click', this.close)
+  },
+  beforeDestroy () {
+    document.removeEventListener('click',this.close)
   }
 };
 </script>

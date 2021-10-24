@@ -24,6 +24,9 @@ export default {
 
   userDelete(params){
    return Api.delete('user/delete/' + params)
+  },
+  
+  getAllusers(){
+      return Api.get('allusers');
   }
-
 }

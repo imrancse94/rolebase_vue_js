@@ -47,6 +47,7 @@ import InputText from './components/Include/InputComponent/InputText.vue';
 import InputPassword from './components/Include/InputComponent/InputPassword.vue';
 import SelectDropdown from './components/Include/InputComponent/SelectDropdown.vue';
 import InputEmail from './components/Include/InputComponent/InputEmail.vue';
+import MultiselectComponent from './components/Include/MultiselectComponent.vue';
 
 Vue.component('pagination', pagination);
 Vue.component('ErrorValidation', ErrorValidation);
@@ -62,6 +63,7 @@ Vue.component('InputText',InputText);
 Vue.component('InputPassword',InputPassword);
 Vue.component('SelectDropdown',SelectDropdown);
 Vue.component('InputEmail',InputEmail);
+Vue.component('MultiselectComponent',MultiselectComponent);
 
 import GLOBAL_CONSTANT from './constant';
 

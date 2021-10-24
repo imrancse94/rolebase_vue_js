@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Repositories\User;
+namespace App\Repositories\UserUsergroup;
 
 use App\Repositories\EloquentRepository;
-use Illuminate\Support\Facades\Hash;
 
-class UserEloquentRepository extends EloquentRepository implements UserRepositoryInterface
+
+class UserUsergroupEloquentRepository extends EloquentRepository implements UserUsergroupRepositoryInterface
 {
     /**
      * Get model.
@@ -14,7 +14,11 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
      */
     public function getModel()
     {
-        return \App\Models\User::class;
+        return \App\Models\UserUsergroup::class;
+    }
+
+    public function getUserGroupList(){
+        return $this->_model->pluck('name','id');
     }
 
     public function insertData($inputData){
@@ -22,11 +26,8 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
         $result = false;
         \DB::beginTransaction();
         try{
-            $inputData['password'] = Hash::make($inputData['password']);
-            if($this->_model->create($inputData)){
-
-                $result = true;
-            }
+            $result = $this->_model->insert($inputData);
+            
             \DB::commit();
         }catch(\Exception $e){
             \DB::rollback();
@@ -35,7 +36,7 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
         return $result;
     }
 
-    public function getUserById($id, $cols = [])
+    public function getUsergroupById($id, $cols = [])
     {
         $result = $this->_model;
        
@@ -47,11 +48,6 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
             ->first();
 
         return $result;
-    }
-
-    public function getUserInfoByEmail($email)
-    {
-        return $this->_model->getUserInfoByEmail($email);
     }
 
     public function updateById($id,$inputData){
@@ -77,18 +73,12 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
      *
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function geAllusers($limit)
+    public function geAllUsergroups($limit)
     {
         $result = $this
             ->_model
-            ->orderBy('created_at', 'desc');
-
-        if($limit > 0){
-            $result = $result->paginate($limit);
-        }else{
-            $result = $result->get();
-        }    
-            
+            ->orderBy('created_at', 'desc')
+            ->paginate($limit);
 
         return $result;
     }

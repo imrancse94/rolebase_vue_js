@@ -3,7 +3,7 @@
 namespace App\Repositories\Usergroup;
 
 use App\Repositories\EloquentRepository;
-
+use App\Repositories\UserUsergroup\UserUsergroupEloquentRepository;
 
 class UsergroupEloquentRepository extends EloquentRepository implements UsergroupRepositoryInterface
 {
@@ -22,13 +22,26 @@ class UsergroupEloquentRepository extends EloquentRepository implements Usergrou
     }
 
     public function insertData($inputData){
-
+        $user_user_group = new UserUsergroupEloquentRepository();
         $result = false;
+        $usergroupData['name'] = $inputData['name'];
+        $usergroupData['company_id'] = $inputData['company_id'];
         \DB::beginTransaction();
         try{
-            if($this->_model->create($inputData)){
-
-                $result = true;
+            if($result = $this->_model->create($usergroupData)){
+                $user_usergroupData = [];
+                if(!empty($inputData['user_id'])){
+                    foreach($inputData['user_id'] as $user_id){
+                        $user_usergroupData[] = [
+                            'user_id'=>$user_id,
+                            'usergroup_id'=>$result->id,
+                            'company_id'=>1
+                        ];
+                    }
+                }
+                if(!empty($user_usergroupData)){
+                    $user_user_group->insertData($user_usergroupData);
+                }
             }
             \DB::commit();
         }catch(\Exception $e){

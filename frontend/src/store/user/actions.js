@@ -1,5 +1,12 @@
 import user from './../../Api/user';
 
+export const getAllUsers = ({ commit }) => {
+    return user.getAllusers().then(({ data }) => {
+        return Promise.resolve(data.data);
+    }).catch(error => {
+        return Promise.reject(error);
+    })
+}
 
 export const getUserList = ({ commit }, params) => {
     return user.getUserList(params).then(({ data }) => {

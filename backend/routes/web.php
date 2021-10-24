@@ -69,7 +69,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->delete('page/delete/{id}', 'PageController@deletePageById');
 
 
-        // Matches "/api/users
+        // Matches "/api/users //getallUsersWithoutPagination
+        $router->get('allusers', 'UserController@getallUsersWithoutPagination');
         $router->get('users', 'UserController@getallUsers');
         $router->post('userAdd', 'UserController@userAdd');
         $router->get('user/edit/{id}', 'UserController@getUserById');

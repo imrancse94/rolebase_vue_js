@@ -24,7 +24,7 @@
         <div class="card-body">
           <form role="form" @submit.prevent="addPage">
             <div class="row">
-              <div class="col-6">
+              <div class="col-md">
                 <InputText
                   title="Name"
                   wrapperclass='form-group'
@@ -32,7 +32,16 @@
                   :errors="errors.name"
                   v-model="usergroupData.name"
                 />
-
+                <div class="form-group">
+                  <MultiselectComponent
+                    label="User List"
+                    title="Please select"
+                    placeholder="Search users..."
+                    :errors="errors.user_id"
+                    :data="userList"
+                    v-model="usergroupData.user_id"
+                  />
+                </div>
                 <div class="form-group">
                   <LinkButton
                     route="usergroup-index"
@@ -44,9 +53,7 @@
                   </button>
                 </div>
               </div>
-              <div class="col-6">
-
-              </div>
+              <div class="col-md"></div>
             </div>
           </form>
         </div>
@@ -65,19 +72,28 @@ export default {
   name: "UserggroupAdd",
   data() {
     return {
-      usergroupData:{},
-      errors: {},
+      usergroupData:{user_id:[]},
+      errors:{},
+      userList:[]
     };
   },
   mounted() {
-
+    this.getAllUsers().then((data)=>{
+      Object.values(data).map((d)=>{
+        console.log(d);
+        this.userList.push({id:d.id,name:d.name+" ("+d.email+")"});
+      })
+    })
   },
   methods: {
     ...mapActions("Usergroup", ["userGroupAdd"]),
-
+    ...mapActions("User",['getAllUsers']),
     addPage() {
+      
+      //return false;
       this.userGroupAdd(this.usergroupData)
-        .then((response) => {
+        .then(response => {
+          console.log('dddd',response)
           if (
             response.success &&
             response.statuscode == GLOBAL_CONSTANT["USERGROUP_INSERT_SUCCESS"]
@@ -86,7 +102,7 @@ export default {
             this.$toastr.s(response.message,"Success");
             this.$router.push({name:'usergroup-index'});
           } else {
-            this.errors = response;
+            this.errors = response.data;
           }
         })
         .catch(() => {});

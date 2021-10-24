@@ -32,6 +32,7 @@ class UsergroupRequest extends BaseRequest
 
         $rules = [
             'name'=>$rule_string,
+            'user_id'=>'required|Array'
         ];
 
         

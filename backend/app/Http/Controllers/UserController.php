@@ -100,11 +100,20 @@ class UserController extends Controller
     public function getallUsers()
     {
         $limit = config('app.PAGE_LIMIT');
-
         if(request('limit')){
             $limit = request('limit');
         }
 
+        $message = __("User get succesfully");
+        $code = config('constant.USER_LIST_SUCCESS');
+        $data = $this->userRepository->geAllusers($limit);
+        return $this->sendResponse($data, $message,$code);
+    }
+
+
+    public function getallUsersWithoutPagination()
+    {
+        $limit =null;
         $message = __("User get succesfully");
         $code = config('constant.USER_LIST_SUCCESS');
         $data = $this->userRepository->geAllusers($limit);

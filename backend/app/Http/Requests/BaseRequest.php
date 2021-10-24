@@ -56,10 +56,13 @@ class BaseRequest extends RequestAbstract
             foreach($errors as $key => $err){
                 $message = current($err);
                 $message_array = explode(".",$message);
+                !empty($message_array[1]) ? strtolower($message_array[1]) : "";
                 if($message_array[1] == "required"){
                     $message = "The field is required.";
                 }else if($message_array[1] == "unique"){
                     $message = "The value already exist.";
+                }else if($message_array[1] == "array"){
+                    $message = "The value must be array.";
                 }
                 $errorData[$key] = $message;
             }
