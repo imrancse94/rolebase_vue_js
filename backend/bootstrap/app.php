@@ -28,7 +28,10 @@ $app = new Laravel\Lumen\Application(
 
  $app->withEloquent();
 
-
+// load the swagger-lume configuration
+$app->configure('swagger-lume');
+// register the lumen swagger service provider
+$app->register(\SwaggerLume\ServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------

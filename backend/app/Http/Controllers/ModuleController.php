@@ -9,7 +9,73 @@ use App\Http\Requests\ModuleAddRequest;
 
 class ModuleController extends Controller
 {
+    /**
+     * @OA\SecurityScheme(
+     *      securityScheme="bearerAuth",
+     *      in="header",
+     *      name="Authorization",
+     *      type="apiKey",
+     *      description="- Value format will be 'Bearer your_token_here'",
+     * )
+     **/
 
+    /**
+     * @OA\Post(
+     *   tags={"Module"},
+     *   path="/api/moduleAdd",
+     *   summary="Module Add",
+     *   @OA\Response(
+     *     response=200,
+     *     description="successful operation",
+     *     @OA\MediaType(
+     *         mediaType="application/json",
+     *     ),
+     *   ),
+     *   @OA\Response(
+     *     response=406,
+     *     description="not acceptable",
+     *     @OA\MediaType(
+     *         mediaType="application/json",
+     *     ),
+     *   ),
+     *   @OA\Response(
+     *     response=500,
+     *     description="internal server error",
+     *     @OA\MediaType(
+     *         mediaType="application/json",
+     *     ),
+     *   ),
+     *	 @OA\Parameter(
+     *      name="body",
+     *      in="query",
+     *      description="Add module",
+     *      required=true,
+     *      @OA\Schema(
+     *         @OA\Property(
+     *             property="name",
+     *             type="string",
+     *             maxLength=100,
+     *             example="Test Module",
+     *         ),
+     *         @OA\Property(
+     *             property="icon",
+     *             type="string",
+     *             maxLength=100,
+     *             example="fa fa-list-ul",
+     *         ),
+     *         @OA\Property(
+     *             property="sequence",
+     *             type="string",
+     *             maxLength=100,
+     *             example="1",
+     *         ) 
+     *      ),
+     *   ),
+     * security={{"bearerAuth":{}}},
+     * )
+     *
+     **/
+    
     protected $moduleRepository;
     /**
      * Create a new controller instance.
@@ -22,6 +88,32 @@ class ModuleController extends Controller
 
     }
 
+
+    /**
+     * @OA\Get(
+     *   tags={"Module"},
+     *   path="/api/modules",
+     *   description="Get Module list",
+     *   summary="module list",
+     *   operationId="get_module_list",
+     *   @OA\Response(response=200, description="successful operation"),
+     *   @OA\Response(response=406, description="not acceptable"),
+     *   @OA\Response(response=500, description="internal server error"),
+     *		@OA\Parameter(
+     *          name="page",
+     *          in="path",
+     *          description="maximum number of results to return",
+     *          required=false,
+     *          @OA\Schema(
+     *             type="string"
+     *              
+     *          ),
+     *      ),
+     *      security={{"bearerAuth":{}}},
+     * )
+     *
+     **/
+     
     public function getModules(){
         
         $request_all = request()->all(); 
@@ -58,6 +150,30 @@ class ModuleController extends Controller
         return $this->sendResponse($data, $message,$code);
     }
 
+
+    /**
+     * @OA\Get(
+     *   tags={"Module"},
+     *   path="/api/module/edit/{id}",
+     *   description="Get Module by id",
+     *   summary="module by id",
+     *   operationId="get_module_by_id",
+     *   @OA\Response(response=200, description="successful operation"),
+     *   @OA\Response(response=406, description="not acceptable"),
+     *   @OA\Response(response=500, description="internal server error"),
+     *		@OA\Parameter(
+     *          name="id",
+     *          in="path",
+     *          description="maximum number of results to return",
+     *          required=true,
+     *          @OA\Schema( 
+     *             type="integer" 
+     *          ),
+     *      ),
+     *      security={{"bearerAuth":{}}},
+     * )
+     *
+     **/
 
     public function getModuleById($id){
 

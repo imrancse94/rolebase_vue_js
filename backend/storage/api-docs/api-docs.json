@@ -1,0 +1,219 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Role Base management",
+        "contact": {
+            "name": "Developer",
+            "email": "imrancse94@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Api Login",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "query",
+                        "description": "Provide Client ID and Client Secret and user credentials for login",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "client_id": {
+                                    "type": "string",
+                                    "maxLength": 100,
+                                    "example": "2"
+                                },
+                                "client_secret": {
+                                    "type": "string",
+                                    "maxLength": 100,
+                                    "example": "xn381pmRC9JyF8fXWm9DkYsPfsinGaWnR3hi4qTt"
+                                },
+                                "username": {
+                                    "type": "string",
+                                    "maxLength": 100,
+                                    "example": "ssadmin@admin.com"
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "maxLength": 100,
+                                    "example": "123456"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "406": {
+                        "description": "not acceptable",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "internal server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/moduleAdd": {
+            "post": {
+                "tags": [
+                    "Module"
+                ],
+                "summary": "Module Add",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "query",
+                        "description": "Add module",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "maxLength": 100,
+                                    "example": "Test Module"
+                                },
+                                "icon": {
+                                    "type": "string",
+                                    "maxLength": 100,
+                                    "example": "fa fa-list-ul"
+                                },
+                                "sequence": {
+                                    "type": "string",
+                                    "maxLength": 100,
+                                    "example": "1"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "406": {
+                        "description": "not acceptable",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "internal server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/modules": {
+            "get": {
+                "tags": [
+                    "Module"
+                ],
+                "summary": "module list",
+                "description": "Get Module list",
+                "operationId": "get_module_list",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "path",
+                        "description": "maximum number of results to return",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "406": {
+                        "description": "not acceptable"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/module/edit/{id}": {
+            "get": {
+                "tags": [
+                    "Module"
+                ],
+                "summary": "module by id",
+                "description": "Get Module by id",
+                "operationId": "get_module_by_id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "maximum number of results to return",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "406": {
+                        "description": "not acceptable"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "apiKey",
+                "description": "- Value format will be 'Bearer your_token_here'",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    }
+}

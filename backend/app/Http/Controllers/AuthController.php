@@ -12,38 +12,67 @@ use App\Repositories\User\UserRepositoryInterface;
 
 class AuthController extends Controller
 {
-
     /**
-     * @OA\Get(
-     *     path="/sample/{category}/things",
-     *     operationId="/sample/category/things",
-     *     tags={"yourtag"},
-     *     @OA\Parameter(
-     *         name="category",
-     *         in="path",
-     *         description="The category parameter in path",
-     *         required=true,
-     *         @OA\Schema(type="string")
+     * @OA\Post(
+     *   tags={"Auth"},
+     *   path="/api/login",
+     *   summary="Api Login",
+     *   @OA\Response(
+     *     response=200,
+     *     description="successful operation",
+     *     @OA\MediaType(
+     *         mediaType="application/json",
      *     ),
-     *     @OA\Parameter(
-     *         name="criteria",
-     *         in="query",
-     *         description="Some optional other parameter",
-     *         required=false,
-     *         @OA\Schema(type="string")
+     *   ),
+     *   @OA\Response(
+     *     response=406,
+     *     description="not acceptable",
+     *     @OA\MediaType(
+     *         mediaType="application/json",
      *     ),
-     *     @OA\Response(
-     *         response="200",
-     *         description="Returns some sample category things",
-     *         @OA\JsonContent()
+     *   ),
+     *   @OA\Response(
+     *     response=500,
+     *     description="internal server error",
+     *     @OA\MediaType(
+     *         mediaType="application/json",
      *     ),
-     *     @OA\Response(
-     *         response="400",
-     *         description="Error: Bad request. When required parameters were not supplied.",
-     *     ),
+     *   ),
+     *	 @OA\Parameter(
+     *      name="body",
+     *      in="query",
+     *      description="Provide Client ID and Client Secret and user credentials for login",
+     *      required=true,
+     *      @OA\Schema(
+     *         @OA\Property(
+     *             property="client_id",
+     *             type="string",
+     *             maxLength=100,
+     *             example="2",
+     *         ),
+     *         @OA\Property(
+     *             property="client_secret",
+     *             type="string",
+     *             maxLength=100,
+     *             example="xn381pmRC9JyF8fXWm9DkYsPfsinGaWnR3hi4qTt",
+     *         ),
+     *         @OA\Property(
+     *             property="username",
+     *             type="string",
+     *             maxLength=100,
+     *             example="ssadmin@admin.com",
+     *         ),
+     *          @OA\Property(
+     *             property="password",
+     *             type="string",
+     *             maxLength=100,
+     *             example="123456",
+     *         ), 
+     *      ),
+     *   ),
      * )
-     */
-
+     *
+     **/
     private $userRepository;
 
     public function __construct(UserRepositoryInterface $userRepository)
