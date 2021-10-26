@@ -20,6 +20,7 @@
     "overlayscrollbars-vue": "^0.2.2",
     "popper.js": "^1.16.1",
     "vue": "^2.6.11",
+    "vue-multiselect-items": "^1.0.2",
     "vue-router": "^3.2.0",
     "vue-sweetalert2": "^5.0.2",
     "vue-toastr": "^2.1.2",

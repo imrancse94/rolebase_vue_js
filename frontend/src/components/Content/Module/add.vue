@@ -84,14 +84,13 @@ export default {
     
     addModule(){
       this.moduleAdd(this.module).then(response =>{
-        
         if(response.success && response.statuscode == GLOBAL_CONSTANT['MODULE_INSERT_SUCCESS']){
              this.errors = {}; 
              this.$toast.success({
                         title:'Saved',
                         message:'Module Saved successfully.'
                       });
-             this.$router.push('/masterdata/module');
+             this.$router.push({name:"module-index"});
           }else{
             
             this.errors = response.data;

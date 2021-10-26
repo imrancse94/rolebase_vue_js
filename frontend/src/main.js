@@ -13,9 +13,6 @@ global.jQuery = require('jquery');
 const $ = require('jquery');
 window.$ = $;
 
-// For Multi-select
-//https://vuejsexamples.com/vue-multi-select-dual-listbox/
-
 // CSS
 import './assets/fontawesome-free/css/all.min.css'
 import './assets/css/adminlte.min.css';
@@ -27,12 +24,8 @@ import './assets/css/custom.css';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
 // JS
-//import './assets/js/adminlte';
-//import './assets/js/demo';
 import './assets/toastr/toastr.min';
-//import './assets/js/pages/dashboard';
 import './assets/js/custom';
-
 import './Events/eventbus';
 
 import pagination from './components/pagination';
@@ -47,7 +40,7 @@ import InputText from './components/Include/InputComponent/InputText.vue';
 import InputPassword from './components/Include/InputComponent/InputPassword.vue';
 import SelectDropdown from './components/Include/InputComponent/SelectDropdown.vue';
 import InputEmail from './components/Include/InputComponent/InputEmail.vue';
-import MultiselectComponent from './components/Include/MultiselectComponent.vue';
+import VueMultiselectItems from 'vue-multiselect-items'
 
 Vue.component('pagination', pagination);
 Vue.component('ErrorValidation', ErrorValidation);
@@ -63,7 +56,8 @@ Vue.component('InputText',InputText);
 Vue.component('InputPassword',InputPassword);
 Vue.component('SelectDropdown',SelectDropdown);
 Vue.component('InputEmail',InputEmail);
-Vue.component('MultiselectComponent',MultiselectComponent);
+Vue.component('MultiselectComponent',VueMultiselectItems);
+
 
 import GLOBAL_CONSTANT from './constant';
 
@@ -72,7 +66,7 @@ import VueToastr from "vue-toastr";
 
 // sweetallert2 plugin
 Vue.use(VueSweetalert2);
-// use plugin
+// tostr
 Vue.use(VueToastr, {
     defaultTimeout: 2000,
     defaultProgressBar: false
@@ -84,7 +78,7 @@ Vue.config.productionTip = false
 
 var token = getToken();
 const eventsHub = new Vue();
-const inactiveTime = 100 // min
+const inactiveTime = 1 // min
 Vue.use(IdleVue, {
     eventEmitter: eventsHub,
     store,

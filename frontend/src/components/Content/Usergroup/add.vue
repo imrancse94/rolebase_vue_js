@@ -42,6 +42,7 @@
                     v-model="usergroupData.user_id"
                   />
                 </div>
+                
                 <div class="form-group">
                   <LinkButton
                     route="usergroup-index"
