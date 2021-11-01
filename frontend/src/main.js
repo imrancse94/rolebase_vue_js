@@ -42,6 +42,7 @@ import SelectDropdown from './components/Include/InputComponent/SelectDropdown.v
 import InputEmail from './components/Include/InputComponent/InputEmail.vue';
 import VueMultiselectItems from 'vue-multiselect-items'
 
+
 Vue.component('pagination', pagination);
 Vue.component('ErrorValidation', ErrorValidation);
 Vue.component('ActionButton', ActionButton);
@@ -78,7 +79,7 @@ Vue.config.productionTip = false
 
 var token = getToken();
 const eventsHub = new Vue();
-const inactiveTime = 1 // min
+const inactiveTime = 100 // min
 Vue.use(IdleVue, {
     eventEmitter: eventsHub,
     store,

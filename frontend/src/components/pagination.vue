@@ -1,73 +1,25 @@
 <template>
-  <div class="card-footer clearfix">
-    <ul class="pagination pagination-sm m-0 float-right">
-      <li class="page-item">
-        <button
-          type="button"
-          :disabled="!data.prev_page_url"
-          @click.prevent="paginateTo(data.current_page - 1)"
-          class="page-link"
-        >
-          «
-        </button>
-      </li>
-      <li
-        v-for="index in data.last_page"
-        :key="index"
-        :class="index === data.current_page ? 'active' : ''"
-        class="page-item"
-      >
-        <button
-          type="button"
-          v-if="data.last_page > 1"
-          @click.prevent="paginateTo(index)"
-          class="page-link"
-        >
-          {{ index }}
-        </button>
-      </li>
-      <li class="page-item">
-        <button
-          type="button"
-          :disabled="!data.next_page_url"
-          @click.prevent="paginateTo(data.current_page + 1)"
-          class="page-link"
-        >
-          »
-        </button>
-      </li>
-    </ul>
+  <div class="card-footer clearfix pull-right">
+    <VuePagination :data="data" @paginateTo="paginateTo"/>
   </div>
 </template>
 
 <script>
+import VuePagination from 'vue-laravel-table-pagination';
+
 export default {
   name: "pagination",
+  components:{
+    VuePagination
+  },
   props: {
     data: {},
   },
 
   methods: {
     paginateTo(page) {
-      if (this.$router.currentRoute.query.page != page) {
-        this.paginateFunction(page);
-      }
-    },
-
-    paginateFunction(page) {
-      var queryparams = Object.assign({}, this.$router.currentRoute.query, {
-        page: page,
-      });
-
-      this.$router
-        .replace({
-          path: this.$router.currentRoute.path,
-          query: queryparams,
-        })
-        .catch((err) => {});
-
-      this.$emit("paginateTo", page);
-    },
+      this.$emit('paginateTo',page)
+    }
   },
 };
 </script>
