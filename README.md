@@ -1,4 +1,4 @@
-Project Setup Instructions
+### Project Setup Instructions
 ============================
 
 Step 1: clone the project
@@ -13,7 +13,7 @@ Step 5:  php artisan db:seed
 
 Project setup complete, now change your api path from frontend config.js
 
-For Login 
+### For Login 
 ==================
 Email: ssadmin@admin.com
 Password: 123456 
