@@ -17,4 +17,5 @@ Project setup complete, now change your api path from frontend config.js
 ==================
 
 Email: ssadmin@admin.com
+
 Password: 123456 
