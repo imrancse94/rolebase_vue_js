@@ -1,15 +1,7 @@
 <template>
   <div id="app">
-    <div v-if="this.$store.state.isNotPermitted" id="toast-container" class="toast-top-right">
-      <div class="toast toast-error" aria-live="assertive" style="">
-        <div class="toast-message">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
-        </div>
-      </div>
-    </div>
     <Loader v-if="$store.getters['loading/getLoaderStatus']" />
     <router-view></router-view>
-   
   </div>
 </template>
 
